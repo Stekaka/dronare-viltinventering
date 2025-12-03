@@ -3,6 +3,7 @@
 import { ReactNode, useState, useEffect, useRef, Children } from "react";
 import { motion } from "framer-motion";
 import { useKeyboardNavigation } from "@/app/hooks/useKeyboardNavigation";
+import { trackSlideChange, trackFullscreen } from "@/app/lib/analytics";
 
 function useFullscreen() {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -37,22 +38,30 @@ function useFullscreen() {
       const element = document.documentElement;
       if (element.requestFullscreen) {
         element.requestFullscreen();
+        trackFullscreen("enter");
       } else if ((element as any).webkitRequestFullscreen) {
         (element as any).webkitRequestFullscreen();
+        trackFullscreen("enter");
       } else if ((element as any).mozRequestFullScreen) {
         (element as any).mozRequestFullScreen();
+        trackFullscreen("enter");
       } else if ((element as any).msRequestFullscreen) {
         (element as any).msRequestFullscreen();
+        trackFullscreen("enter");
       }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
+        trackFullscreen("exit");
       } else if ((document as any).webkitExitFullscreen) {
         (document as any).webkitExitFullscreen();
+        trackFullscreen("exit");
       } else if ((document as any).mozCancelFullScreen) {
         (document as any).mozCancelFullScreen();
+        trackFullscreen("exit");
       } else if ((document as any).msExitFullscreen) {
         (document as any).msExitFullscreen();
+        trackFullscreen("exit");
       }
     }
   };
@@ -63,6 +72,18 @@ function useFullscreen() {
 interface PresentationLayoutProps {
   children: ReactNode;
 }
+
+const SLIDE_NAMES = [
+  "Hero",
+  "About",
+  "Thermal",
+  "Gallery 1",
+  "Gallery 2",
+  "Gallery 3",
+  "Methodology",
+  "Questions",
+  "Contact",
+];
 
 export default function PresentationLayout({
   children,
@@ -76,6 +97,10 @@ export default function PresentationLayout({
   useEffect(() => {
     setCurrentSlide(0);
     window.scrollTo(0, 0);
+    // Track initial page view
+    if (typeof window !== "undefined") {
+      trackSlideChange(0, SLIDE_NAMES[0] || "Hero");
+    }
   }, []);
 
   const handleNext = () => {
@@ -175,6 +200,9 @@ export default function PresentationLayout({
         // Only update if we found a valid new slide that's different
         if (newSlide !== currentSlide && newSlide >= 0 && newSlide < totalSlides) {
           setCurrentSlide(newSlide);
+          // Track slide change
+          const slideName = SLIDE_NAMES[newSlide] || `Slide ${newSlide + 1}`;
+          trackSlideChange(newSlide + 1, slideName);
         }
         
         isScrolling = false;
