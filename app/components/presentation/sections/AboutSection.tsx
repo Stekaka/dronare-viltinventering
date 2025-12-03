@@ -12,7 +12,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
-        className="absolute top-4 left-4 md:top-12 md:left-12 w-[140px] h-[105px] sm:w-[200px] sm:h-[150px] md:w-[480px] md:h-[360px] lg:w-[540px] lg:h-[405px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-4 left-4 md:top-12 md:left-12 w-[180px] h-[135px] sm:w-[240px] sm:h-[180px] md:w-[480px] md:h-[360px] lg:w-[540px] lg:h-[405px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/HåkanPyro1.JPG"
@@ -26,7 +26,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: -50, y: 50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="absolute bottom-4 left-2 md:bottom-16 md:left-8 w-[120px] h-[90px] sm:w-[180px] sm:h-[135px] md:w-[420px] md:h-[315px] lg:w-[480px] lg:h-[360px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute bottom-4 left-2 md:bottom-16 md:left-8 w-[160px] h-[120px] sm:w-[220px] sm:h-[165px] md:w-[420px] md:h-[315px] lg:w-[480px] lg:h-[360px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/Ullevigatan1.JPG"
@@ -40,7 +40,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: 50, y: -50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="absolute top-4 right-4 md:top-12 md:right-12 w-[140px] h-[105px] sm:w-[200px] sm:h-[150px] md:w-[480px] md:h-[360px] lg:w-[540px] lg:h-[405px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-4 right-4 md:top-12 md:right-12 w-[180px] h-[135px] sm:w-[240px] sm:h-[180px] md:w-[480px] md:h-[360px] lg:w-[540px] lg:h-[405px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/UlleviHåkan1.JPG"
@@ -54,7 +54,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: 50, y: 50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="absolute bottom-4 right-2 md:bottom-16 md:right-8 w-[120px] h-[90px] sm:w-[180px] sm:h-[135px] md:w-[420px] md:h-[315px] lg:w-[480px] lg:h-[360px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute bottom-4 right-2 md:bottom-16 md:right-8 w-[160px] h-[120px] sm:w-[220px] sm:h-[165px] md:w-[420px] md:h-[315px] lg:w-[480px] lg:h-[360px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/Hjort1.JPG"
@@ -68,7 +68,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: -50, y: 0 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.6 }}
-        className="absolute top-1/2 -translate-y-1/2 left-2 md:left-8 w-[110px] h-[82px] sm:w-[160px] sm:h-[120px] md:w-[380px] md:h-[285px] lg:w-[440px] lg:h-[330px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-1/2 -translate-y-1/2 left-2 md:left-8 w-[150px] h-[112px] sm:w-[200px] sm:h-[150px] md:w-[380px] md:h-[285px] lg:w-[440px] lg:h-[330px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/OCBolaget1.JPG"
@@ -82,7 +82,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: 50, y: 0 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.7 }}
-        className="absolute top-1/2 -translate-y-1/2 right-2 md:right-8 w-[110px] h-[82px] sm:w-[160px] sm:h-[120px] md:w-[380px] md:h-[285px] lg:w-[440px] lg:h-[330px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-1/2 -translate-y-1/2 right-2 md:right-8 w-[150px] h-[112px] sm:w-[200px] sm:h-[150px] md:w-[380px] md:h-[285px] lg:w-[440px] lg:h-[330px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/LandskampDam1.JPG"
