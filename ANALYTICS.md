@@ -1,53 +1,44 @@
-# Analytics & Tracking
+# Page View Tracking - Snabb Guide
 
-Denna presentation använder Vercel Analytics och Speed Insights för att spåra användning och prestanda.
+## Hur det fungerar
 
-## Spårade Events
+Presentationen spårar automatiskt page views via en enkel Vercel Serverless Function.
 
-### Automatiska Events
+## API Endpoint
 
-1. **Page Views** - Spåras automatiskt av Vercel Analytics
-2. **Slide Views** - Spåras när användare navigerar mellan slides
-   - Event: `slide_view`
-   - Properties:
-     - `slide_number`: Nummer på slide (1-9)
-     - `slide_name`: Namn på slide (Hero, About, Thermal, etc.)
+**Fil:** `api/track.js`
 
-3. **Fullscreen** - Spåras när användare aktiverar/avaktiverar fullscreen
-   - Event: `fullscreen`
-   - Properties:
-     - `action`: "enter" eller "exit"
+Denna function loggar alla page views direkt i Vercel Function Logs.
 
-4. **Gallery Image Changes** - Spåras när användare byter bild i gallerier
-   - Event: `gallery_image_change`
-   - Properties:
-     - `gallery_name`: Namn på galleri
-     - `image_index`: Index på bilden (0-baserat)
-     - `total_images`: Totalt antal bilder
+## Frontend Tracking
 
-5. **Methodology Steps** - Spåras när användare navigerar mellan metodik-steg
-   - Event: `methodology_step`
-   - Properties:
-     - `step_number`: Nummer på steg (1-6)
-     - `step_name`: Namn på steg
+**Komponent:** `app/components/PageViewTracker.tsx`
 
-## Vart hittar jag data?
+Denna komponent anropar automatiskt `/api/track` när sidan laddas.
 
-1. **Vercel Dashboard**: Gå till ditt projekt → Analytics
-   - Se page views, unique visitors, top pages
-   - Se custom events och deras properties
+## Vart hittar jag logs?
 
-2. **Vercel Logs**: Gå till ditt projekt → Logs
-   - Se real-time logs från deployment
+1. **Vercel Dashboard** → Ditt projekt
+2. **Functions** → `track` → **Logs**
+3. Se alla page views där med:
+   - Timestamp
+   - IP-adress
+   - User Agent
+   - Referer
+   - URL/Path
 
-3. **Speed Insights**: Gå till ditt projekt → Speed Insights
-   - Se Core Web Vitals och prestandamått
+## Spårad Data
 
-## Tekniska Detaljer
+Varje page view loggas med:
+- `timestamp`: När sidan besöktes
+- `ip`: Besökarens IP-adress
+- `userAgent`: Webbläsare och enhet
+- `referer`: Var besökaren kom ifrån
+- `url`: Hela URL:en
+- `path`: Bara path-delen
 
-- **Vercel Analytics**: Automatisk tracking av page views
-- **Custom Events**: Använder `track()` från `@vercel/analytics`
-- **Speed Insights**: Automatisk tracking av prestanda
+Alla logs syns i realtid i Vercel Function Logs.
 
-Alla events spåras i realtid och syns i Vercel Dashboard.
+## Klart! 🎉
 
+Ingen registrering eller API-nycklar behövs. Allt loggas automatiskt i Vercel Function Logs.
