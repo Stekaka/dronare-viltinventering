@@ -26,3 +26,4 @@ export default function Home() {
     </main>
   );
 }
+// Deployment ready
