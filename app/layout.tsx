@@ -17,7 +17,12 @@ export const metadata: Metadata = {
   description:
     "Modern drönarteknologi för effektiv och noggrann viltinventering. Upptäck hur vi kan hjälpa dig med professionell viltförvaltning.",
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico' },
+    ],
+    apple: [
+      { url: '/favicon.ico' },
+    ],
   },
 };
 
