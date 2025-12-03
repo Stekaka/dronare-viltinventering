@@ -12,7 +12,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
-        className="absolute top-12 left-12 w-[480px] h-[360px] md:w-[540px] md:h-[405px] rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-4 left-4 md:top-12 md:left-12 w-[140px] h-[105px] sm:w-[200px] sm:h-[150px] md:w-[480px] md:h-[360px] lg:w-[540px] lg:h-[405px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/HåkanPyro1.JPG"
@@ -26,7 +26,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: -50, y: 50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="absolute bottom-16 left-8 w-[420px] h-[315px] md:w-[480px] md:h-[360px] rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute bottom-4 left-2 md:bottom-16 md:left-8 w-[120px] h-[90px] sm:w-[180px] sm:h-[135px] md:w-[420px] md:h-[315px] lg:w-[480px] lg:h-[360px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/Ullevigatan1.JPG"
@@ -40,7 +40,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: 50, y: -50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="absolute top-12 right-12 w-[480px] h-[360px] md:w-[540px] md:h-[405px] rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-4 right-4 md:top-12 md:right-12 w-[140px] h-[105px] sm:w-[200px] sm:h-[150px] md:w-[480px] md:h-[360px] lg:w-[540px] lg:h-[405px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/UlleviHåkan1.JPG"
@@ -54,7 +54,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: 50, y: 50 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="absolute bottom-16 right-8 w-[420px] h-[315px] md:w-[480px] md:h-[360px] rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute bottom-4 right-2 md:bottom-16 md:right-8 w-[120px] h-[90px] sm:w-[180px] sm:h-[135px] md:w-[420px] md:h-[315px] lg:w-[480px] lg:h-[360px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/Hjort1.JPG"
@@ -68,7 +68,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: -50, y: 0 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.6 }}
-        className="absolute top-1/2 -translate-y-1/2 left-8 w-[380px] h-[285px] md:w-[440px] md:h-[330px] rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-1/2 -translate-y-1/2 left-2 md:left-8 w-[110px] h-[82px] sm:w-[160px] sm:h-[120px] md:w-[380px] md:h-[285px] lg:w-[440px] lg:h-[330px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/OCBolaget1.JPG"
@@ -82,7 +82,7 @@ export default function AboutSection() {
         initial={{ opacity: 0, scale: 0.8, x: 50, y: 0 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.7 }}
-        className="absolute top-1/2 -translate-y-1/2 right-8 w-[380px] h-[285px] md:w-[440px] md:h-[330px] rounded-2xl overflow-hidden shadow-2xl z-10"
+        className="absolute top-1/2 -translate-y-1/2 right-2 md:right-8 w-[110px] h-[82px] sm:w-[160px] sm:h-[120px] md:w-[380px] md:h-[285px] lg:w-[440px] lg:h-[330px] rounded-xl md:rounded-2xl overflow-hidden shadow-2xl z-10"
       >
         <img
           src="/LandskampDam1.JPG"
@@ -97,7 +97,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+          className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold mb-4 md:mb-8 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] px-4"
         >
           Vilka är vi?
           <br />
@@ -110,12 +110,12 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="max-w-3xl mx-auto space-y-6"
+          className="max-w-3xl mx-auto space-y-4 md:space-y-6 px-4"
         >
-          <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          <p className="text-base sm:text-lg md:text-2xl lg:text-3xl leading-relaxed font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             Vi är experter på drönarteknologi med fokus på viltinventering, miljöövervakning och säkerhet.
           </p>
-          <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          <p className="text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             Med avancerad termisk bildteknik och AI-baserad analys levererar vi exakta och pålitliga resultat.
           </p>
         </motion.div>
@@ -125,7 +125,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-wrap justify-center gap-6 mt-8 max-w-4xl mx-auto"
+          className="flex flex-wrap justify-center gap-3 md:gap-6 mt-6 md:mt-8 max-w-4xl mx-auto px-4"
         >
           {[
             { name: "Viltinventering" },
@@ -139,8 +139,8 @@ export default function AboutSection() {
               transition={{ duration: 0.5, delay: 1.2 + index * 0.15 }}
               className="group relative"
             >
-              <div className="bg-white/95 backdrop-blur-sm rounded-full px-8 py-4 shadow-xl border-2 border-stone-300 hover:border-amber-500 transition-all duration-300 hover:scale-105">
-                <span className="text-lg md:text-xl font-semibold text-stone-800">
+              <div className="bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 md:px-8 md:py-4 shadow-xl border-2 border-stone-300 hover:border-amber-500 transition-all duration-300 hover:scale-105 touch-manipulation">
+                <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-stone-800">
                   {category.name}
                 </span>
               </div>

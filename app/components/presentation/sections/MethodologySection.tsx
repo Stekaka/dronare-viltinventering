@@ -144,17 +144,17 @@ export default function MethodologySection() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="relative z-10 w-full max-w-5xl mx-auto px-8"
+          className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8"
         >
-          <div className="bg-stone-800/60 backdrop-blur-md rounded-3xl p-12 md:p-16 border border-stone-700/50 shadow-2xl">
+          <div className="bg-stone-800/60 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 border border-stone-700/50 shadow-2xl">
             {/* Step number */}
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, type: "spring" }}
-              className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-amber-500/20 border-2 border-amber-500/50 mb-8"
+              className="inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-amber-500/20 border-2 border-amber-500/50 mb-4 md:mb-8"
             >
-              <span className="text-4xl font-bold text-amber-500">{currentStepData.number}</span>
+              <span className="text-2xl md:text-4xl font-bold text-amber-500">{currentStepData.number}</span>
             </motion.div>
 
             {/* Title */}
@@ -162,7 +162,7 @@ export default function MethodologySection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6"
             >
               {currentStepData.title}
             </motion.h2>
@@ -172,7 +172,7 @@ export default function MethodologySection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl md:text-2xl text-stone-300 leading-relaxed mb-8"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone-300 leading-relaxed mb-6 md:mb-8"
             >
               {currentStepData.description}
             </motion.p>
@@ -182,7 +182,7 @@ export default function MethodologySection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-4"
+              className="space-y-3 md:space-y-4"
             >
               {currentStepData.details.map((detail, index) => (
                 <motion.li
@@ -190,10 +190,10 @@ export default function MethodologySection() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-3 md:gap-4"
                 >
-                  <div className="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0 mt-3" />
-                  <span className="text-lg md:text-xl text-stone-300 leading-relaxed">{detail}</span>
+                  <div className="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0 mt-2 md:mt-3" />
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl text-stone-300 leading-relaxed">{detail}</span>
                 </motion.li>
               ))}
             </motion.ul>
@@ -204,33 +204,33 @@ export default function MethodologySection() {
       {/* Navigation arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-all shadow-lg border border-white/20 flex items-center justify-center"
+        className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-all shadow-lg border border-white/20 flex items-center justify-center touch-manipulation"
         aria-label="Föregående steg"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
       <button
         onClick={goToNext}
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-all shadow-lg border border-white/20 flex items-center justify-center"
+        className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-all shadow-lg border border-white/20 flex items-center justify-center touch-manipulation"
         aria-label="Nästa steg"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       {/* Step indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-3">
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex gap-2 md:gap-3">
         {steps.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentStep(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all touch-manipulation ${
               index === currentStep
-                ? "bg-amber-500 w-8"
+                ? "bg-amber-500 w-6 md:w-8"
                 : "bg-stone-600 hover:bg-stone-500"
             }`}
             aria-label={`Gå till steg ${index + 1}`}
@@ -239,7 +239,7 @@ export default function MethodologySection() {
       </div>
 
       {/* Step counter */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-50 bg-black/60 backdrop-blur-md rounded-full px-6 py-2 text-white text-sm font-mono">
+      <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 md:px-6 md:py-2 text-white text-xs md:text-sm font-mono">
         {currentStep + 1} / {steps.length}
       </div>
     </section>
