@@ -16,11 +16,6 @@ export const metadata: Metadata = {
   title: "Viltinventering med Drönare | Drönarkompaniet",
   description:
     "Modern drönarteknologi för effektiv och noggrann viltinventering. Upptäck hur vi kan hjälpa dig med professionell viltförvaltning.",
-  metadataBase: new URL('https://dronare-viltinventering.vercel.app'),
-  openGraph: {
-    title: "Viltinventering med Drönare | Drönarkompaniet",
-    description: "Modern drönarteknologi för effektiv och noggrann viltinventering.",
-  },
 };
 
 export default function RootLayout({
