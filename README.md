@@ -77,3 +77,4 @@ app/
 ## Licens
 
 Privat projekt för Drönarkompaniet.
+# Deployment ready
