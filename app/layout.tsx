@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Viltinventering med Drönare | Drönarkompaniet",
   description:
     "Modern drönarteknologi för effektiv och noggrann viltinventering. Upptäck hur vi kan hjälpa dig med professionell viltförvaltning.",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
