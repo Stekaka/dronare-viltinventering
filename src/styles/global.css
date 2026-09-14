@@ -6,11 +6,15 @@
 
 @layer base {
   body {
-    @apply text-charcoal-700 bg-paper-50 antialiased font-body;
+    @apply text-ink-900 bg-paper-50 antialiased font-body;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+  }
+  
+  * {
+    border-radius: 0 !important;
   }
 }
 
@@ -20,13 +24,13 @@
   }
   
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-sm 
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold
            bg-ink-900 text-paper-50 hover:bg-ink-800 
            transition-all duration-200 border-2 border-ink-900 hover:border-ink-700;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-sm
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold
            bg-transparent text-ink-900 border-2 border-charcoal-700 
            hover:bg-charcoal-700 hover:text-paper-50 transition-all duration-200;
   }
@@ -47,7 +51,7 @@
   }
   
   .card-elevated {
-    @apply bg-paper-50 border border-paper-200 rounded-sm shadow-lg 
+    @apply bg-paper-50 border border-paper-200 shadow-lg 
            hover:shadow-xl transition-shadow duration-300;
   }
   
@@ -69,7 +73,7 @@
 /* Instrument panel aesthetics */
 .instrument-panel {
   @apply bg-gradient-to-br from-charcoal-900 via-charcoal-800 to-ink-900 
-         border-2 border-charcoal-600 rounded-sm p-8 text-paper-100;
+         border-2 border-charcoal-600 p-8 text-paper-100;
 }
 
 .instrument-readout {
@@ -78,16 +82,4 @@
 
 .instrument-label {
   @apply text-xs uppercase tracking-wider text-paper-300 font-semibold;
-}
-
-/* Moose silhouette decorative element */
-.moose-accent::before {
-  content: '';
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%233d5a4a' opacity='0.06'%3E%3Cpath d='M30,20 L40,10 L35,25 M70,20 L60,10 L65,25 M20,30 Q20,50 30,70 L30,90 M80,30 Q80,50 70,70 L70,90 M30,35 Q50,30 70,35 Q75,50 70,65 L65,80 L35,80 L30,65 Q25,50 30,35'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.4;
 }

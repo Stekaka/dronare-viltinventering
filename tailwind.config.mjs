@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Forest night / thermal mood palette
         ink: {
           950: '#0a0e0d',
           900: '#141a18',
@@ -48,6 +47,10 @@ export default {
       maxWidth: {
         'prose': '65ch',
         'prose-wide': '75ch',
+      },
+      borderRadius: {
+        'none': '0',
+        'sm': '0',
       },
     },
   },
