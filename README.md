@@ -6,37 +6,53 @@ Premium Astro + Tailwind CSS static site with outstanding visual quality, mobile
 
 ## 🚀 Features
 
+- **Full-Bleed Thermal Video Hero**:
+  - Real thermal footage from älginventering operations
+  - Autoplay video with poster fallback and accessibility support
+  - Dark gradient overlay for readable text
+  - Editorial typography with Spectral display serif
+
 - **Interactive Price Calculator** with locked specifications:
-  - Kön/kalv toggle (adjusts default coverage 30% → 40%)
-  - Three travel/lodging modes (Exkl., Schablon, Offert)
-  - Coverage presets: 20%, 30% (rek), 40%, 50%
-  - Real-time calculation with verification (17455 ha @ 40% = 5 days, 40000 kr)
+  - SEK_PER_DAY = 8000, HA_PER_DAY = 1500
+  - Coverage default 30%, bumps to 40% min when kön/kalv is ON
+  - Three travel/lodging radio modes: Exkl. resor (default), Schablon resor/boende (default 12000 SEK), Tillkommer i offert
+  - Always-visible disclaimer "Exkl. moms · Indikativt"
+  - Real-time calculation: `inventerad_ha = total_ha * coverage/100`, `days = ceil(inventerad_ha / 1500)`, `total = flight_cost + travel_if_on`
+  - Verification example: 17455 ha @ 40% → 6982 inventerad; 4.65→5 days; 40000 flyg; +12000=52000; ~2.29 kr/ha excl; ~2.97 incl
   
 - **Complete MVP Pages**:
-  - Home with method steps and differentiators
-  - `/metodik` — detailed methodology
-  - `/kostnad` — cost calculator and explanation
-  - `/jamfor-metoder` — method comparison
+  - Home with thermal video hero, real media proof sections, case study
+  - `/metodik` — detailed methodology with SLU 2026 reference
+  - `/kostnad` — price calculator with example calculation
+  - `/jamfor-metoder` — 3-column method comparison (drönare, spillning, älgobs)
   - `/for/jaktlag`, `/for/aso`, `/for/afo`, `/for/markagare` — audience pages
   - `/guider/slu-rapport-2026` — SLU report summary
-  - `/case` — case studies
-  - `/kontakt` — contact with form
+  - `/case` — case studies with real Sotenäs data
+  - `/kontakt` — contact page
   - `/faq` — comprehensive FAQ
 
+- **Real Media Assets**:
+  - `/media/hero-thermal.mp4` and `.webm` — thermal flight footage
+  - `/media/thermal-alg-*.jpg` — thermal detection imagery
+  - `/media/optisk-alg-zoom.jpg` — optical verification
+  - `/media/rapport-*.png` — report screenshots (cover, map, list)
+  - `/media/sotenas-flygunderlag.jpg` — case study flight plan
+  - `/media/hero-zoom.jpg`, `hero-daylight.jpg` — hero alternates
+
 - **SEO Optimized**:
-  - Meta tags, Open Graph, Twitter Cards
-  - JSON-LD structured data (LocalBusiness + Service)
-  - Sitemap generation
+  - Meta tags, Open Graph, Twitter Cards with real og-image.jpg
+  - JSON-LD structured data (ProfessionalService schema)
+  - Sitemap generation via @astrojs/sitemap
   - Robots.txt
   - `lang="sv"` throughout
   - Canonical URLs
 
-- **Premium Scandinavian Design**:
-  - Deep forest greens (#059669, emerald-700+)
-  - Warm neutrals (stone palette)
-  - Mobile-first responsive
-  - Sticky header with dropdown nav
-  - Accessible components
+- **Editorial Design System** (ported from proven local reference):
+  - **Typography**: Spectral (display serif) + Karla (body sans)
+  - **Colors**: #faf6ea paper bg, #2b3324 forest sections, #efe8d8 cream cards, #d9b877 gold accents
+  - **Layout**: Sticky cream header with forest border, dark footer, full-bleed hero
+  - **Components**: Inline styles matching reference patterns, specimen-catalog cards, numbered process steps
+  - **Aesthetic**: Editorial forest journal, not SaaS template
 
 ## 📋 Tech Stack
 
