@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Vanliga Frågor — Älginventering med Drönare | Älginventering.se';
+const description = 'Svar på vanliga frågor om älginventering med termisk drönare: metodik, kostnad, godkännande, jämförelse med andra metoder.';
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-emerald-800 text-white py-16">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Vanliga frågor</h1>
+      <p class="text-xl text-emerald-50 max-w-3xl">
+        Svar på de vanligaste frågorna om älginventering med termisk drönare
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- FAQ Item -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Är metoden godkänd av SLU eller Naturvårdsverket?</h3>
+          <p class="text-stone-700">
+            <strong>Nej.</strong> Drönarinventering är <em>inte</em> en officiellt godkänd metod för älginventering. 
+            Däremot bygger vår metodik på samma kunskap som SLU:s utvärdering 2026 (Hofmeester m.fl.). 
+            Vi levererar ett <strong>komplement till älgobs och spillningsinventering</strong> — inte en ersättning för officiella metoder.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Kan vi använda er rapport för officiell rapportering till ÄFO?</h3>
+          <p class="text-stone-700">
+            <strong>Som komplement — ja.</strong> Rapporten kan bifogas som underlag tillsammans med älgobs och spillning. 
+            Den kan <em>inte</em> ersätta älgobs i officiell rapportering, men den stärker beslutsunderlaget med objektiv täthetsskattning, 
+            konfidensintervall och bildbevis.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Hur fungerar den termiska detektionen?</h3>
+          <p class="text-stone-700 mb-3">
+            Vi flyger med termisk sensor som fångar kroppsvärme från klövvilt — även genom tät vegetation. 
+            SLU:s GPS-validering visar nästan 100 % detektion i optimala förhållanden (kallt, molnigt, vinter).
+          </p>
+          <p class="text-stone-700">
+            Varje termisk detektion verifieras med högupplöst optisk kamera för artkontroll. GPS-koordinat och tidsstämpel 
+            loggas för varje observation.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Räknar AI:n älgarna automatiskt?</h3>
+          <p class="text-stone-700">
+            <strong>Nej.</strong> AI kan stödja detektering av termiska signaturer, men <strong>artkontroll sker alltid manuellt</strong> 
+            av erfaren personal. Vi rapporterar inte "AI räknade X älgar" — människan granskar varje bild och bestämmer arten.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Hur bestäms täckningsgraden?</h3>
+          <p class="text-stone-700 mb-3">
+            Vi rekommenderar vanligen <strong>20–40 % täckning</strong> av total areal. Högre täckning ger smalare konfidensintervall 
+            och är särskilt viktigt om ni vill ha uppskattning av könskvot eller kalvar.
+          </p>
+          <p class="text-stone-700">
+            Provytorna placeras <strong>slumpmässigt</strong> över hela området — inte där ni "vet" att älgen finns. Detta är kritiskt 
+            för att få en objektiv skattning.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Kan ni se kön och kalv?</h3>
+          <p class="text-stone-700">
+            <strong>Ofta, men inte alltid.</strong> Med högupplösta optiska bilder och tillräcklig täckning kan vi ofta bedöma 
+            kön och kalv. Detta kräver generellt högre täckningsgrad (40 % eller mer) enligt SLU. För mest säker könsbedömning 
+            är älgobs fortfarande överlägset.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">När på året bör vi inventera?</h3>
+          <p class="text-stone-700">
+            <strong>Vinter är optimalt.</strong> Kallt, molnigt väder med minimal sol ger bäst termisk kontrast. 
+            Ingen lövvegetation underlättar också. Vi kan flyga andra tider på året, men det tar längre tid och 
+            kostnaden ökar.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Vad kostar det?</h3>
+          <p class="text-stone-700 mb-3">
+            <strong>Ca 8 000 kr/flygdag</strong> (orienterande). Vi kan inventera ca 1 500 ha provytor per dag i optimala förhållanden. 
+            Resor och boende tillkommer.
+          </p>
+          <p class="text-stone-700">
+            För ett område på 17 455 ha med 40 % täckning blir det ca 40 000 kr flygkostnad + resor. 
+            <a href="/kostnad" class="text-emerald-700 underline">Använd vår kalkylator</a> för att få en uppskattning för ert område.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Hur lång tid tar det från beställning till rapport?</h3>
+          <p class="text-stone-700">
+            Beroende på väder och vår beläggning: vanligen 2–4 veckor från bekräftad bokning till färdig rapport. 
+            Vi är väderberoende — kallt, molnigt är optimalt. Rapport levereras inom en vecka efter genomförd flygning.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Kan vi flyga över flera jaktlag samtidigt?</h3>
+          <p class="text-stone-700">
+            <strong>Ja.</strong> ÄSO:er och markägare kan koordinera inventering över flera jaktlag. Detta ger kostnadseffektivitet 
+            (större areal per dag) och enhetlig metodik över hela området.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Varför inte bara flyga där älgen brukar vara?</h3>
+          <p class="text-stone-700">
+            För att få en <strong>objektiv skattning</strong> måste provytorna placeras slumpmässigt. Om vi bara flyger där 
+            ni "vet" att älgen finns får vi överdriven täthetsskattning. Slumpmässigt urval säkerställer att resultatet 
+            gäller hela området.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Är drönare bättre än älgobs?</h3>
+          <p class="text-stone-700">
+            <strong>Nej — de kompletterar varandra.</strong> Älgobs är överlägset för kön/kalv och lokal kännedom. 
+            Drönare är överlägset för objektiv täthetsskattning och bildbevis. Kombinera metoderna för bästa beslutsunderlag.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Vad innebär konfidensintervall?</h3>
+          <p class="text-stone-700">
+            Ett konfidensintervall visar <strong>osäkerheten</strong> i skattningen. T.ex. 2,3 älgar/km² ± 0,4 betyder att 
+            den sanna tätheten med 95 % sannolikhet ligger mellan 1,9 och 2,7. Inte bara en punkt skattning — transparent osäkerhetsmått.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Behöver vi markägarens tillstånd?</h3>
+          <p class="text-stone-700">
+            <strong>Ja.</strong> Vi behöver markägarens godkännande för att flyga över privat mark. Som jaktlag eller ÄSO 
+            behöver ni säkerställa att markägaren är informerad och godkänner inventeringen.
+          </p>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-stone-900 mb-3">Har ni försäkring och tillstånd?</h3>
+          <p class="text-stone-700">
+            <strong>Ja.</strong> Drönarkompaniet Norden AB har Transportstyrelsens tillstånd för komplexa flygoperationer (EASA) 
+            och omfattande ansvarsförsäkring. Alla operatörer är certifierade.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-stone-600 mb-6">Har du fler frågor?</p>
+        <a href="/kontakt" class="btn-primary inline-block">
+          Kontakta oss
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

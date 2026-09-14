@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Älginventering för ÄFO — Helhetsbild och Beslutsunderlag | Älginventering.se';
+const description = 'Komplement till älgobs och spillning för evidensbaserade beslut. Objektiv täthetsskattning med konfidensintervall och kartunderlag.';
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-emerald-800 text-white py-16">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">För ÄFO</h1>
+      <p class="text-xl text-emerald-50 max-w-3xl">
+        Få en helhetsbild över älgförekomsten. Komplement till spillning och älgobs för evidensbaserade beslut.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Bättre beslutsunderlag för förvaltningen</h2>
+        <p class="text-lg text-stone-700 mb-8">
+          Som ÄFO tar ni beslut om avskjutning baserat på älgobs, spillning och älgskador. 
+          Drönare ger er ett tredje komplement — objektiv täthetsskattning med konfidensintervall 
+          som kan jämföras mellan ÄSO:er och år.
+        </p>
+
+        <div class="bg-emerald-50 border-l-4 border-emerald-600 p-6 mb-12">
+          <h3 class="text-lg font-semibold text-emerald-900 mb-2">Komplement — inte ersättning</h3>
+          <p class="text-emerald-800">
+            Drönarinventering är i linje med SLU 2026 men är <strong>inte godkänd som officiell metod</strong>. 
+            Använd den som komplement till älgobs och spillning — inte som enda grund för avskjutningsbeslut.
+          </p>
+        </div>
+
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Vad ni får</h2>
+        <div class="space-y-6 mb-12">
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Jämförbar täthetsskattning mellan ÄSO:er</h3>
+            <p class="text-stone-700">
+              Konfidensintervall beräknade med samma metodik gör det möjligt att jämföra älgtäthet mellan olika 
+              ÄSO:er och se trender över tid.
+            </p>
+          </div>
+
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Kartunderlag över älgens utbredning</h3>
+            <p class="text-stone-700">
+              Se var älgen faktiskt finns, inte bara där jägare rör sig. Användbart för att förstå 
+              migration, habitatval och effekt av skogsskötsel.
+            </p>
+          </div>
+
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Verifierbart bildbevis</h3>
+            <p class="text-stone-700">
+              Varje observation dokumenterad med termisk + optisk bild, GPS-koordinat och tidsstämpel. 
+              Transparent metod som tål granskning.
+            </p>
+          </div>
+
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Vetenskaplig grund</h3>
+            <p class="text-stone-700">
+              Metodiken bygger på samma kunskap som SLU:s utvärdering (Hofmeester m.fl., 2026). 
+              Provyteinventering enligt etablerad statistisk teori.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">När passar drönare bäst?</h2>
+        <p class="text-stone-700 mb-8">
+          Drönare är särskilt värdefullt i följande situationer:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+          <div class="bg-stone-100 p-6 rounded-lg">
+            <h3 class="font-semibold text-stone-900 mb-3">Konflikt om älgtäthet</h3>
+            <p class="text-stone-700 text-sm">
+              När jaktlag, ÄSO och ÄFO har olika uppfattning om hur många älgar som finns — 
+              drönare ger objektiv data som alla kan relatera till.
+            </p>
+          </div>
+
+          <div class="bg-stone-100 p-6 rounded-lg">
+            <h3 class="font-semibold text-stone-900 mb-3">Ojämn älgobs-kvalitet</h3>
+            <p class="text-stone-700 text-sm">
+              När älgobsen är bristfällig, varierar mycket eller saknas helt — 
+              drönare ger snabb inventering med standardiserad metodik.
+            </p>
+          </div>
+
+          <div class="bg-stone-100 p-6 rounded-lg">
+            <h3 class="font-semibold text-stone-900 mb-3">Höga älgskador</h3>
+            <p class="text-stone-700 text-sm">
+              När skogsägare rapporterar stora skador men älgobsen indikerar låg täthet — 
+              objektiv inventering kan reda ut läget.
+            </p>
+          </div>
+
+          <div class="bg-stone-100 p-6 rounded-lg">
+            <h3 class="font-semibold text-stone-900 mb-3">Nya förvaltningsområden</h3>
+            <p class="text-stone-700 text-sm">
+              Vid omorganisation av ÄFO eller ÄSO — etablera en baslinje med objektiv metodik 
+              som kan följas upp kommande år.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 border-l-4 border-amber-500 p-6 mb-12">
+          <h3 class="text-lg font-semibold text-amber-900 mb-2">Viktigt att veta</h3>
+          <p class="text-amber-900">
+            Drönarinventering ersätter <strong>inte</strong> älgobs eller spillning i officiell rapportering till 
+            Naturvårdsverket. Använd den som komplement för bättre beslutsunderlag — inte som enda metod.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <a href="/kontakt" class="btn-primary inline-block">
+            Diskutera hur drönare kan stödja er förvaltning
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

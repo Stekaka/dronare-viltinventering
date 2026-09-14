@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PriceCalculator from '../components/PriceCalculator.astro';
+
+const title = 'Kostnad för Älginventering — Beräkna Pris | Älginventering.se';
+const description = 'Beräkna kostnad för älginventering med termisk drönare. Transparent prissättning baserad på areal och täckningsgrad. Ca 8 000 kr/flygdag och 1 500 ha provytor per dag.';
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero -->
+  <section class="bg-emerald-800 text-white py-16">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Vad kostar älginventering?</h1>
+      <p class="text-xl text-emerald-50 max-w-3xl">
+        Transparent prissättning baserad på areal, täckningsgrad och antal flygdagar. 
+        Offert efter genomgång av ert specifika område.
+      </p>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <PriceCalculator />
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Explanation -->
+  <section class="bg-stone-100 py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-stone-900 mb-8">Så fungerar prissättningen</h2>
+        
+        <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <h3 class="text-xl font-semibold text-stone-900 mb-4">Grundpris per flygdag</h3>
+          <div class="flex items-baseline mb-4">
+            <span class="text-4xl font-bold text-emerald-700">8 000</span>
+            <span class="text-xl text-stone-600 ml-2">kr/dag</span>
+          </div>
+          <p class="text-stone-600 mb-4">
+            Priset är orienterande och inkluderar flygning, termisk + optisk utrustning, manuell artkontroll, 
+            dataanalys och rapport med konfidensintervall.
+          </p>
+          <p class="text-sm text-stone-500">
+            <strong>Inkluderar:</strong> Planering · Flygning · Termisk + optisk utrustning · GPS-loggning · 
+            Manuell artkontroll · Täthetsskattning med konfidensintervall · Karta · Bildbevis · Rapport
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+          <h3 class="text-xl font-semibold text-stone-900 mb-4">Kapacitet per dag</h3>
+          <div class="flex items-baseline mb-4">
+            <span class="text-4xl font-bold text-emerald-700">~1 500</span>
+            <span class="text-xl text-stone-600 ml-2">ha provytor/dag</span>
+          </div>
+          <p class="text-stone-600 mb-4">
+            Kapaciteten varierar beroende på terräng, väder och täckningsgrad. I optimala förhållanden (kallt, molnigt, vinter) 
+            kan vi inventera upp till ca 1 500 ha provytor per dag.
+          </p>
+          <p class="text-sm text-stone-500">
+            <strong>Påverkar kapacitet:</strong> Väder (sol vs molnigt) · Temperatur · Terräng · Vegetation · 
+            Tillgänglighet · Täckningsgrad
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-8">
+          <h3 class="text-xl font-semibold text-stone-900 mb-4">Resor och boende</h3>
+          <p class="text-stone-600 mb-4">
+            Resor och boende tillkommer utöver flygkostnaden. Vi kan ge schablon i kalkylen, men exakt kostnad 
+            beror på avstånd och logistik för just ert område.
+          </p>
+          <ul class="space-y-2 text-stone-600 text-sm">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span><strong>Närområde:</strong> Ofta dagsturer utan boende</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span><strong>Längre avstånd:</strong> Resa + boende för effektivt genomförande</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-emerald-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span><strong>Offert:</strong> Exakt kostnad specificeras alltid i offert</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Example Calculation -->
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-stone-900 mb-8">Exempel: 17 455 ha @ 40% täckning</h2>
+        
+        <div class="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-8">
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="text-sm text-emerald-800 font-medium mb-1">Total areal</div>
+              <div class="text-2xl font-bold text-emerald-900">17 455 ha</div>
+            </div>
+            <div>
+              <div class="text-sm text-emerald-800 font-medium mb-1">Täckningsgrad</div>
+              <div class="text-2xl font-bold text-emerald-900">40 %</div>
+            </div>
+          </div>
+          
+          <div class="border-t-2 border-emerald-200 pt-6 mb-6">
+            <div class="space-y-3 text-stone-700">
+              <div class="flex justify-between">
+                <span>Inventerad areal (17455 × 0,40):</span>
+                <span class="font-semibold">≈ 6 982 ha</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Dagar (6982 / 1500, avrundat uppåt):</span>
+                <span class="font-semibold">5 dagar</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Flygkostnad (5 × 8 000):</span>
+                <span class="font-semibold">40 000 kr</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Kr/ha exkl. resor (40000 / 17455):</span>
+                <span class="font-semibold">≈ 2,29 kr/ha</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t-2 border-emerald-200 pt-6">
+            <div class="text-sm text-emerald-800 font-medium mb-2">Med schablon resor/boende +12 000 kr:</div>
+            <div class="space-y-2 text-stone-700">
+              <div class="flex justify-between items-baseline">
+                <span>Total inkl. schablon:</span>
+                <span class="text-2xl font-bold text-emerald-900">52 000 kr</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Kr/ha inkl. schablon (52000 / 17455):</span>
+                <span class="font-semibold">≈ 2,98 kr/ha</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <p class="text-sm text-stone-600 mt-4 text-center">
+          Exkl. moms. Indikativ beräkning — bindande offert efter genomgång av ert område.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-stone-900 text-white py-16">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl font-bold mb-4">Få exakt offert för ert område</h2>
+      <p class="text-xl text-stone-300 mb-8 max-w-2xl mx-auto">
+        Boka 15 minuters kostnadsfritt samtal så går vi igenom ert specifika område och tar fram en skräddarsydd offert.
+      </p>
+      <a href="/kontakt" class="btn-primary bg-emerald-600 hover:bg-emerald-700 text-lg px-8 py-4 inline-flex items-center">
+        Boka samtal
+        <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

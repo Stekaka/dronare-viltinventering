@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Älginventering för ÄSO — Underlag för ÄFO-samråd | Älginventering.se';
+const description = 'Objektiva data för ÄFO-samråd. Täthetsskattning med konfidensintervall och kartunderlag enligt vetenskaplig metodik.';
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-emerald-800 text-white py-16">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">För ÄSO</h1>
+      <p class="text-xl text-emerald-50 max-w-3xl">
+        Underlag för ÄFO-samråd med vetenskaplig metodik. Konfidensintervall och kartunderlag.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Stärk er position i ÄFO-samrådet</h2>
+        <p class="text-lg text-stone-700 mb-8">
+          Som ÄSO samlar ni älgobs från era jaktlag och rapporterar till ÄFO. När data är ojämn eller 
+          ifrågasatt blir samrådet svårt. Drönare ger er ett objektivt komplement med konfidensintervall 
+          och bildbevis.
+        </p>
+
+        <div class="bg-emerald-50 border-l-4 border-emerald-600 p-6 mb-12">
+          <h3 class="text-lg font-semibold text-emerald-900 mb-2">I linje med SLU 2026</h3>
+          <p class="text-emerald-800">
+            Metodiken bygger på samma vetenskapliga grund som SLU:s utvärdering. 
+            <strong>Komplement till älgobs och spillning</strong> — inte ersättning för officiella metoder.
+          </p>
+        </div>
+
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Vad ni får</h2>
+        <div class="space-y-6 mb-12">
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Sammanställt underlag för hela ÄSO-området</h3>
+            <p class="text-stone-700">
+              Täthetsskattning med konfidensintervall som täcker flera jaktlag. Jämförbart mellan år 
+              och med andra ÄSO:er som använder samma metodik.
+            </p>
+          </div>
+
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Kartunderlag för ÄFO-presentation</h3>
+            <p class="text-stone-700">
+              Karta över inventerade provytor, älgobservationer och täthetsskattning. 
+              Visuellt tydligt för beslut fatare och andra intressenter.
+            </p>
+          </div>
+
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Metodbeskrivning för rapportering</h3>
+            <p class="text-stone-700">
+              Komplett metodavsnitt som kan inkluderas i er ÄFO-rapport. Transparent, 
+              verifierbart, i linje med vetenskaplig standard.
+            </p>
+          </div>
+
+          <div class="bg-white border border-stone-200 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Bildbevis för transparens</h3>
+            <p class="text-stone-700">
+              Varje observation dokumenterad med bild, GPS-koordinat och tidsstämpel. 
+              Stärker förtroende och motverkar ifrågasättande.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Koordinering över flera jaktlag</h2>
+        <p class="text-stone-700 mb-8">
+          Som ÄSO kan ni koordinera en inventering över flera jaktlag samtidigt. Detta ger:
+        </p>
+        <ul class="space-y-3 mb-12 text-stone-700">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>Kostnadseffektivitet:</strong> Större areal per flygdag sänker kr/ha</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>Enhetlig metodik:</strong> Samma standard över hela ÄSO-området</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-emerald-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>Starkare position:</strong> ÄFO får helhetsbild över större landskap</span>
+          </li>
+        </ul>
+
+        <div class="text-center">
+          <a href="/kontakt" class="btn-primary inline-block">
+            Diskutera koordinerad inventering
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
