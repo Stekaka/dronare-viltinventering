@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description: string;
@@ -75,8 +77,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "description": "Provyteinventering av älg med termisk drönare. Täthetsskattning med konfidensintervall enligt vetenskaplig metodik i linje med SLU:s utvärdering 2026."
       }
     </script>
-    
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
     <header class="sticky top-0 z-50 bg-paper-50/95 backdrop-blur-sm border-b border-paper-200">
