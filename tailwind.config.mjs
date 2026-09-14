@@ -4,53 +4,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: {
-          950: '#0a0e0d',
-          900: '#141a18',
-          800: '#1e2623',
-          700: '#2a342f',
+        // Dark system inspired by Linear/Viltanalys
+        bg: {
+          primary: '#0A0A0A',
+          secondary: '#0D0D0D',
+          tertiary: '#141414',
+          elevated: '#1A1A1A',
         },
-        charcoal: {
-          900: '#1a1f1e',
-          800: '#262d2b',
-          700: '#384440',
-          600: '#4a5854',
-          500: '#6b7871',
+        text: {
+          primary: '#E4E4E7',
+          secondary: '#A1A1AA',
+          tertiary: '#71717A',
+          inverse: '#18181B',
         },
-        paper: {
-          50: '#fafaf9',
-          100: '#f5f4f1',
-          200: '#ebe9e3',
-          300: '#ddd9d0',
+        border: {
+          primary: 'rgba(255, 255, 255, 0.08)',
+          secondary: 'rgba(255, 255, 255, 0.12)',
         },
-        moss: {
-          700: '#3d5a4a',
-          600: '#4a6b58',
-          500: '#5a7d68',
-          400: '#6d9179',
-        },
-        thermal: {
-          600: '#d97706',
-          500: '#ea580c',
-          400: '#f59e0b',
+        accent: {
+          primary: '#10B981',
+          hover: '#059669',
+          muted: 'rgba(16, 185, 129, 0.1)',
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
-        '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        '6xl': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
-        '7xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
+        'display-sm': ['2.25rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-lg': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        'display-xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '112': '28rem',
       },
       maxWidth: {
         'prose': '65ch',
-        'prose-wide': '75ch',
-      },
-      borderRadius: {
-        'none': '0',
-        'sm': '0',
+        '8xl': '88rem',
       },
     },
   },

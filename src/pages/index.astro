@@ -1,258 +1,138 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PriceCalculator from '../components/PriceCalculator.astro';
-import ThermalBackground from '../components/ThermalBackground.astro';
 
 const title = 'Älginventering med Termisk Drönare | Täthetsskattning med Konfidensintervall';
 const description = 'Älginventering med termisk drönare — täthetsskattning med konfidensintervall, karta och bildbevis. Komplement till älgobs och spillning. I linje med SLU 2026.';
 ---
 
 <Layout title={title} description={description}>
-  <!-- Hero Section - Asymmetric with Strong Visual Mass -->
-  <section class="relative section-dark overflow-hidden">
-    <ThermalBackground />
-    <div class="container-custom py-24 md:py-40 relative z-10">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h1 class="text-[2.75rem] md:text-6xl lg:text-[4.5rem] font-display font-bold mb-6 leading-[1.05] tracking-tight text-balance text-paper-50">
-            Älginventering med termisk drönare
-          </h1>
-          <p class="text-lg md:text-xl text-paper-200 mb-8 leading-relaxed max-w-xl">
-            Täthetsskattning med konfidensintervall, karta och bildbevis — komplement till älgobs och spillning.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/kostnad" class="btn-primary text-base inline-flex items-center justify-center group">
-              Beräkna kostnad
-              <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-            <a href="/metodik" class="btn-secondary border-paper-300 text-paper-50 hover:bg-paper-50 hover:text-ink-900 text-base">
-              Läs om metodik
-            </a>
-          </div>
-        </div>
-        
-        <!-- Strong Visual Mass on Right - FIXED VISIBILITY -->
-        <div class="relative aspect-square md:aspect-[4/5] max-w-lg ml-auto min-h-[400px]">
-          <!-- Thermal Grid Frame with VISIBLE border -->
-          <div class="absolute inset-0 border-4 border-moss-600 bg-gradient-to-br from-charcoal-800/90 to-ink-900/90 backdrop-blur-sm">
-            <div class="thermal-grid absolute inset-0 opacity-40"></div>
-            
-            <!-- Large Moose Silhouette - VISIBLE with proper fill -->
-            <svg class="absolute inset-0 w-full h-full p-12" viewBox="0 0 200 200" fill="none">
-              <!-- Body filled with visible color -->
-              <path d="M60 70 Q100 60 140 70 Q150 100 140 130 L130 160 L70 160 L60 130 Q50 100 60 70 Z" 
-                    fill="#3d5a4a" opacity="0.3" stroke="#5a7d68" stroke-width="2"/>
-              <!-- Antlers -->
-              <path d="M60 40 L80 20 L70 50 M140 40 L120 20 L130 50" 
-                    stroke="#5a7d68" stroke-width="3" stroke-linecap="square"/>
-              <!-- Legs -->
-              <path d="M40 60 Q40 100 60 150 L60 180 M160 60 Q160 100 140 150 L140 180" 
-                    stroke="#5a7d68" stroke-width="3"/>
-              <!-- Eyes as thermal points -->
-              <circle cx="75" cy="95" r="5" fill="#f59e0b" opacity="0.9"/>
-              <circle cx="125" cy="95" r="5" fill="#f59e0b" opacity="0.9"/>
-              <!-- Additional thermal spots -->
-              <circle cx="100" cy="110" r="3" fill="#ea580c" opacity="0.7"/>
-              <circle cx="85" cy="125" r="3" fill="#ea580c" opacity="0.6"/>
-              <circle cx="115" cy="125" r="3" fill="#ea580c" opacity="0.6"/>
-            </svg>
-            
-            <!-- Data Overlays with HIGH CONTRAST -->
-            <div class="absolute top-8 left-8 right-8 bg-ink-950/80 border-2 border-thermal-500 p-4">
-              <div class="text-xs uppercase tracking-widest text-thermal-400 font-semibold mb-2">DETEKTIONSGRAD</div>
-              <div class="text-5xl font-display font-bold text-paper-50">~100%</div>
-              <div class="text-sm text-paper-200 mt-2">i optimala förhållanden</div>
-            </div>
-            
-            <div class="absolute bottom-8 left-8 right-8 bg-ink-950/80 border-t-2 border-moss-600 pt-4">
-              <div class="grid grid-cols-2 gap-6">
-                <div>
-                  <div class="text-xs uppercase tracking-wider text-paper-300 mb-1">GPS-validering</div>
-                  <div class="text-xl font-display font-bold text-moss-400">SLU 2026</div>
-                </div>
-                <div>
-                  <div class="text-xs uppercase tracking-wider text-paper-300 mb-1">Metodik</div>
-                  <div class="text-xl font-display font-bold text-moss-400">Provytor</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Corner Brackets - MORE VISIBLE -->
-          <div class="absolute -top-2 -left-2 w-12 h-12 border-t-4 border-l-4 border-thermal-500"></div>
-          <div class="absolute -top-2 -right-2 w-12 h-12 border-t-4 border-r-4 border-thermal-500"></div>
-          <div class="absolute -bottom-2 -left-2 w-12 h-12 border-b-4 border-l-4 border-thermal-500"></div>
-          <div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-4 border-r-4 border-thermal-500"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Badge - Full-bleed -->
-  <section class="bg-moss-700 border-y-2 border-moss-600">
-    <div class="container-custom py-6">
-      <p class="text-center text-paper-50 leading-relaxed">
-        <strong class="font-semibold">Metodiken bygger på samma kunskap som SLU:s utvärdering 2026.</strong> 
-        Hofmeester m.fl. (2026). Inventering av älg med drönare. Rapport 2026.2, SLU.
-      </p>
-    </div>
-  </section>
-
-  <!-- Differentiators - HIGH CONTRAST on light bg -->
-  <section class="py-24 md:py-32 bg-paper-50">
+  <!-- Hero - ONE dominant message -->
+  <section class="relative overflow-hidden pt-24 pb-32 md:pt-32 md:pb-48">
     <div class="container-custom">
-      <h2 class="text-4xl md:text-5xl font-display font-bold text-ink-950 mb-4 text-balance max-w-3xl">
-        Hur vi arbetar
-      </h2>
-      <p class="text-base text-ink-900 mb-16 max-w-prose leading-relaxed">
-        Termisk detektion, optisk verifiering och manuell artkontroll — en systematisk metodik för tillförlitliga resultat.
-      </p>
-      
-      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-        <div class="space-y-4">
-          <div class="w-12 h-12 bg-ink-950 flex items-center justify-center mb-4">
-            <div class="w-6 h-6 border-2 border-thermal-400"></div>
-          </div>
-          <h3 class="text-2xl font-display font-bold text-ink-950">Termisk detektion</h3>
-          <p class="text-ink-900 leading-relaxed">
-            Nästan 100 % detektion i kalla, molniga vinterförhållanden enligt SLU:s GPS-validering. 
-            Fångar kroppsvärme genom vegetation.
-          </p>
+      <div class="max-w-4xl">
+        <p class="eyebrow mb-6">DRÖN ARB ASERAD VILTINVENTERING</p>
+        <h1 class="text-display md:text-display-lg lg:text-display-xl font-semibold text-text-primary mb-6">
+          Älginventering med termisk drönare
+        </h1>
+        <p class="text-xl md:text-2xl text-text-secondary mb-10 max-w-2xl leading-relaxed">
+          Täthetsskattning med konfidensintervall, karta och bildbevis. Komplement till älgobs och spillning.
+        </p>
+        
+        <!-- Single clear CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-16">
+          <a href="/kostnad" class="btn-primary text-base px-8 py-3">
+            Beräkna kostnad
+          </a>
+          <a href="/metodik" class="btn-secondary text-base px-8 py-3">
+            Läs om metodik
+          </a>
         </div>
 
-        <div class="space-y-4">
-          <div class="w-12 h-12 bg-ink-950 flex items-center justify-center mb-4">
-            <div class="w-4 h-4 rounded-full border-2 border-moss-500"></div>
-          </div>
-          <h3 class="text-2xl font-display font-bold text-ink-950">Optisk verifiering</h3>
-          <p class="text-ink-900 leading-relaxed">
-            Varje termisk detektion verifieras med högupplöst optisk kamera. GPS-koordinat och tidsstämpel för varje observation.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <div class="w-12 h-12 bg-ink-950 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-moss-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-              <path stroke-linecap="square" stroke-linejoin="miter" d="M9 12l2 2 4-4"/>
+        <!-- Trust badges -->
+        <div class="flex flex-wrap gap-8 items-center text-sm text-text-tertiary">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
+            <span>Baserat på SLU-studie 2026</span>
           </div>
-          <h3 class="text-2xl font-display font-bold text-ink-950">Manuell artkontroll</h3>
-          <p class="text-ink-900 leading-relaxed">
-            Erfaren personal granskar varje bild och bestämmer art. AI stödjer detektering — människan bestämmer arten.
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>~100% detektion optimalt väder</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>Manuell artkontroll</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product proof section -->
+  <section class="py-24 md:py-32 border-t border-border-primary">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card">
+          <p class="eyebrow mb-3">01 — DETEKTERING</p>
+          <h3 class="text-xl font-semibold text-text-primary mb-3">Termisk sensor</h3>
+          <p class="text-text-secondary leading-relaxed">
+            Fångar kroppsvärme genom vegetation. SLU:s GPS-validering visar nästan 100% detektion i optimala förhållanden.
+          </p>
+        </div>
+
+        <div class="card">
+          <p class="eyebrow mb-3">02 — VERIFIERING</p>
+          <h3 class="text-xl font-semibold text-text-primary mb-3">Optisk kamera</h3>
+          <p class="text-text-secondary leading-relaxed">
+            Högupplöst optisk bild med GPS-koordinat och tidsstämpel för varje observation. Manuell artkontroll av erfaren personal.
+          </p>
+        </div>
+
+        <div class="card">
+          <p class="eyebrow mb-3">03 — ANALYS</p>
+          <h3 class="text-xl font-semibold text-text-primary mb-3">Täthetsskattning</h3>
+          <p class="text-text-secondary leading-relaxed">
+            Konfidensintervall beräknat enligt vetenskaplig metodik. Komplett rapport med karta och bildbevis.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Method Steps - DARK bg with LIGHT text - FIXED CONTRAST -->
-  <section class="section-thermal py-24 md:py-32 relative overflow-hidden">
-    <div class="thermal-grid absolute inset-0 opacity-20"></div>
-    <div class="container-custom relative z-10">
-      <h2 class="text-4xl md:text-5xl font-display font-bold text-paper-50 mb-6 text-balance">
-        Så går inventeringen till
-      </h2>
-      <p class="text-base text-paper-100 mb-16 max-w-prose leading-relaxed">
-        Från brief till rapport — fem steg med tydlig metodik
-      </p>
-      
-      <div class="max-w-4xl">
-        <!-- Step 01 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
-          <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
-              <span class="text-3xl font-display font-bold text-thermal-400">01</span>
-            </div>
-          </div>
-          <div class="flex-1 pt-2">
-            <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Brief</h3>
-            <p class="text-base text-paper-100 leading-relaxed">
-              Areal, plats, önskade arter. Vi föreslår täckningsgrad och antal flygdagar baserat på ert område och målsättning.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 02 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
-          <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
-              <span class="text-3xl font-display font-bold text-thermal-400">02</span>
-            </div>
-          </div>
-          <div class="flex-1 pt-2">
-            <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Provytor</h3>
-            <p class="text-base text-paper-100 leading-relaxed">
-              Slumpmässigt urval över hela området — inte där ni "vet" att älgen finns. Detta är kritiskt för objektiv skattning.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 03 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
-          <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
-              <span class="text-3xl font-display font-bold text-thermal-400">03</span>
-            </div>
-          </div>
-          <div class="flex-1 pt-2">
-            <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Flygning</h3>
-            <p class="text-base text-paper-100 leading-relaxed">
-              Termisk sensor följt av optisk verifiering. GPS-koordinat och tidsstämpel för varje observation. Bäst resultat i kallt, molnigt vinterväder.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 04 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
-          <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
-              <span class="text-3xl font-display font-bold text-thermal-400">04</span>
-            </div>
-          </div>
-          <div class="flex-1 pt-2">
-            <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Analys</h3>
-            <p class="text-base text-paper-100 leading-relaxed">
-              Manuell artkontroll av erfaren personal. Täthetsskattning med konfidensintervall — inte bara en punkt skattning.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 05 -->
-        <div class="flex gap-8">
-          <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
-              <span class="text-3xl font-display font-bold text-thermal-400">05</span>
-            </div>
-          </div>
-          <div class="flex-1 pt-2">
-            <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Rapport</h3>
-            <p class="text-base text-paper-100 leading-relaxed">
-              Täthet med konfidensintervall, karta över provytor och observationer, bildbevis. Komplement till älgobs och spillning för ÄFO-rapportering.
-            </p>
-          </div>
-        </div>
+  <!-- Method steps - numbered process -->
+  <section class="py-24 md:py-32 bg-bg-secondary border-y border-border-primary">
+    <div class="container-custom">
+      <div class="max-w-3xl mb-16">
+        <p class="eyebrow mb-4">PROCESSEN</p>
+        <h2 class="text-display-sm md:text-display font-semibold text-text-primary mb-4">
+          Från brief till rapport
+        </h2>
+        <p class="text-lg text-text-secondary">
+          Fem steg med tydlig metodik och transparent genomförande
+        </p>
       </div>
 
-      <div class="mt-16">
-        <a href="/metodik" class="btn-secondary border-paper-300 text-paper-50 hover:bg-paper-50 hover:text-ink-900">
-          Fördjupa dig i metodiken
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+        {[
+          { num: '01', title: 'Brief', desc: 'Areal, plats, arter. Vi föreslår täckningsgrad baserat på ert område.' },
+          { num: '02', title: 'Provytor', desc: 'Slumpmässigt urval över hela området enligt statistisk metodik.' },
+          { num: '03', title: 'Flygning', desc: 'Termisk detektion följt av optisk verifiering med GPS-loggning.' },
+          { num: '04', title: 'Analys', desc: 'Manuell artkontroll. Täthetsskattning med konfidensintervall.' },
+          { num: '05', title: 'Rapport', desc: 'Karta, bildbevis och metodbeskrivning för ÄFO-rapportering.' },
+        ].map(step => (
+          <div class="card">
+            <div class="text-xs font-medium text-accent-primary mb-2">{step.num}</div>
+            <h3 class="text-lg font-semibold text-text-primary mb-2">{step.title}</h3>
+            <p class="text-sm text-text-secondary leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12">
+        <a href="/metodik" class="btn-secondary">
+          Se fullständig metodik
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Calculator Section - LIGHT bg -->
-  <section class="py-24 md:py-32 bg-paper-100">
+  <!-- Calculator section -->
+  <section class="py-24 md:py-32">
     <div class="container-custom">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-ink-950 mb-6 text-balance">
+          <p class="eyebrow mb-4">KOSTNADSKALKYLATOR</p>
+          <h2 class="text-display-sm md:text-display font-semibold text-text-primary mb-4">
             Beräkna kostnad för ert område
           </h2>
-          <p class="text-base text-ink-900 max-w-prose mx-auto leading-relaxed">
-            Få en snabb orientering baserat på areal och täckningsgrad. Offert efter genomgång av ert specifika område.
+          <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+            Transparent prissättning. Offert efter genomgång av ert specifika område.
           </p>
         </div>
         <PriceCalculator />
@@ -260,24 +140,27 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- For Whom - DARK bg with LIGHT text -->
-  <section class="section-dark py-24 md:py-32">
+  <!-- For whom section -->
+  <section class="py-24 md:py-32 bg-bg-secondary border-y border-border-primary">
     <div class="container-custom">
-      <h2 class="text-4xl md:text-5xl font-display font-bold text-paper-50 mb-16 text-balance">
-        För dig som arbetar med viltförvaltning
-      </h2>
+      <div class="max-w-3xl mb-12">
+        <p class="eyebrow mb-4">MÅLGRUPPER</p>
+        <h2 class="text-display-sm md:text-display font-semibold text-text-primary">
+          För dig som arbetar med viltförvaltning
+        </h2>
+      </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { title: 'Jaktlag', href: '/for/jaktlag', desc: 'Komplettera älgobs med objektiv data. Fatta beslut om avskjutning på säkrare grund.' },
-          { title: 'ÄSO', href: '/for/aso', desc: 'Underlag för ÄFO-samråd med vetenskaplig metodik. Konfidensintervall och kartunderlag.' },
-          { title: 'ÄFO', href: '/for/afo', desc: 'Få en helhetsbild över älgförekomsten. Komplement för evidensbaserade beslut.' },
-          { title: 'Markägare', href: '/for/markagare', desc: 'Dokumentera viltpåverkan på skog. Underlag för samtal med jaktlag.' }
+          { title: 'Jaktlag', href: '/for/jaktlag', desc: 'Komplettera älgobs med objektiv täthetsskattning' },
+          { title: 'ÄSO', href: '/for/aso', desc: 'Underlag för ÄFO-samråd med vetenskaplig metodik' },
+          { title: 'ÄFO', href: '/for/afo', desc: 'Helhetsbild för evidensbaserade beslut' },
+          { title: 'Markägare', href: '/for/markagare', desc: 'Dokumentera viltpåverkan på skog' }
         ].map(item => (
-          <a href={item.href} class="border-2 border-charcoal-700 bg-charcoal-800/90 p-6 hover:border-moss-600 hover:bg-charcoal-800 transition-all group">
-            <h3 class="text-xl font-display font-semibold text-paper-50 mb-3 group-hover:text-moss-400 transition-colors">{item.title}</h3>
-            <p class="text-paper-200 text-sm leading-relaxed mb-4">{item.desc}</p>
-            <div class="text-moss-500 text-sm font-medium group-hover:translate-x-1 transition-transform inline-flex items-center">
-              Läs mer 
+          <a href={item.href} class="card group">
+            <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">{item.title}</h3>
+            <p class="text-sm text-text-secondary leading-relaxed mb-3">{item.desc}</p>
+            <div class="text-sm text-text-tertiary group-hover:text-accent-primary transition-colors inline-flex items-center">
+              Läs mer
               <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
@@ -288,27 +171,28 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- CTA Section - LIGHT bg with DARK text -->
-  <section class="py-24 md:py-32 bg-paper-50">
+  <!-- CTA section -->
+  <section class="py-24 md:py-32">
     <div class="container-custom text-center">
-      <h2 class="text-4xl md:text-5xl font-display font-bold text-ink-950 mb-6 text-balance">
-        Redo att börja?
-      </h2>
-      <p class="text-base text-ink-900 mb-10 max-w-2xl mx-auto leading-relaxed">
-        Boka 15 min — offert skräddarsydd för just ert område.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/kontakt" class="btn-primary text-base">
-          Boka kostnadsfritt samtal
-        </a>
-        <a href="/faq" class="btn-secondary text-base">
-          Läs vanliga frågor
-        </a>
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-display-sm md:text-display font-semibold text-text-primary mb-4">
+          Redo att börja?
+        </h2>
+        <p class="text-lg text-text-secondary mb-8">
+          Boka 15 min för en genomgång av ert område
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/kontakt" class="btn-primary text-base px-8 py-3">
+            Boka samtal
+          </a>
+          <a href="/faq" class="btn-secondary text-base px-8 py-3">
+            Vanliga frågor
+          </a>
+        </div>
+        <p class="mt-8 text-sm text-text-tertiary">
+          Drönarkompaniet Norden AB · <a href="tel:+46709780908" class="text-text-secondary hover:text-text-primary transition-colors">0709-780 908</a>
+        </p>
       </div>
-      <p class="mt-10 text-ink-900">
-        Drönarkompaniet Norden AB · <a href="tel:+46709780908" class="text-moss-700 hover:underline font-medium">0709-780 908</a> · 
-        <a href="mailto:info@dronarkompaniet.se" class="text-moss-700 hover:underline font-medium">info@dronarkompaniet.se</a>
-      </p>
     </div>
   </section>
 </Layout>

@@ -1,17 +1,12 @@
 ---
 ---
 
-<div class="instrument-panel shadow-2xl">
-  <div class="mb-8">
-    <h2 class="text-3xl md:text-4xl font-display font-bold text-paper-50 mb-2">Beräkna kostnad</h2>
-    <p class="text-paper-300 text-sm">Orientering — offert efter genomgång av ert område</p>
-  </div>
-  
+<div class="bg-bg-tertiary border border-border-primary rounded-lg p-8">
   <form id="price-calculator" class="space-y-8">
-    <!-- Area Input -->
+    <!-- Area + Gender/Calf -->
     <div class="grid md:grid-cols-2 gap-6">
       <div>
-        <label for="total-area" class="instrument-label block mb-3">
+        <label for="total-area" class="eyebrow block mb-3">
           Total areal (hektar)
         </label>
         <input
@@ -22,185 +17,136 @@
           max="50000"
           step="1"
           value="17455"
-          class="w-full px-5 py-3.5 bg-charcoal-800 border-2 border-charcoal-600 rounded-sm text-paper-50 text-lg font-semibold focus:outline-none focus:border-moss-600 transition-colors"
+          class="w-full px-4 py-3 bg-bg-secondary border border-border-primary rounded-lg text-text-primary focus:outline-none focus:border-border-secondary transition-colors"
           required
         />
-        <p class="text-xs text-paper-400 mt-2">Minst 500 ha rekommenderas</p>
+        <p class="text-xs text-text-tertiary mt-2">Minst 500 ha rekommenderas</p>
       </div>
 
-      <!-- Kön/Kalv Toggle -->
-      <div class="flex items-start pt-7">
+      <div class="flex items-start pt-8">
         <input
           type="checkbox"
           id="gender-calf"
           name="genderCalf"
-          class="mt-1.5 h-5 w-5 text-moss-600 focus:ring-moss-600 bg-charcoal-800 border-charcoal-600 rounded"
+          class="mt-1 h-4 w-4 text-accent-primary focus:ring-accent-primary bg-bg-secondary border-border-primary rounded"
         />
-        <label for="gender-calf" class="ml-4 flex-1">
-          <span class="instrument-label block mb-1">Även könskvot / kalv</span>
-          <span class="text-xs text-paper-400">Kräver generellt större stickprov (SLU)</span>
+        <label for="gender-calf" class="ml-3">
+          <span class="block text-sm font-medium text-text-primary">Även könskvot / kalv</span>
+          <span class="block text-xs text-text-secondary mt-1">Kräver högre täckning (SLU)</span>
         </label>
       </div>
     </div>
 
-    <!-- Coverage Selection -->
+    <!-- Coverage -->
     <div>
-      <label class="instrument-label block mb-4">
-        Täckningsgrad
-      </label>
+      <label class="eyebrow block mb-3">Täckningsgrad</label>
       <div class="grid grid-cols-4 gap-3 mb-3">
-        <button
-          type="button"
-          class="coverage-btn px-4 py-3 border-2 border-charcoal-600 rounded-sm text-sm font-semibold text-paper-300 hover:border-moss-600 hover:text-paper-50 focus:outline-none focus:ring-2 focus:ring-moss-600 transition-all"
-          data-coverage="20"
-        >
-          20%
-        </button>
-        <button
-          type="button"
-          class="coverage-btn px-4 py-3 border-2 border-moss-600 bg-moss-600/10 rounded-sm text-sm font-semibold text-moss-500 focus:outline-none focus:ring-2 focus:ring-moss-600 transition-all"
-          data-coverage="30"
-        >
-          30% <span class="text-[10px]">REK</span>
-        </button>
-        <button
-          type="button"
-          class="coverage-btn px-4 py-3 border-2 border-charcoal-600 rounded-sm text-sm font-semibold text-paper-300 hover:border-moss-600 hover:text-paper-50 focus:outline-none focus:ring-2 focus:ring-moss-600 transition-all"
-          data-coverage="40"
-        >
-          40%
-        </button>
-        <button
-          type="button"
-          class="coverage-btn px-4 py-3 border-2 border-charcoal-600 rounded-sm text-sm font-semibold text-paper-300 hover:border-moss-600 hover:text-paper-50 focus:outline-none focus:ring-2 focus:ring-moss-600 transition-all"
-          data-coverage="50"
-        >
-          50%
-        </button>
+        {['20', '30', '40', '50'].map((coverage, idx) => (
+          <button
+            type="button"
+            class={`coverage-btn px-4 py-3 border rounded-lg text-sm font-medium transition-all focus:outline-none ${idx === 1 ? 'border-accent-primary bg-accent-muted text-accent-primary' : 'border-border-primary text-text-secondary hover:border-border-secondary'}`}
+            data-coverage={coverage}
+          >
+            {coverage}% {idx === 1 && <span class="text-xs">REK</span>}
+          </button>
+        ))}
       </div>
       <input type="hidden" id="coverage-value" name="coverage" value="30" />
-      <p id="coverage-helper" class="text-xs text-paper-400">30 % räcker ofta för täthet. Högre täckning vid stark aggregation eller för kön/kalv med bättre precision.</p>
+      <p id="coverage-helper" class="text-xs text-text-tertiary">30 % räcker ofta för täthet. Högre täckning vid stark aggregation eller för kön/kalv.</p>
     </div>
 
-    <!-- Travel/Lodging Mode -->
+    <!-- Travel modes -->
     <div>
-      <label class="instrument-label block mb-4">
-        Resor och boende
-      </label>
+      <label class="eyebrow block mb-3">Resor och boende</label>
       <div class="space-y-3">
-        <label class="flex items-start p-4 border-2 border-moss-600 bg-moss-600/5 rounded-sm cursor-pointer transition-all">
-          <input
-            type="radio"
-            name="travelMode"
-            value="excl"
-            checked
-            class="mt-1 h-4 w-4 text-moss-600 focus:ring-moss-600 bg-charcoal-800 border-charcoal-600"
-          />
-          <span class="ml-3 flex-1">
-            <span class="block text-sm font-semibold text-paper-100">Exkl. resor</span>
-            <span class="block text-xs text-paper-400 mt-0.5">Endast flygkostnad</span>
-          </span>
-        </label>
-
-        <label class="flex items-start p-4 border-2 border-charcoal-600 rounded-sm cursor-pointer hover:border-moss-600/50 transition-all">
-          <input
-            type="radio"
-            name="travelMode"
-            value="schablon"
-            class="mt-1 h-4 w-4 text-moss-600 focus:ring-moss-600 bg-charcoal-800 border-charcoal-600"
-          />
-          <span class="ml-3 flex-1">
-            <span class="block text-sm font-semibold text-paper-100 mb-2">Schablon resor/boende</span>
+        {[
+          { value: 'excl', title: 'Exkl. resor', desc: 'Endast flygkostnad', checked: true },
+          { value: 'schablon', title: 'Schablon resor/boende', desc: null, checked: false },
+          { value: 'offert', title: 'Tillkommer i offert', desc: 'Resor och boende tillkommer efter plats', checked: false }
+        ].map(mode => (
+          <label class={`flex items-start p-4 border rounded-lg cursor-pointer transition-colors ${mode.checked ? 'border-accent-primary bg-accent-muted' : 'border-border-primary hover:border-border-secondary'}`}>
             <input
-              type="number"
-              id="travel-amount"
-              name="travelAmount"
-              min="0"
-              step="1000"
-              value="12000"
-              disabled
-              class="w-full px-3 py-2 text-sm bg-charcoal-900 border border-charcoal-600 rounded-sm text-paper-200 disabled:opacity-50 focus:outline-none focus:border-moss-600"
+              type="radio"
+              name="travelMode"
+              value={mode.value}
+              checked={mode.checked}
+              class="mt-1 h-4 w-4 text-accent-primary focus:ring-accent-primary bg-bg-secondary border-border-primary"
             />
-            <span class="block text-xs text-paper-400 mt-1">Schablon, ej bindande offert</span>
-          </span>
-        </label>
-
-        <label class="flex items-start p-4 border-2 border-charcoal-600 rounded-sm cursor-pointer hover:border-moss-600/50 transition-all">
-          <input
-            type="radio"
-            name="travelMode"
-            value="offert"
-            class="mt-1 h-4 w-4 text-moss-600 focus:ring-moss-600 bg-charcoal-800 border-charcoal-600"
-          />
-          <span class="ml-3">
-            <span class="block text-sm font-semibold text-paper-100">Tillkommer i offert</span>
-            <span class="block text-xs text-paper-400 mt-0.5">Resor och boende tillkommer efter plats</span>
-          </span>
-        </label>
+            <span class="ml-3 flex-1">
+              <span class="block text-sm font-medium text-text-primary">{mode.title}</span>
+              {mode.desc && <span class="block text-xs text-text-secondary mt-1">{mode.desc}</span>}
+              {mode.value === 'schablon' && (
+                <input
+                  type="number"
+                  id="travel-amount"
+                  name="travelAmount"
+                  min="0"
+                  step="1000"
+                  value="12000"
+                  disabled
+                  class="mt-2 w-full px-3 py-2 text-sm bg-bg-secondary border border-border-primary rounded-lg text-text-primary disabled:opacity-50 focus:outline-none focus:border-border-secondary"
+                />
+              )}
+            </span>
+          </label>
+        ))}
       </div>
     </div>
 
-    <!-- Results - Instrument Readouts -->
-    <div class="mt-10 pt-8 border-t-2 border-charcoal-700">
-      <div class="grid md:grid-cols-2 gap-8 mb-8">
+    <!-- Results -->
+    <div class="pt-8 border-t border-border-primary">
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
         <div>
-          <div class="instrument-label mb-2">Inventerad areal</div>
-          <div id="result-inventerad" class="instrument-readout">6 982 ha</div>
+          <div class="eyebrow mb-2">Inventerad areal</div>
+          <div id="result-inventerad" class="text-3xl font-semibold text-text-primary">6 982 ha</div>
         </div>
         <div>
-          <div class="instrument-label mb-2">Beräknade flygdagar</div>
-          <div id="result-days" class="instrument-readout">5 dagar</div>
+          <div class="eyebrow mb-2">Beräknade flygdagar</div>
+          <div id="result-days" class="text-3xl font-semibold text-text-primary">5 dagar</div>
         </div>
       </div>
 
-      <div class="bg-charcoal-800/50 border-2 border-charcoal-700 rounded-sm p-6 space-y-4">
+      <div class="bg-bg-elevated border border-border-primary rounded-lg p-6 space-y-3">
         <div class="flex justify-between items-baseline">
-          <span class="text-paper-300 text-sm">Flygkostnad</span>
-          <span id="result-flight" class="text-2xl font-display font-bold text-paper-50">40 000 kr</span>
+          <span class="text-sm text-text-secondary">Flygkostnad</span>
+          <span id="result-flight" class="text-xl font-semibold text-text-primary">40 000 kr</span>
         </div>
         <div id="result-travel-row" class="hidden flex justify-between items-baseline">
-          <span class="text-paper-300 text-sm">Resor/boende (schablon)</span>
-          <span id="result-travel" class="text-xl font-display font-semibold text-paper-100">12 000 kr</span>
+          <span class="text-sm text-text-secondary">Resor/boende (schablon)</span>
+          <span id="result-travel" class="text-lg font-semibold text-text-primary">12 000 kr</span>
         </div>
-        <div class="pt-4 border-t border-charcoal-700">
+        <div class="pt-3 border-t border-border-primary">
           <div class="flex justify-between items-baseline">
-            <span class="text-paper-300 text-sm">Kr per hektar (exkl. resor)</span>
-            <span id="result-kr-ha-excl" class="text-lg font-display font-semibold text-moss-500">2,29 kr/ha</span>
+            <span class="text-sm text-text-secondary">Kr per hektar (exkl. resor)</span>
+            <span id="result-kr-ha-excl" class="text-lg font-semibold text-accent-primary">2,29 kr/ha</span>
           </div>
         </div>
-        <div id="result-total-row" class="hidden pt-4 border-t border-charcoal-700">
+        <div id="result-total-row" class="hidden pt-3 border-t border-border-primary">
           <div class="flex justify-between items-baseline mb-2">
-            <span class="font-semibold text-paper-100">Total inkl. schablon</span>
-            <span id="result-total" class="text-3xl font-display font-bold text-paper-50">52 000 kr</span>
+            <span class="font-medium text-text-primary">Total inkl. schablon</span>
+            <span id="result-total" class="text-2xl font-semibold text-text-primary">52 000 kr</span>
           </div>
           <div class="flex justify-between items-baseline">
-            <span class="text-paper-400 text-xs">Kr per hektar (inkl. schablon)</span>
-            <span id="result-kr-ha-incl" class="text-sm font-semibold text-moss-500">2,98 kr/ha</span>
+            <span class="text-xs text-text-tertiary">Kr per hektar (inkl. schablon)</span>
+            <span id="result-kr-ha-incl" class="text-sm font-semibold text-accent-primary">2,98 kr/ha</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Disclaimer -->
-    <div class="p-4 bg-thermal-600/10 border-l-4 border-thermal-600 rounded-sm">
-      <p class="text-xs text-paper-200 leading-relaxed">
-        <strong class="text-thermal-400">OBS:</strong> Kalkylen är en orientering utifrån 8 000 kr/flygdag och ca 1 500 ha inventerade provytor per dag. 
-        Resor och boende tillkommer. Offert efter genomgång av ert område.
+    <div class="p-4 bg-accent-muted border border-accent-primary/20 rounded-lg">
+      <p class="text-xs text-text-secondary leading-relaxed">
+        <strong class="text-text-primary">OBS:</strong> Kalkylen är en orientering utifrån 8 000 kr/flygdag och ca 1 500 ha provytor per dag. 
+        Resor och boende tillkommer. Offert efter genomgång.
       </p>
     </div>
 
-    <!-- Explanation -->
-    <div class="text-xs text-paper-400 leading-relaxed">
-      <strong class="text-paper-300">Beräkningen:</strong> Den inventerade arealen (total × täckning) delas med 
-      ca 1 500 ha provytor per flygdag. Dagar rundas alltid uppåt. Priset per hektar beräknas på 
-      <em>total areal</em>, inte inventerad areal.
-    </div>
-
     <!-- CTA -->
-    <div class="mt-10 text-center">
-      <a href="/kontakt" class="btn-primary inline-flex items-center text-lg px-10 py-4.5">
-        Boka 15 min — offert skräddarsydd för ert område
-        <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <div class="text-center">
+      <a href="/kontakt" class="btn-primary inline-flex items-center px-8 py-3">
+        Boka 15 min — få skräddarsydd offert
+        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
       </a>
@@ -275,20 +221,17 @@
   coverageButtons.forEach(button => {
     button.addEventListener('click', () => {
       const coverage = parseInt((button as HTMLElement).dataset.coverage || '30');
-      
-      if (isGenderCalf && coverage < 40) {
-        return;
-      }
+      if (isGenderCalf && coverage < 40) return;
       
       currentCoverage = coverage;
       coverageValue.value = coverage.toString();
       
       coverageButtons.forEach(btn => {
-        btn.classList.remove('border-moss-600', 'bg-moss-600/10', 'text-moss-500');
-        btn.classList.add('border-charcoal-600', 'text-paper-300');
+        btn.classList.remove('border-accent-primary', 'bg-accent-muted', 'text-accent-primary');
+        btn.classList.add('border-border-primary', 'text-text-secondary');
       });
-      button.classList.remove('border-charcoal-600', 'text-paper-300');
-      button.classList.add('border-moss-600', 'bg-moss-600/10', 'text-moss-500');
+      button.classList.remove('border-border-primary', 'text-text-secondary');
+      button.classList.add('border-accent-primary', 'bg-accent-muted', 'text-accent-primary');
       
       calculate();
     });
@@ -296,24 +239,18 @@
 
   genderCalfCheckbox.addEventListener('change', () => {
     isGenderCalf = genderCalfCheckbox.checked;
-    
     if (isGenderCalf && currentCoverage < 40) {
       const button40 = Array.from(coverageButtons).find(btn => 
         (btn as HTMLElement).dataset.coverage === '40'
       ) as HTMLElement;
       button40?.click();
     }
-    
     coverageButtons.forEach(btn => {
       const coverage = parseInt((btn as HTMLElement).dataset.coverage || '30');
       if (coverage < 40) {
-        if (isGenderCalf) {
-          (btn as HTMLButtonElement).disabled = true;
-          btn.classList.add('opacity-30', 'cursor-not-allowed');
-        } else {
-          (btn as HTMLButtonElement).disabled = false;
-          btn.classList.remove('opacity-30', 'cursor-not-allowed');
-        }
+        (btn as HTMLButtonElement).disabled = isGenderCalf;
+        btn.classList.toggle('opacity-30', isGenderCalf);
+        btn.classList.toggle('cursor-not-allowed', isGenderCalf);
       }
     });
   });
@@ -322,26 +259,18 @@
     radio.addEventListener('change', () => {
       const label = radio.closest('label');
       document.querySelectorAll('input[name="travelMode"]').forEach(r => {
-        r.closest('label')?.classList.remove('border-moss-600', 'bg-moss-600/5');
-        r.closest('label')?.classList.add('border-charcoal-600');
+        r.closest('label')?.classList.remove('border-accent-primary', 'bg-accent-muted');
+        r.closest('label')?.classList.add('border-border-primary');
       });
-      label?.classList.remove('border-charcoal-600');
-      label?.classList.add('border-moss-600', 'bg-moss-600/5');
+      label?.classList.remove('border-border-primary');
+      label?.classList.add('border-accent-primary', 'bg-accent-muted');
       
-      if (radio.value === 'schablon') {
-        travelAmountInput.disabled = false;
-        travelAmountInput.classList.remove('opacity-50');
-      } else {
-        travelAmountInput.disabled = true;
-        travelAmountInput.classList.add('opacity-50');
-      }
-      
+      travelAmountInput.disabled = radio.value !== 'schablon';
       calculate();
     });
   });
 
   totalAreaInput.addEventListener('input', calculate);
   travelAmountInput.addEventListener('input', calculate);
-
   calculate();
 </script>
