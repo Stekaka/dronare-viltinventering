@@ -7,184 +7,200 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
 ---
 
 <Layout title={title} description={description}>
-	<div style="background: #faf6ea;">
-		<HeroMedia
-			eyebrow="DRÖNARBASERAD VILTINVENTERING"
-			posterSrc="/media/hero-thermal-poster.jpg"
-			posterAlt="Termisk flygfoto från älginventering — snöfläckad vinterterräng med tydliga älgspår"
-			videoMp4="/media/hero-thermal.mp4"
-			videoWebm="/media/hero-thermal.webm"
-			ctaHref="/kontakt"
-			ctaLabel="Boka älginventering"
-			secondaryHref="#metod"
-			secondaryLabel="läs om metoden →"
-			trustLine="Termisk detektion · Optisk verifiering · Manuell artkontroll — i linje med SLU 2026"
-		>
-			Älginventering med <span style="font-style: italic; color: #e0d6b0;">termisk drönare</span>
-		</HeroMedia>
+	<!-- Hero with thermal video -->
+	<HeroMedia
+		eyebrow="DRÖNARBASERAD VILTINVENTERING"
+		posterSrc="/media/hero-thermal-poster.jpg"
+		posterAlt="Termisk flygfoto från älginventering"
+		videoMp4="/media/hero-thermal.mp4"
+		videoWebm="/media/hero-thermal.webm"
+		ctaHref="/kontakt"
+		ctaLabel="Boka älginventering"
+		secondaryHref="#metod"
+		secondaryLabel="Läs om metoden"
+		trustLine="Termisk detektion · Optisk verifiering · Manuell artkontroll — i linje med SLU 2026"
+	>
+		Älginventering med <span style="font-style: italic;">termisk drönare</span>
+	</HeroMedia>
 
-		<!-- Introduction -->
-		<div style="padding: 56px clamp(20px, 6vw, 64px) 48px; max-width: 900px; margin: 0 auto; text-align: center;">
-			<p style="font: 400 18px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0;">
+	<!-- Proof strip -->
+	<div class="bg-bg-elevated border-y border-border py-12">
+		<div class="container-site">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+				<div>
+					<div class="text-3xl font-semibold text-text-primary mb-2">~100%</div>
+					<div class="text-sm text-text-muted">detektion i optimal väder (SLU)</div>
+				</div>
+				<div>
+					<div class="text-3xl font-semibold text-text-primary mb-2">Konfidensintervall</div>
+					<div class="text-sm text-text-muted">inte en enskild siffra</div>
+				</div>
+				<div>
+					<div class="text-3xl font-semibold text-text-primary mb-2">GPS + Bild</div>
+					<div class="text-sm text-text-muted">per observation</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Introduction -->
+	<div class="py-20">
+		<div class="container-site max-w-3xl text-center">
+			<p class="text-lg text-text-primary leading-relaxed">
 				Provyteinventering av älg med termisk drönarkamera — random plots för täthetsskattning 
 				med konfidensintervall. Varje värmesignatur zoomas in optiskt och artbestäms manuellt. 
 				Ett komplement till älgobs och spillning, byggt på samma kunskap som SLU:s utvärdering 2026.
 			</p>
 		</div>
+	</div>
 
-		<!-- Trust strip -->
-		<div style="padding: 32px clamp(20px, 6vw, 64px); background: #efe8d8; border-top: 1px solid rgba(43, 51, 36, 0.2); border-bottom: 1px solid rgba(43, 51, 36, 0.2);">
-			<div style="max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; text-align: center;">
-				<div>
-					<div style="font: 600 24px 'Spectral', serif; color: #242b1e;">~100%</div>
-					<div style="font: 400 13px 'Karla', sans-serif; color: #6b6142;">detektion i optimal väder</div>
-				</div>
-				<div>
-					<div style="font: 600 24px 'Spectral', serif; color: #242b1e;">Konfidensintervall</div>
-					<div style="font: 400 13px 'Karla', sans-serif; color: #6b6142;">inte en enskild siffra</div>
-				</div>
-				<div>
-					<div style="font: 600 24px 'Spectral', serif; color: #242b1e;">GPS + Bild</div>
-					<div style="font: 400 13px 'Karla', sans-serif; color: #6b6142;">per observation</div>
-				</div>
+	<!-- 3 Value Cards -->
+	<div class="py-20 border-t border-border">
+		<div class="container-site">
+			<div class="text-center mb-16">
+				<span class="eyebrow mb-4 block">TRE STEG I PROCESSEN</span>
+				<h2 class="text-display font-semibold text-text-primary mb-4">
+					Från termisk signal till verifierad observation
+				</h2>
 			</div>
-		</div>
-
-		<!-- Method proof (3 cards with real images) -->
-		<div style="padding: 110px clamp(20px, 6vw, 64px); background: #faf6ea;">
-			<div style="text-align: center; margin-bottom: 56px;">
-				<span class="eyebrow" style="font: 600 12.5px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.1em; text-transform: uppercase;">TRE STEG I PROCESSEN</span>
-				<h2 style="font: 600 40px 'Spectral', serif; color: #242b1e; margin: 14px 0 0;">Från termisk signal till verifierad observation</h2>
-			</div>
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto;">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				<!-- Card 1: Thermal -->
-				<div style="border: 1px solid #2b3324; padding: 32px; background: #efe8d8;">
-					<div style="width: 100%; aspect-ratio: 4/3; margin: 0 0 20px; border: 1px solid rgba(43, 51, 36, 0.3); overflow: hidden;">
-						<img src="/media/thermal-alg-1.jpg" alt="Termisk bild av älg i vinterterräng" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+				<div class="card">
+					<div class="aspect-video mb-6 overflow-hidden rounded-lg border border-border">
+						<img src="/media/thermal-alg-1.jpg" alt="Termisk bild av älg" class="w-full h-full object-cover" />
 					</div>
-					<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 8px;">01 — Termisk detektion</h3>
-					<p style="font: 400 15px/1.6 'Karla', sans-serif; color: #3f4636; margin: 0;">
+					<h3 class="text-xl font-semibold text-text-primary mb-3">01 — Termisk detektion</h3>
+					<p class="text-text-muted leading-relaxed">
 						Värmekameran fångar kroppsvärme genom vegetation. SLU:s GPS-validering visar nästan 100% detektion 
 						i kallt molnigt vinterväder.
 					</p>
 				</div>
 				<!-- Card 2: Optical -->
-				<div style="border: 1px solid #2b3324; padding: 32px; background: #efe8d8;">
-					<div style="width: 100%; aspect-ratio: 4/3; margin: 0 0 20px; border: 1px solid rgba(43, 51, 36, 0.3); overflow: hidden;">
-						<img src="/media/optisk-alg-zoom.jpg" alt="Optisk zoom på älg för artbestämning" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+				<div class="card">
+					<div class="aspect-video mb-6 overflow-hidden rounded-lg border border-border">
+						<img src="/media/optisk-alg-zoom.jpg" alt="Optisk zoom på älg" class="w-full h-full object-cover" />
 					</div>
-					<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 8px;">02 — Optisk verifiering</h3>
-					<p style="font: 400 15px/1.6 'Karla', sans-serif; color: #3f4636; margin: 0;">
+					<h3 class="text-xl font-semibold text-text-primary mb-3">02 — Optisk verifiering</h3>
+					<p class="text-text-muted leading-relaxed">
 						Varje värmesignatur zoomas in med optisk kamera. Piloten artbestämmer manuellt — ingen automatisk 
 						AI-klassificering.
 					</p>
 				</div>
 				<!-- Card 3: Report -->
-				<div style="border: 1px solid #2b3324; padding: 32px; background: #efe8d8;">
-					<div style="width: 100%; aspect-ratio: 4/3; margin: 0 0 20px; border: 1px solid rgba(43, 51, 36, 0.3); overflow: hidden;">
-						<img src="/media/rapport-karta.png" alt="Rapport med karta och GPS-koordinater" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+				<div class="card">
+					<div class="aspect-video mb-6 overflow-hidden rounded-lg border border-border">
+						<img src="/media/rapport-karta.png" alt="Rapport med karta" class="w-full h-full object-cover" />
 					</div>
-					<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 8px;">03 — Rapport & karta</h3>
-					<p style="font: 400 15px/1.6 'Karla', sans-serif; color: #3f4636; margin: 0;">
+					<h3 class="text-xl font-semibold text-text-primary mb-3">03 — Rapport & karta</h3>
+					<p class="text-text-muted leading-relaxed">
 						Täthetsskattning med konfidensintervall, karta med GPS-koordinater och bildbevis per observation. 
 						Levereras digitalt.
 					</p>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Method steps (numbered process) -->
-		<div id="metod" style="padding: 100px clamp(20px, 6vw, 64px); background: #2b3324; scroll-margin-top: 90px;">
-			<div style="max-width: 900px; margin: 0 auto; text-align: center; margin-bottom: 56px;">
-				<span style="font: 600 12.5px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.1em; text-transform: uppercase;">PROVYTEINVENTERING</span>
-				<h2 style="font: 600 40px 'Spectral', serif; color: #efe8d8; margin: 14px 0 14px;">Från bokning till rapport</h2>
-				<p style="font: 400 15.5px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 620px; margin: 0 auto;">
+	<!-- 01/02/03 Workflow -->
+	<div id="metod" class="py-20 bg-bg-elevated border-y border-border scroll-mt-20">
+		<div class="container-site">
+			<div class="text-center mb-16 max-w-3xl mx-auto">
+				<span class="eyebrow mb-4 block">PROVYTEINVENTERING</span>
+				<h2 class="text-display font-semibold text-text-primary mb-4">
+					Från bokning till rapport
+				</h2>
+				<p class="text-text-muted leading-relaxed">
 					Random plots över fastigheten, flögen när kylan ger bäst kontrast. Täthetsskattning 
 					med konfidensintervall — inte en exakt siffra.
 				</p>
 			</div>
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto;">
-				<div style="background: rgba(239, 232, 216, 0.05); border: 1px solid rgba(239, 232, 216, 0.2); padding: 32px;">
-					<div style="font: 600 14px 'Karla', sans-serif; color: #d9b877; margin-bottom: 12px;">§1</div>
-					<h3 style="font: 600 20px 'Spectral', serif; color: #efe8d8; margin: 0 0 12px;">Boka & planera</h3>
-					<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #c9c0a3; margin: 0;">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+				<div class="card">
+					<div class="font-mono text-sm text-text-muted mb-3">01</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-3">Boka & planera</h3>
+					<p class="text-sm text-text-muted leading-relaxed">
 						Ni skickar fastighetens gränser. Vi planerar provytor och flyglinjer utifrån terräng och väderprognos.
 					</p>
 				</div>
-				<div style="background: rgba(239, 232, 216, 0.05); border: 1px solid rgba(239, 232, 216, 0.2); padding: 32px;">
-					<div style="font: 600 14px 'Karla', sans-serif; color: #d9b877; margin-bottom: 12px;">§2</div>
-					<h3 style="font: 600 20px 'Spectral', serif; color: #efe8d8; margin: 0 0 12px;">Flygning</h3>
-					<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #c9c0a3; margin: 0;">
+				<div class="card">
+					<div class="font-mono text-sm text-text-muted mb-3">02</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-3">Flygning</h3>
+					<p class="text-sm text-text-muted leading-relaxed">
 						Termisk kamera flyger provytorna dagtid under vinterhalvåret, när kylan ger tillräcklig kontrast.
 					</p>
 				</div>
-				<div style="background: rgba(239, 232, 216, 0.05); border: 1px solid rgba(239, 232, 216, 0.2); padding: 32px;">
-					<div style="font: 600 14px 'Karla', sans-serif; color: #d9b877; margin-bottom: 12px;">§3</div>
-					<h3 style="font: 600 20px 'Spectral', serif; color: #efe8d8; margin: 0 0 12px;">Analys</h3>
-					<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #c9c0a3; margin: 0;">
+				<div class="card">
+					<div class="font-mono text-sm text-text-muted mb-3">03</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-3">Analys</h3>
+					<p class="text-sm text-text-muted leading-relaxed">
 						Varje värmesignatur zoomas in optiskt och artbestäms manuellt — ingen automatisk klassificering.
 					</p>
 				</div>
-				<div style="background: rgba(239, 232, 216, 0.05); border: 1px solid rgba(239, 232, 216, 0.2); padding: 32px;">
-					<div style="font: 600 14px 'Karla', sans-serif; color: #d9b877; margin-bottom: 12px;">§4</div>
-					<h3 style="font: 600 20px 'Spectral', serif; color: #efe8d8; margin: 0 0 12px;">Rapport</h3>
-					<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #c9c0a3; margin: 0;">
+				<div class="card">
+					<div class="font-mono text-sm text-text-muted mb-3">04</div>
+					<h3 class="text-lg font-semibold text-text-primary mb-3">Rapport</h3>
+					<p class="text-sm text-text-muted leading-relaxed">
 						Täthetsskattning med konfidensintervall, kartor, GPS-koordinater och bildbevis — levererat digitalt.
 					</p>
 				</div>
 			</div>
-			<div style="text-align: center; margin-top: 48px;">
-				<a href="/metodik" style="text-decoration: none; font: 600 13.5px 'Karla', sans-serif; color: #d9b877;">
+			<div class="text-center mt-12">
+				<a href="/metodik" class="text-sm text-text-primary hover:underline">
 					Läs mer om metoden och den vetenskapliga grunden →
 				</a>
 			</div>
 		</div>
+	</div>
 
-		<!-- Case study -->
-		<div style="padding: 110px clamp(20px, 6vw, 64px); background: #faf6ea;">
-			<div style="text-align: center; margin-bottom: 56px;">
-				<span style="font: 600 12.5px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.1em; text-transform: uppercase;">NYLIGEN GENOMFÖRT</span>
-				<h2 style="font: 600 40px 'Spectral', serif; color: #242b1e; margin: 14px 0 0;">Ett av våra senaste uppdrag</h2>
+	<!-- Coverage / Case panel -->
+	<div class="py-20">
+		<div class="container-site">
+			<div class="text-center mb-16">
+				<span class="eyebrow mb-4 block">NYLIGEN GENOMFÖRT</span>
+				<h2 class="text-display font-semibold text-text-primary">
+					Ett av våra senaste uppdrag
+				</h2>
 			</div>
-			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; max-width: 1000px; margin: 0 auto; border: 1px solid #2b3324; background: #efe8d8;">
-				<div style="padding: 8px;">
-					<img src="/media/sotenas-flygunderlag.jpg" alt="Flygplaneringsunderlag för Sotenäs älgskötselområde" style="width: 100%; height: 100%; object-fit: cover; display: block; border: 1px solid rgba(43, 51, 36, 0.3);" />
+			<div class="grid md:grid-cols-2 gap-0 max-w-5xl mx-auto card overflow-hidden">
+				<div class="p-2">
+					<img src="/media/sotenas-flygunderlag.jpg" alt="Flygplaneringsunderlag för Sotenäs" class="w-full h-full object-cover rounded-lg border border-border" />
 				</div>
-				<div style="padding: 40px;">
-					<span style="font: 600 11px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.06em; text-transform: uppercase;">SOTENÄS ÄLGSKÖTSELOMRÅDE</span>
-					<p style="font: 400 17px/1.6 'Spectral', serif; font-style: italic; color: #242b1e; margin: 14px 0 24px;">
+				<div class="p-8">
+					<span class="font-mono text-xs text-text-muted uppercase tracking-wider">SOTENÄS ÄLGSKÖTSELOMRÅDE</span>
+					<p class="text-lg text-text-primary my-6 leading-relaxed">
 						Kustskog, vinter 2025 — 41 provytor över 10 132 hektar. Täckningsgrad 40,4% för täthetsskattning.
 					</p>
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px;">
+					<div class="grid grid-cols-2 gap-6 mb-6">
 						<div>
-							<div style="font: 600 26px 'Spectral', serif; color: #242b1e;">3,73</div>
-							<div style="font: 400 12.5px 'Karla', sans-serif; color: #6b6142;">VMK (viltmarkskvot)</div>
+							<div class="text-3xl font-semibold text-text-primary">3,73</div>
+							<div class="text-sm text-text-muted">VMK (viltmarkskvot)</div>
 						</div>
 						<div>
-							<div style="font: 600 26px 'Spectral', serif; color: #242b1e;">41</div>
-							<div style="font: 400 12.5px 'Karla', sans-serif; color: #6b6142;">provytor</div>
+							<div class="text-3xl font-semibold text-text-primary">41</div>
+							<div class="text-sm text-text-muted">provytor</div>
 						</div>
 					</div>
-					<a href="/case" style="text-decoration: none; font: 600 13.5px 'Karla', sans-serif; color: #7a5230;">
+					<a href="/case" class="text-sm text-text-primary hover:underline">
 						Läs mer om uppdraget →
 					</a>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- CTA section -->
-		<div style="padding: 100px clamp(20px, 6vw, 64px); background: #2b3324; text-align: center;">
-			<span style="font: 600 12.5px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.1em; text-transform: uppercase;">REDO ATT INVENTERA ER MARK?</span>
-			<h2 style="font: 600 40px 'Spectral', serif; color: #efe8d8; margin: 14px 0 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
-				Skicka in fastighetens uppgifter så återkommer vi med offert och förslag på flygfönster
+	<!-- Demo CTA -->
+	<div class="py-20 border-t border-border">
+		<div class="container-site max-w-3xl text-center">
+			<span class="eyebrow mb-4 block">REDO ATT INVENTERA ER MARK?</span>
+			<h2 class="text-display font-semibold text-text-primary mb-6">
+				Skicka in fastighetens uppgifter så återkommer vi med offert
 			</h2>
-			<div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 32px;">
-				<a href="/kontakt" style="text-decoration: none; background: #efe8d8; color: #2b3324; padding: 16px 30px; font: 600 14.5px 'Karla', sans-serif;">
-					Begär offert
-				</a>
-				<a href="/kostnad" style="text-decoration: none; font: 400 14px italic 'Spectral', serif; color: #e0d6b0;">
-					se priskalkylator →
-				</a>
+			<p class="text-text-muted leading-relaxed mb-8">
+				Vi förklarar metoden, går igenom priset och föreslår flygfönster som passar ert område.
+			</p>
+			<div class="flex gap-4 justify-center flex-wrap">
+				<a href="/kontakt" class="btn-primary">Begär offert</a>
+				<a href="/kostnad" class="btn-secondary">Se priskalkylator</a>
 			</div>
 		</div>
 	</div>

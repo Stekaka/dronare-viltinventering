@@ -4,45 +4,40 @@
 
 @layer base {
 	body {
-		@apply bg-paper text-ink-light antialiased font-body;
+		@apply bg-bg text-text-primary antialiased font-sans;
 		margin: 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		@apply font-display;
-	}
-
-	a {
-		@apply text-gold-darker;
-	}
-
-	a:hover {
-		color: #5a3c22;
+		@apply font-sans font-semibold;
 	}
 
 	::selection {
-		@apply bg-forest text-cream;
+		@apply bg-text-primary text-bg;
 	}
 }
 
 @layer components {
 	.container-site {
-		@apply max-w-site mx-auto;
-		padding-left: clamp(20px, 6vw, 64px);
-		padding-right: clamp(20px, 6vw, 64px);
-	}
-
-	.eyebrow {
-		@apply font-body font-semibold text-xs uppercase tracking-wider text-ink-muted;
-		letter-spacing: 0.1em;
+		@apply max-w-site mx-auto px-6 lg:px-8;
 	}
 
 	.btn-primary {
-		@apply inline-block font-body font-semibold text-sm bg-cream text-forest no-underline;
-		padding: 16px 30px;
+		@apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-cta
+			bg-cta-bg text-cta-text hover:opacity-90 transition-opacity;
 	}
 
 	.btn-secondary {
-		@apply inline-block font-display italic text-sm text-cream-dark no-underline;
+		@apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-cta
+			bg-transparent text-text-primary border border-border
+			hover:bg-bg-elevated transition-colors;
+	}
+
+	.eyebrow {
+		@apply font-mono text-xs uppercase tracking-wider text-text-muted;
+	}
+
+	.card {
+		@apply bg-bg-elevated border border-border rounded-lg p-6;
 	}
 }

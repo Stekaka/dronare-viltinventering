@@ -7,142 +7,147 @@ const KON_KALV_COVERAGE = 40;
 const DEFAULT_TRAVEL = 12000;
 ---
 
-<div id="pris" style="padding: 110px clamp(20px, 6vw, 64px); background: #2b3324; scroll-margin-top: 90px;">
-	<div style="text-align: center; margin-bottom: 52px;">
-		<span style="font: 600 12.5px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.1em; text-transform: uppercase;">PRISKALKYLATOR</span>
-		<h2 style="font: 600 40px 'Spectral', serif; color: #efe8d8; margin: 14px 0 14px;">Räkna ut ett ungefärligt pris</h2>
-		<p style="font: 400 15.5px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 620px; margin: 0 auto;">
-			8 000 kr per flygdag. En dag täcker ca 1 500 hektar med provytor (default 30% täckningsgrad, 40% vid kön/kalv).
-		</p>
-	</div>
-	
-	<div style="max-width: 800px; margin: 0 auto; background: rgba(239, 232, 216, 0.05); border: 1px solid rgba(239, 232, 216, 0.2); padding: 48px;">
-		<form id="calculator-form">
-			<!-- Total area -->
-			<div style="margin-bottom: 32px;">
-				<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
-					<label for="total-area" style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase;">
-						Fastighetens areal (hektar)
-					</label>
-					<span id="area-display" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">15 000 ha</span>
-				</div>
-				<input
-					id="total-area"
-					type="range"
-					min="500"
-					max="100000"
-					step="500"
-					value="15000"
-					style="width: 100%; accent-color: #d9b877; margin: 10px 0;"
-				/>
-				<div style="display: flex; justify-content: space-between; font: 400 11px 'Karla', sans-serif; color: #a39a7c;">
-					<span>500 ha</span>
-					<span>100 000 ha</span>
-				</div>
-			</div>
-
-			<!-- Coverage % -->
-			<div style="margin-bottom: 32px;">
-				<label style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 12px;">
-					Täckningsgrad (%)
-				</label>
-				<div style="display: flex; gap: 12px; flex-wrap: wrap;">
-					<input type="number" id="coverage" min="20" max="50" value="30" style="width: 80px; font: 400 15px 'Karla', sans-serif; background: #efe8d8; border: 1px solid #2b3324; padding: 10px 12px; color: #242b1e;" />
-					<span style="font: 400 14px 'Karla', sans-serif; color: #c9c0a3; align-self: center;">
-						Standard 30%, rekommenderas 40% vid kön/kalv-inventering
-					</span>
-				</div>
-			</div>
-
-			<!-- Kön/kalv toggle -->
-			<div style="margin-bottom: 32px;">
-				<label style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 12px;">
-					Inventering av kön/kalv?
-				</label>
-				<div style="display: flex; gap: 12px;">
-					<button type="button" class="kon-kalv-btn" data-value="false" style="font: 600 13.5px 'Karla', sans-serif; padding: 12px 20px; border: 1.5px solid #d9b877; cursor: pointer; letter-spacing: 0.02em; background: transparent; color: #efe8d8;">
-						Nej (endast täthet)
-					</button>
-					<button type="button" class="kon-kalv-btn active" data-value="true" style="font: 600 13.5px 'Karla', sans-serif; padding: 12px 20px; border: 1.5px solid #d9b877; cursor: pointer; letter-spacing: 0.02em; background: #d9b877; color: #2b3324;">
-						Ja (inkl. kön/kalv)
-					</button>
-				</div>
-			</div>
-
-			<!-- Travel mode -->
-			<div style="margin-bottom: 36px;">
-				<label style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 12px;">
-					Resor & boende
-				</label>
-				<div style="display: flex; flex-direction: column; gap: 8px;">
-					<label style="display: flex; align-items: center; gap: 10px; font: 400 14px 'Karla', sans-serif; color: #c9c0a3; cursor: pointer;">
-						<input type="radio" name="travel-mode" value="none" checked style="width: 18px; height: 18px; accent-color: #d9b877;" />
-						<span>Exkl. resor (visas separat i offert)</span>
-					</label>
-					<label style="display: flex; align-items: center; gap: 10px; font: 400 14px 'Karla', sans-serif; color: #c9c0a3; cursor: pointer;">
-						<input type="radio" name="travel-mode" value="schablon" style="width: 18px; height: 18px; accent-color: #d9b877;" />
-						<span>Schablon resor/boende</span>
-					</label>
-					<div id="travel-amount-container" style="display: none; margin-left: 28px; margin-top: 6px;">
-						<input type="number" id="travel-amount" min="0" step="1000" value="12000" style="width: 120px; font: 400 15px 'Karla', sans-serif; background: #efe8d8; border: 1px solid #2b3324; padding: 10px 12px; color: #242b1e;" />
-						<span style="font: 400 13px 'Karla', sans-serif; color: #a39a7c; margin-left: 8px;">SEK</span>
+<div id="pris" class="py-20 bg-bg-elevated border-y border-border scroll-mt-20">
+	<div class="container-site">
+		<div class="text-center mb-12">
+			<span class="eyebrow mb-4 block">PRISKALKYLATOR</span>
+			<h2 class="text-display font-semibold text-text-primary mb-4">
+				Räkna ut ett ungefärligt pris
+			</h2>
+			<p class="text-text-muted max-w-2xl mx-auto leading-relaxed">
+				8 000 kr per flygdag. En dag täcker ca 1 500 hektar med provytor (default 30% täckningsgrad, 40% vid kön/kalv).
+			</p>
+		</div>
+		
+		<div class="max-w-4xl mx-auto card">
+			<form id="calculator-form" class="space-y-8">
+				<!-- Total area -->
+				<div>
+					<div class="flex justify-between items-baseline mb-3">
+						<label for="total-area" class="font-mono text-xs uppercase tracking-wider text-text-muted">
+							Fastighetens areal (hektar)
+						</label>
+						<span id="area-display" class="text-2xl font-semibold text-text-primary">15 000 ha</span>
 					</div>
-					<label style="display: flex; align-items: center; gap: 10px; font: 400 14px 'Karla', sans-serif; color: #c9c0a3; cursor: pointer;">
-						<input type="radio" name="travel-mode" value="offert" style="width: 18px; height: 18px; accent-color: #d9b877;" />
-						<span>Tillkommer i offert</span>
-					</label>
-				</div>
-			</div>
-
-			<!-- Results -->
-			<div style="border-top: 1px solid rgba(239, 232, 216, 0.2); padding-top: 32px;">
-				<div style="background: rgba(239, 232, 216, 0.08); border: 1px solid rgba(239, 232, 216, 0.25); padding: 28px; margin-bottom: 20px;">
-					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 24px;">
-						<div>
-							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px;">
-								Inventerad yta
-							</div>
-							<div id="inventerad-ha" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">4 500 ha</div>
-						</div>
-						<div>
-							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px;">
-								Flygdagar
-							</div>
-							<div id="days" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">3 dagar</div>
-						</div>
-						<div>
-							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px;">
-								Flygkostnad
-							</div>
-							<div id="flight-cost" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">24 000 kr</div>
-						</div>
-					</div>
-					<div style="border-top: 1px solid rgba(239, 232, 216, 0.15); padding-top: 20px; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px;">
-						<div>
-							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px;">
-								Totalt pris
-							</div>
-							<div id="total-price" style="font: 600 44px 'Spectral', serif; color: #efe8d8;">24 000 kr</div>
-							<div id="price-detail" style="font: 400 13px 'Karla', sans-serif; color: #c9c0a3; margin-top: 6px;">
-								Exkl. moms · Resor visas i offert
-							</div>
-						</div>
-						<div style="text-align: right;">
-							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; margin-bottom: 6px;">
-								Kostnad per hektar
-							</div>
-							<div id="kr-per-ha" style="font: 400 18px 'Karla', sans-serif; color: #d8d2bc;">1,60 kr/ha</div>
-						</div>
+					<input
+						id="total-area"
+						type="range"
+						min="500"
+						max="100000"
+						step="500"
+						value="15000"
+						class="w-full h-2 rounded-full appearance-none cursor-pointer"
+						style="background: linear-gradient(to right, #F0F0F0 0%, #F0F0F0 15%, #292929 15%, #292929 100%); accent-color: #F0F0F0;"
+					/>
+					<div class="flex justify-between mt-2 text-xs text-text-muted font-mono">
+						<span>500 ha</span>
+						<span>100 000 ha</span>
 					</div>
 				</div>
-				<a href="/kontakt" style="display: inline-block; text-decoration: none; background: #d9b877; color: #2b3324; padding: 16px 28px; font: 600 14.5px 'Karla', sans-serif; white-space: nowrap; margin-bottom: 16px;">
-					Begär offert
-				</a>
-				<p style="font: 400 12.5px/1.5 'Karla', sans-serif; color: #8f8768; margin: 0;">
-					Uppskattning baserad på schablon — exakt pris och tidsplan bekräftas alltid i offert. Minsta areal ~500 hektar.
-				</p>
-			</div>
-		</form>
+
+				<!-- Coverage % -->
+				<div>
+					<label class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-3">
+						Täckningsgrad (%)
+					</label>
+					<div class="flex items-center gap-3">
+						<input type="number" id="coverage" min="20" max="50" value="30" class="w-24 px-3 py-2 bg-bg border border-border rounded-lg text-text-primary focus:outline-none focus:border-text-primary" />
+						<span class="text-sm text-text-muted">
+							Standard 30%, rekommenderas 40% vid kön/kalv-inventering
+						</span>
+					</div>
+				</div>
+
+				<!-- Kön/kalv toggle -->
+				<div>
+					<label class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-3">
+						Inventering av kön/kalv?
+					</label>
+					<div class="flex gap-3">
+						<button type="button" class="kon-kalv-btn px-4 py-2 text-sm font-medium rounded-cta border border-border bg-transparent text-text-primary hover:bg-bg transition-colors" data-value="false">
+							Nej (endast täthet)
+						</button>
+						<button type="button" class="kon-kalv-btn active px-4 py-2 text-sm font-medium rounded-cta bg-cta-bg text-cta-text" data-value="true">
+							Ja (inkl. kön/kalv)
+						</button>
+					</div>
+				</div>
+
+				<!-- Travel mode -->
+				<div>
+					<label class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-3">
+						Resor & boende
+					</label>
+					<div class="space-y-2">
+						<label class="flex items-center gap-3 text-sm text-text-muted cursor-pointer hover:text-text-primary transition-colors">
+							<input type="radio" name="travel-mode" value="none" checked class="w-4 h-4" style="accent-color: #F0F0F0;" />
+							<span>Exkl. resor (visas separat i offert)</span>
+						</label>
+						<label class="flex items-center gap-3 text-sm text-text-muted cursor-pointer hover:text-text-primary transition-colors">
+							<input type="radio" name="travel-mode" value="schablon" class="w-4 h-4" style="accent-color: #F0F0F0;" />
+							<span>Schablon resor/boende</span>
+						</label>
+						<div id="travel-amount-container" class="hidden ml-7 mt-2">
+							<input type="number" id="travel-amount" min="0" step="1000" value="12000" class="w-32 px-3 py-2 bg-bg border border-border rounded-lg text-text-primary focus:outline-none focus:border-text-primary" />
+							<span class="text-sm text-text-muted ml-2">SEK</span>
+						</div>
+						<label class="flex items-center gap-3 text-sm text-text-muted cursor-pointer hover:text-text-primary transition-colors">
+							<input type="radio" name="travel-mode" value="offert" class="w-4 h-4" style="accent-color: #F0F0F0;" />
+							<span>Tillkommer i offert</span>
+						</label>
+					</div>
+				</div>
+
+				<!-- Results -->
+				<div class="border-t border-border pt-8">
+					<div class="bg-bg border border-border rounded-lg p-6 mb-6">
+						<div class="grid grid-cols-3 gap-6 mb-6">
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Inventerad yta
+								</div>
+								<div id="inventerad-ha" class="text-2xl font-semibold text-text-primary">4 500 ha</div>
+							</div>
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Flygdagar
+								</div>
+								<div id="days" class="text-2xl font-semibold text-text-primary">3 dagar</div>
+							</div>
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Flygkostnad
+								</div>
+								<div id="flight-cost" class="text-2xl font-semibold text-text-primary">24 000 kr</div>
+							</div>
+						</div>
+						<div class="border-t border-border pt-6 flex justify-between items-end flex-wrap gap-4">
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Totalt pris
+								</div>
+								<div id="total-price" class="text-4xl font-semibold text-text-primary">24 000 kr</div>
+								<div id="price-detail" class="text-sm text-text-muted mt-2">
+									Exkl. moms · Resor visas i offert
+								</div>
+							</div>
+							<div class="text-right">
+								<div class="text-sm text-text-muted mb-1">
+									Kostnad per hektar
+								</div>
+								<div id="kr-per-ha" class="text-lg text-text-primary">1,60 kr/ha</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex gap-4">
+						<a href="/kontakt" class="btn-primary">Begär offert</a>
+					</div>
+					<p class="text-sm text-text-muted mt-4 leading-relaxed">
+						Uppskattning baserad på schablon — exakt pris och tidsplan bekräftas alltid i offert. Minsta areal ~500 hektar.
+					</p>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
 
@@ -190,6 +195,10 @@ const DEFAULT_TRAVEL = 12000;
 		const krPerHaExcl = totalHa > 0 ? flightCost / totalHa : 0;
 		const krPerHaIncl = totalHa > 0 ? totalCost / totalHa : 0;
 
+		// Update range slider gradient
+		const percent = ((totalHa - 500) / (100000 - 500)) * 100;
+		areaInput.style.background = `linear-gradient(to right, #F0F0F0 0%, #F0F0F0 ${percent}%, #292929 ${percent}%, #292929 100%)`;
+
 		areaDisplay.textContent = `${totalHa.toLocaleString('sv-SE')} ha`;
 		inventeradHa.textContent = `${invHa.toLocaleString('sv-SE')} ha`;
 		daysEl.textContent = `${days} ${days === 1 ? 'dag' : 'dagar'}`;
@@ -219,12 +228,12 @@ const DEFAULT_TRAVEL = 12000;
 			konKalv = value;
 			konKalvBtns.forEach((b) => {
 				b.classList.remove('active');
-				(b as HTMLElement).style.background = 'transparent';
-				(b as HTMLElement).style.color = '#efe8d8';
+				b.classList.remove('bg-cta-bg', 'text-cta-text');
+				b.classList.add('bg-transparent', 'text-text-primary', 'border-border');
 			});
 			btn.classList.add('active');
-			(btn as HTMLElement).style.background = '#d9b877';
-			(btn as HTMLElement).style.color = '#2b3324';
+			btn.classList.remove('bg-transparent', 'text-text-primary');
+			btn.classList.add('bg-cta-bg', 'text-cta-text');
 
 			if (konKalv) {
 				const currentCoverage = Number(coverageInput.value);
@@ -242,9 +251,9 @@ const DEFAULT_TRAVEL = 12000;
 	travelRadios.forEach((radio) => {
 		radio.addEventListener('change', () => {
 			if (radio.value === 'schablon') {
-				travelAmountContainer.style.display = 'block';
+				travelAmountContainer.classList.remove('hidden');
 			} else {
-				travelAmountContainer.style.display = 'none';
+				travelAmountContainer.classList.add('hidden');
 			}
 			calculate();
 		});
@@ -254,12 +263,3 @@ const DEFAULT_TRAVEL = 12000;
 
 	calculate();
 </script>
-
-<style>
-	.kon-kalv-btn {
-		transition: all 0.2s;
-	}
-	.kon-kalv-btn:hover {
-		border-color: #c9973f;
-	}
-</style>
