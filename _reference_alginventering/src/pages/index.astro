@@ -1,0 +1,300 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import HeroMedia from '../components/HeroMedia.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import PricingCalculator from '../components/PricingCalculator.astro';
+import Faq from '../components/Faq.astro';
+import ContactCta from '../components/ContactCta.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Älginventering.se',
+    url: 'https://alginventering.se/',
+    description: 'Älginventering och viltinventering med drönare och värmekamera i hela Sverige.',
+    areaServed: { '@type': 'Country', name: 'Sverige' },
+    parentOrganization: { '@type': 'Organization', name: 'Drönarkompaniet', url: 'https://www.dronarkompaniet.se' },
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Älginventering med drönare', url: 'https://alginventering.se/alginventering' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Inventering av övrigt vilt med drönare', url: 'https://alginventering.se/viltinventering' },
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Hur fungerar viltinventering med drönare?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'En värmekamera på drönaren flygs över fastigheten dagtid under vinterhalvåret, då kylan gör att djurens kroppsvärme syns tydligt mot marken. Varje registrerad värmesignatur zoomas in optiskt och artbestäms för hand av piloten — vi använder ingen automatisk AI-klassificering. Resultatet redovisas som ett populationsintervall, inte en exakt siffra.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'När på året görs älginventering?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Vi flyger huvudsakligen mellan november och mars, när marken är kall och det saknas lövverk som döljer djurens värmesignatur. Exakt datum styrs av väderprognosen inför varje uppdrag.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Hur exakt är drönarinventering jämfört med traditionella metoder?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Ingen metod ger en exakt siffra. Spillningsräkning och jägarobservationer bygger på stickprov som varierar med vem som räknar. En värmekameraflygning täcker istället hela det avgränsade området i ett svep och redovisas som ett intervall — påverkat av väder, terräng och hur djuren rör sig just den dagen.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Vad kostar en älginventering?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Vi tar 8 000 kr per flygdag. En dag täcker ca 4 000–5 000 hektar totalyta, så en fastighet på 15 000 hektar tar normalt tre dagar. Använd priskalkylatorn på sidan för en snabb uppskattning — resekostnader och eventuella tillägg kan tillkomma.',
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    q: 'Hur fungerar viltinventering med drönare?',
+    a: 'En värmekamera på drönaren flygs över fastigheten dagtid under vinterhalvåret, då kylan gör att djurens kroppsvärme syns tydligt mot marken. Varje registrerad värmesignatur zoomas in optiskt och artbestäms för hand av piloten — vi använder ingen automatisk AI-klassificering. Resultatet redovisas som ett populationsintervall, inte en exakt siffra.',
+  },
+  {
+    q: 'När på året görs älginventering?',
+    a: 'Vi flyger huvudsakligen mellan november och mars, när marken är kall och det saknas lövverk som döljer djurens värmesignatur. Exakt datum styrs av väderprognosen inför varje uppdrag.',
+  },
+  {
+    q: 'Hur exakt är drönarinventering jämfört med traditionella metoder?',
+    a: 'Ingen metod ger en exakt siffra. Spillningsräkning och jägarobservationer bygger på stickprov som varierar med vem som räknar. En värmekameraflygning täcker istället hela det avgränsade området i ett svep och redovisas som ett intervall — påverkat av väder, terräng och hur djuren rör sig just den dagen.',
+  },
+  {
+    q: 'Vad kostar en älginventering?',
+    a: 'Vi tar 8 000 kr per flygdag. En dag täcker ca 4 000–5 000 hektar totalyta, så en fastighet på 15 000 hektar tar normalt tre dagar. Använd priskalkylatorn ovan för en snabb uppskattning — resekostnader och eventuella tillägg kan tillkomma.',
+  },
+];
+
+const steps = [
+  { mark: '§1', title: 'Boka & planera', body: 'Ni skickar in fastighetens gränser och önskad art. Vi planerar flyglinjer utifrån terräng och väderprognos.' },
+  { mark: '§2', title: 'Flygning', body: 'Kalibrerad värmekamera flyger linjerna dagtid under vinterhalvåret, när kylan ger tillräcklig kontrast mot marken.' },
+  { mark: '§3', title: 'Analys', body: 'Varje värmesignatur zoomas in optiskt och artbestäms för hand — ingen automatisk klassificering.' },
+  { mark: '§4', title: 'Rapport', body: 'Kartor, GPS-loggade observationer och ett populationsintervall, levererat digitalt.' },
+];
+---
+
+<Layout
+  title="Älginventering med drönare | Övrigt vilt i hela Sverige — Älginventering.se"
+  description="Älginventering och viltinventering med drönare och värmekamera i hela Sverige. Ett tydligare beslutsunderlag för jaktlag och markägare inför avskjutning. En tjänst från Drönarkompaniet."
+  path="/"
+  jsonLd={jsonLd}
+>
+  <div style="background:#faf6ea">
+    <Header />
+
+    <main>
+      <HeroMedia
+        posterSrc="/media/hero-daylight.jpg"
+        posterAlt="Flygfoto från en av våra inventeringar — snöfläckad foderyta med tydliga viltstråk, omgiven av barrskog"
+        videoMp4="/media/hero-thermal.mp4"
+        videoWebm="/media/hero-thermal.webm"
+        ctaHref="#kontakt"
+        ctaLabel="Boka älginventering"
+        secondaryHref="#metod"
+        secondaryLabel="läs om metoden →"
+      >
+        Älginventering med <span style="font-style:italic;color:#e0d6b0">drönare och värmekamera</span>
+      </HeroMedia>
+
+      <div style="padding:56px clamp(20px, 6vw, 64px) 48px;max-width:900px;margin:0 auto;text-align:center">
+        <p style="font:400 18px/1.7 'Karla',sans-serif;color:#3f4636;margin:0">
+          Under vinterhalvåret flyger vi er fastighet med termisk drönarkamera, när kylan gör kontrasten mellan
+          djurens kroppsvärme och marken som tydligast. Varje värmesignatur zoomas in optiskt och artbestäms för
+          hand innan den förs in i rapporten — som redovisar ett populationsintervall, inte en enskild siffra.
+        </p>
+      </div>
+
+      <TrustStrip />
+
+      <!-- SERVICES: specimen plates -->
+      <div id="alginventering" data-screen-label="Tjänster" style="padding:110px clamp(20px, 6vw, 64px);background:#faf6ea;scroll-margin-top:90px">
+        <div style="text-align:center;margin-bottom:clamp(20px, 6vw, 64px)">
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+            >Två arter vi kartlägger</span
+          >
+          <h2 style="font:600 40px 'Spectral',serif;color:#242b1e;margin:14px 0 0">Specimen-katalog</h2>
+        </div>
+        <div id="viltinventering" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:44px;max-width:1200px;margin:0 auto;scroll-margin-top:90px">
+          <div style="border:1px solid #2b3324;padding:40px;background:#efe8d8;position:relative">
+            <span
+              style="position:absolute;top:-13px;left:36px;background:#faf6ea;padding:0 10px;font:600 11px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.06em"
+              >PLATE I · HUVUDTJÄNST</span
+            >
+            <div style="width:100%;aspect-ratio:16/10;margin:6px 0 16px;border:1px solid rgba(43,51,36,0.3);overflow:hidden">
+              <img
+                src="/media/hero-zoom.jpg"
+                alt="Flygfoto från en älginventering över snöfläckad vinterterräng"
+                style="width:100%;height:100%;object-fit:cover;display:block"
+              />
+            </div>
+            <h3 style="font:600 28px 'Spectral',serif;color:#242b1e;margin:8px 0 6px">Älginventering</h3>
+            <p style="font:400 14px italic 'Spectral',serif;color:#6b6142;margin:0 0 20px">Alces alces</p>
+            <p style="font:400 15.5px/1.65 'Karla',sans-serif;color:#3f4636;margin:0 0 24px">
+              Älgens stora kroppsvärme gör den lätt att upptäcka även dold i tät granskog. Vi räknar tjur, ko och
+              kalv var för sig och levererar ett populationsintervall som fungerar som eget planeringsunderlag
+              för älgförvaltningen.
+            </p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span style="font:500 11px 'Karla',sans-serif;border:1px solid rgba(43,51,36,0.3);color:#5a5138;padding:6px 10px"
+                >VÄRMEKAMERA</span
+              >
+              <span style="font:500 11px 'Karla',sans-serif;border:1px solid rgba(43,51,36,0.3);color:#5a5138;padding:6px 10px"
+                >MANUELL VERIFIERING</span
+              >
+              <span style="font:500 11px 'Karla',sans-serif;border:1px solid rgba(43,51,36,0.3);color:#5a5138;padding:6px 10px"
+                >RAPPORT PDF</span
+              >
+            </div>
+          </div>
+          <div style="border:1px solid #2b3324;padding:40px;background:#efe8d8;position:relative">
+            <span
+              style="position:absolute;top:-13px;left:36px;background:#faf6ea;padding:0 10px;font:600 11px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.06em"
+              >PLATE II · ÄVEN VILT</span
+            >
+            <div style="width:100%;aspect-ratio:16/10;margin:6px 0 16px;border:1px solid rgba(43,51,36,0.3);overflow:hidden">
+              <img
+                src="/media/forest-canopy.jpg"
+                alt="Flygfoto över barrskog, typisk terräng för viltinventering"
+                style="width:100%;height:100%;object-fit:cover;display:block"
+              />
+            </div>
+            <h3 style="font:600 28px 'Spectral',serif;color:#242b1e;margin:8px 0 6px">Övrigt vilt</h3>
+            <p style="font:400 14px italic 'Spectral',serif;color:#6b6142;margin:0 0 20px">
+              Sus scrofa · Capreolus capreolus · Cervus elaphus
+            </p>
+            <p style="font:400 15.5px/1.65 'Karla',sans-serif;color:#3f4636;margin:0 0 24px">
+              Vildsvin rör sig i rote efter mörkrets inbrott, rådjur ligger ofta still i gryningen. Med samma
+              flygning kartlägger vi alla tre arterna åt viltvårdsområden som vill förvalta på underlag snarare än
+              gissning.
+            </p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span style="font:500 11px 'Karla',sans-serif;border:1px solid rgba(43,51,36,0.3);color:#5a5138;padding:6px 10px"
+                >VILDSVIN</span
+              >
+              <span style="font:500 11px 'Karla',sans-serif;border:1px solid rgba(43,51,36,0.3);color:#5a5138;padding:6px 10px"
+                >RÅDJUR</span
+              >
+              <span style="font:500 11px 'Karla',sans-serif;border:1px solid rgba(43,51,36,0.3);color:#5a5138;padding:6px 10px"
+                >KRONVILT</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ProcessSteps id="metod" eyebrow="Journalanteckningar" heading="Från bokning till rapport" steps={steps} />
+
+      <div style="padding:28px clamp(20px, 6vw, 64px);background:#faf6ea;text-align:center">
+        <a href="/metod-och-vetenskap" style="text-decoration:none;font:600 13.5px 'Karla',sans-serif;color:#7a5230"
+          >Läs om vårt nära samarbete med SLU och den vetenskapliga grunden →</a
+        >
+      </div>
+
+      <!-- WHY DRONE -->
+      <div
+        data-screen-label="Varför drönare"
+        style="padding:100px clamp(20px, 6vw, 64px);background:#faf6ea;display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:clamp(20px, 6vw, 64px);max-width:1360px;margin:0 auto;align-items:center"
+      >
+        <div>
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+            >Fältanteckning</span
+          >
+          <h2 style="font:600 34px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">
+            Ett komplement till spillningsräkning och jägarobservation
+          </h2>
+          <p style="font:400 16px/1.7 'Karla',sans-serif;color:#3f4636;margin:0">
+            Spillningsräkning, jägarobservationer och åtelkameror ger fragmenterade stickprov som varierar med vem
+            som räknar och när. Värmekameran ser djurens kroppsvärme rakt igenom gräs och buskage — men vind,
+            nederbörd och tätt lövverk sätter fortfarande gränser för vad en flygning kan täcka.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1px;background:rgba(43,51,36,0.25);border:1px solid rgba(43,51,36,0.25)">
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Täckning</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Ett par tusen hektar på en till två flygdagar</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Störning</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Djuren varken ser eller hör drönaren på flyghöjd</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Spårbarhet</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">GPS-koordinat, tidstämpel och bild per observation</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Timing</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Bäst resultat vid lövfällning, november till mars</span>
+          </div>
+        </div>
+      </div>
+
+      <PricingCalculator />
+
+      <!-- TESTIMONIALS -->
+      <div data-screen-label="Kundcase" style="padding:110px clamp(20px, 6vw, 64px);background:#faf6ea">
+        <div style="text-align:center;margin-bottom:56px">
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+            >Nyligen genomfört</span
+          >
+          <h2 style="font:600 40px 'Spectral',serif;color:#242b1e;margin:14px 0 0">Ett av våra senaste uppdrag</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:0;max-width:1000px;margin:0 auto;border:1px solid #2b3324;background:#efe8d8">
+          <div style="padding:8px">
+            <img
+              src="/media/sotenas-flygunderlag.jpg"
+              alt="Flygplaneringsunderlag för inventeringen av Sotenäs älgskötselområde"
+              style="width:100%;height:100%;object-fit:cover;display:block;border:1px solid rgba(43,51,36,0.3)"
+            />
+          </div>
+          <div style="padding:40px">
+            <span style="font:600 11px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.06em;text-transform:uppercase">Sotenäs älgskötselområde</span>
+            <p style="font:400 17px/1.6 'Spectral',serif;font-style:italic;color:#242b1e;margin:14px 0 24px">
+              Kustskog, vinter 2025 — det första uppdraget som bidragit till den svenska aggregationsdatabas SLUs
+              forskning efterlyser.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px">
+              <div>
+                <div style="font:600 26px 'Spectral',serif;color:#242b1e">3,73</div>
+                <div style="font:400 12.5px 'Karla',sans-serif;color:#6b6142">VMK (viltmarkskvot)</div>
+              </div>
+              <div>
+                <div style="font:600 26px 'Spectral',serif;color:#242b1e">41</div>
+                <div style="font:400 12.5px 'Karla',sans-serif;color:#6b6142">provytor</div>
+              </div>
+            </div>
+            <a href="/metod-och-vetenskap" style="text-decoration:none;font:600 13.5px 'Karla',sans-serif;color:#7a5230">Läs om databasen vi bygger tillsammans med SLU →</a>
+          </div>
+        </div>
+      </div>
+
+      <Faq eyebrow="Vanliga frågor" heading="Om älginventering med drönare" items={faqItems} />
+
+      <ContactCta heading="Redo att inventera er mark?" body="Skicka in fastighetens uppgifter så återkommer vi med en offert och förslag på flygfönster." />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

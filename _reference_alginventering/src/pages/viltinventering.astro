@@ -1,0 +1,271 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import Faq from '../components/Faq.astro';
+import ContactCta from '../components/ContactCta.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://alginventering.se/' },
+      { '@type': 'ListItem', position: 2, name: 'Övrigt vilt', item: 'https://alginventering.se/viltinventering' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Inventering av övrigt vilt med drönare',
+    provider: { '@type': 'Organization', name: 'Drönarkompaniet', url: 'https://www.dronarkompaniet.se' },
+    areaServed: { '@type': 'Country', name: 'Sverige' },
+    audience: { '@type': 'Audience', audienceType: 'Viltvårdsområden och markägare' },
+    description: 'Drönarbaserad inventering med värmekamera för vildsvin, rådjur, kronvilt och dovvilt.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Vad är drönarinventering?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'En drönare med värmekamera flyger ett avgränsat område och registrerar djurens värmesignatur. Varje observation zoomas in optiskt och artbestäms för hand innan den GPS-loggas och sammanställs i en rapport.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Fungerar det för flera arter samtidigt?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Ja. Samma flygning fångar värmesignaturer från alla arter som rör sig i området — vildsvin, rådjur, kronvilt och dovvilt artbestäms sedan var för sig i efterhandsanalysen.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Passar det för viltvårdsområden?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Mycket väl som eget planeringsunderlag. Vi flyger allt från enskilda fastigheter till hela viltvårdsområden. Metoden är i dagsläget inte godkänd av Naturvårdsverket eller Länsstyrelsen och ersätter därför inte formell viltförvaltningsrapportering.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Vad kostar en viltinventering?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Priset är 8 000 kr per flygdag. Vi flyger ca 2 000 hektar per dag och täcker då 4 000–5 000 hektar totalyta. Kontakta oss för en offert — resekostnader och eventuella tillägg kan tillkomma.',
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    q: 'Vad är drönarinventering?',
+    a: 'En drönare med värmekamera flyger ett avgränsat område och registrerar djurens värmesignatur. Varje observation zoomas in optiskt och artbestäms för hand innan den GPS-loggas och sammanställs i en rapport.',
+  },
+  {
+    q: 'Fungerar det för flera arter samtidigt?',
+    a: 'Ja. Samma flygning fångar värmesignaturer från alla arter som rör sig i området — vildsvin, rådjur, kronvilt och dovvilt artbestäms sedan var för sig i efterhandsanalysen.',
+  },
+  {
+    q: 'Passar det för viltvårdsområden?',
+    a: 'Mycket väl som eget planeringsunderlag. Vi flyger allt från enskilda fastigheter till hela viltvårdsområden. Metoden är i dagsläget inte godkänd av Naturvårdsverket eller Länsstyrelsen och ersätter därför inte formell viltförvaltningsrapportering.',
+  },
+  {
+    q: 'Vad kostar en viltinventering?',
+    a: 'Priset är 8 000 kr per flygdag. Vi flyger ca 2 000 hektar per dag och täcker då 4 000–5 000 hektar totalyta. Kontakta oss för en offert — resekostnader och eventuella tillägg kan tillkomma.',
+  },
+];
+
+const species = [
+  {
+    plate: 'PLATE II.A',
+    name: 'Vildsvin',
+    latin: 'Sus scrofa',
+    photo: 'Foto: vildsvin',
+    body: 'Rör sig i rote efter mörkrets inbrott och är svåra att räkna från marken. En flygning fångar hela gruppens värmesignatur samtidigt — djur som ligger tätt ihop räknas separat i efterhand.',
+  },
+  {
+    plate: 'PLATE II.B',
+    name: 'Rådjur',
+    latin: 'Capreolus capreolus',
+    photo: 'Foto: rådjur',
+    body: 'Ligger ofta still och dolda fram till gryningen. Vi flyger tidigt, innan de rör sig ut på öppna ytor, med en artspecifik korrigering för djur som ligger tätt i vegetationen.',
+  },
+  {
+    plate: 'PLATE II.C',
+    name: 'Kronvilt',
+    latin: 'Cervus elaphus',
+    photo: 'Foto: kronvilt',
+    body: 'Stor kropp ger en tydlig värmesignatur, men djuren drar ofta i flock — grupperna räknas och könsfördelas separat för att undvika över- eller underskattning.',
+  },
+  {
+    plate: 'PLATE II.D',
+    name: 'Dovvilt',
+    latin: 'Dama dama',
+    photo: 'Foto: dovvilt',
+    body: 'Lever ofta i större hjordar inom hägnat eller avgränsat område. Täta flockar kräver samma klusterhantering som kronvilt för en rättvisande räkning.',
+  },
+];
+
+const steps = [
+  { mark: '§1', title: 'Boka & planera', body: 'Vi går igenom fastighetens gränser och vilken art som ska inventeras.' },
+  { mark: '§2', title: 'Flygning', body: 'Värmekameradrönaren flyger natt eller skymning, när viltet är som mest aktivt.' },
+  { mark: '§3', title: 'Analys', body: 'Varje värmesignatur zoomas in optiskt. Artbestämning görs för hand, inte automatiskt — det är det som gör klassificeringen tillförlitlig i tät vegetation.' },
+  { mark: '§4', title: 'Rapport', body: 'Ni får en rapport uppdelad per art, med karta, observationslogg och ett populationsintervall.' },
+];
+---
+
+<Layout
+  title="Övrigt vilt med drönare — vildsvin, rådjur, kronvilt, dovvilt | Älginventering.se"
+  description="Inventering av övrigt vilt med drönare — vildsvin, rådjur, kronvilt och dovvilt. Drönarinventering med värmekamera ger viltvårdsområden och markägare ett tydligare eget planeringsunderlag."
+  path="/viltinventering"
+  jsonLd={jsonLd}
+>
+  <div style="background:#faf6ea">
+    <Header active="vilt" />
+
+    <main>
+      <!-- HEADER -->
+      <div
+        data-screen-label="Header"
+        style="position:relative;padding:48px clamp(20px, 6vw, 64px) 72px;background-image:radial-gradient(circle at 20px 20px, rgba(43,51,36,0.10) 1.4px, transparent 1.4px);background-size:26px 26px;background-color:#faf6ea"
+      >
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:56px;align-items:center;max-width:1280px;margin:0 auto">
+          <div>
+            <h1 style="font:600 clamp(30px, 8vw, 44px)/1.16 'Spectral',serif;color:#242b1e;margin:0 0 20px">
+              Övrigt vilt med <span style="font-style:italic;color:#7a5230">drönare och värmekamera</span>
+            </h1>
+            <p style="font:400 16.5px/1.65 'Karla',sans-serif;color:#3f4636;max-width:480px;margin:0 0 28px">
+              Vildsvin, rådjur, kronvilt och dovvilt — kartlagda i samma flygning och artbestämda för hand, med
+              resultatet redovisat som ett populationsintervall per art.
+            </p>
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+              <a
+                href="#kontakt"
+                style="text-decoration:none;background:#2b3324;color:#efe8d8;padding:15px 28px;font:600 14px 'Karla',sans-serif"
+                >Boka viltinventering</a
+              >
+              <a href="#process" style="text-decoration:none;font:400 14px italic 'Spectral',serif;color:#6b6142"
+                >så går flygningen till →</a
+              >
+            </div>
+          </div>
+          <div>
+            <div style="position:relative;border:1px solid #2b3324;background:#e4dcc6;aspect-ratio:4/5;padding:16px;transform:rotate(-1deg)">
+              <div style="height:100%;overflow:hidden;border:1px solid rgba(43,51,36,0.35)">
+                <img
+                  src="/media/hero-thermal-poster.jpg"
+                  alt="Termisk flygbild från en nattflygning över skogsterräng"
+                  style="width:100%;height:100%;object-fit:cover;display:block"
+                />
+              </div>
+            </div>
+            <p style="font:400 12px italic 'Spectral',serif;color:#6b6142;margin:10px 4px 0">Egen termisk bild, mars 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <TrustStrip />
+
+      <!-- ARTER -->
+      <div data-screen-label="Arter" style="padding:100px clamp(20px, 6vw, 64px);background:#faf6ea">
+        <div style="text-align:center;margin-bottom:clamp(20px, 6vw, 64px)">
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+            >Vilt vi inventerar</span
+          >
+          <h2 style="font:600 40px 'Spectral',serif;color:#242b1e;margin:14px 0 0">Fyra arter, samma metod</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:32px;max-width:900px;margin:0 auto">
+          {species.map((s) => (
+            <div style="border:1px solid #2b3324;padding:32px;background:#efe8d8;position:relative">
+              <span
+                style="position:absolute;top:-13px;left:28px;background:#faf6ea;padding:0 10px;font:600 11px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.06em"
+                >{s.plate}</span
+              >
+              <div style="width:100%;aspect-ratio:16/10;margin:8px 0 16px;border:1px solid rgba(43,51,36,0.3);overflow:hidden">
+                <ImagePlaceholder label={s.photo} />
+              </div>
+              <h3 style="font:600 24px 'Spectral',serif;color:#242b1e;margin:8px 0 6px">{s.name}</h3>
+              <p style="font:400 13px italic 'Spectral',serif;color:#6b6142;margin:0 0 16px">{s.latin}</p>
+              <p style="font:400 15px/1.6 'Karla',sans-serif;color:#3f4636;margin:0">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <ProcessSteps id="process" eyebrow="Så går en drönarinventering till" heading="Fyra steg till en komplett viltrapport" steps={steps} />
+
+      <div style="padding:28px clamp(20px, 6vw, 64px);background:#faf6ea;text-align:center">
+        <a href="/metod-och-vetenskap" style="text-decoration:none;font:600 13.5px 'Karla',sans-serif;color:#7a5230"
+          >Läs om vårt nära samarbete med SLU och den vetenskapliga grunden →</a
+        >
+      </div>
+
+      <!-- VARFÖR DRÖNARINVENTERING -->
+      <div
+        data-screen-label="Varför"
+        style="padding:100px clamp(20px, 6vw, 64px);background:#faf6ea;display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:clamp(20px, 6vw, 64px);max-width:1360px;margin:0 auto;align-items:center"
+      >
+        <div>
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+            >Varför drönarinventering</span
+          >
+          <h2 style="font:600 34px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">
+            Ser genom mörker och tät undervegetation
+          </h2>
+          <p style="font:400 16px/1.7 'Karla',sans-serif;color:#3f4636;margin:0">
+            Åtelkameror och spårning ger stickprov från enstaka punkter i terrängen. Värmekameran täcker istället
+            hela det avgränsade området i en flygning och fångar djurens kroppsvärme oavsett ljusförhållande — men
+            regn, dimma och tät undervegetation begränsar fortfarande vad som syns.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1px;background:rgba(43,51,36,0.25);border:1px solid rgba(43,51,36,0.25)">
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Täckning</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Flera hundra hektar per flygpass, beroende på terräng</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Ljusförhållande</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Fungerar i totalt mörker</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Artbestämning</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Varje observation verifieras optiskt för hand</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Underlag</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Eget planeringsunderlag för viltvården</span>
+          </div>
+        </div>
+      </div>
+
+      <Faq eyebrow="Vanliga frågor" heading="Om övrigt vilt med drönare" items={faqItems} />
+
+      <!-- CROSS-LINK -->
+      <div style="padding:clamp(20px, 6vw, 64px);background:#faf6ea;text-align:center;max-width:900px;margin:0 auto">
+        <p style="font:400 16px/1.6 'Karla',sans-serif;color:#3f4636;margin:0">
+          Fokuserar ni på älgstammen specifikt? Läs mer om vår <a href="/alginventering" style="font-weight:600"
+            >älginventering med drönare</a
+          >.
+        </p>
+      </div>
+
+      <ContactCta
+        heading="Redo att inventera ert vilt?"
+        body="Skicka in fastighetens uppgifter så återkommer vi med en offert och förslag på flygfönster."
+        dark
+      />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

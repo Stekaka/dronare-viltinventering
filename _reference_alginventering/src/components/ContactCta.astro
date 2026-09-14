@@ -1,0 +1,59 @@
+---
+interface Props {
+  heading: string;
+  body: string;
+  dark?: boolean;
+}
+
+const { heading, body, dark = false } = Astro.props;
+const bg = dark ? '#2b3324' : '#faf6ea';
+const eyebrowColor = dark ? '#a39a7c' : '#6b6142';
+const headingColor = dark ? '#efe8d8' : '#242b1e';
+const bodyColor = dark ? '#d8d2bc' : '#3f4636';
+const buttonBg = dark ? '#efe8d8' : '#2b3324';
+const buttonColor = dark ? '#2b3324' : '#efe8d8';
+const srOnly = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0';
+---
+
+<div id="kontakt" data-screen-label="Kontakt" style={`padding:100px clamp(20px, 6vw, 64px);background:${bg};scroll-margin-top:90px`}>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:60px;max-width:1200px;margin:0 auto;align-items:start">
+    <div>
+      <span style={`font:600 12.5px 'Karla',sans-serif;color:${eyebrowColor};letter-spacing:0.1em;text-transform:uppercase`}
+        >Ny fältanteckning</span
+      >
+      <h2 style={`font:600 36px 'Spectral',serif;color:${headingColor};margin:14px 0 18px`}>{heading}</h2>
+      <p style={`font:400 16px/1.7 'Karla',sans-serif;color:${bodyColor};max-width:440px;margin:0`}>{body}</p>
+    </div>
+    <form style="display:flex;flex-direction:column;gap:14px">
+      <label for="cta-namn" style={srOnly}>Namn</label>
+      <input
+        id="cta-namn"
+        name="namn"
+        placeholder="Namn"
+        required
+        style="font:400 15px 'Karla',sans-serif;background:#efe8d8;border:1px solid #2b3324;padding:16px 18px;color:#242b1e"
+      />
+      <label for="cta-epost" style={srOnly}>E-post</label>
+      <input
+        id="cta-epost"
+        name="epost"
+        type="email"
+        placeholder="E-post"
+        required
+        style="font:400 15px 'Karla',sans-serif;background:#efe8d8;border:1px solid #2b3324;padding:16px 18px;color:#242b1e"
+      />
+      <label for="cta-fastighet" style={srOnly}>Fastighet / areal (ha)</label>
+      <input
+        id="cta-fastighet"
+        name="fastighet"
+        placeholder="Fastighet / areal (ha)"
+        style="font:400 15px 'Karla',sans-serif;background:#efe8d8;border:1px solid #2b3324;padding:16px 18px;color:#242b1e"
+      />
+      <button
+        type="button"
+        style={`background:${buttonBg};color:${buttonColor};padding:16px;text-align:center;font:600 14.5px 'Karla',sans-serif;border:none;cursor:pointer`}
+        >Skicka förfrågan</button
+      >
+    </form>
+  </div>
+</div>

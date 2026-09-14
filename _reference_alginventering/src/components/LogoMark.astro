@@ -1,0 +1,28 @@
+---
+interface Props {
+  size?: number;
+}
+
+const { size = 44 } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 44 44"
+  role="img"
+  aria-label="Drönarkompaniet"
+  style="flex:none"
+>
+  <rect x="0.5" y="0.5" width="43" height="43" rx="6" fill="#efe8d8" stroke="#7a5230" />
+  <text
+    x="50%"
+    y="56%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Spectral', serif"
+    font-weight="700"
+    font-size="18"
+    fill="#2b3324">DK</text
+  >
+</svg>

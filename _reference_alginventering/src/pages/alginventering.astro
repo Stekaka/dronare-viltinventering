@@ -1,0 +1,252 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import Faq from '../components/Faq.astro';
+import ContactCta from '../components/ContactCta.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://alginventering.se/' },
+      { '@type': 'ListItem', position: 2, name: 'Älginventering', item: 'https://alginventering.se/alginventering' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Älginventering med drönare',
+    provider: { '@type': 'Organization', name: 'Drönarkompaniet', url: 'https://www.dronarkompaniet.se' },
+    areaServed: { '@type': 'Country', name: 'Sverige' },
+    audience: { '@type': 'Audience', audienceType: 'Jaktlag och markägare' },
+    description: 'Drönarbaserad inventering av älgstammen med värmekamera — ett tydligare beslutsunderlag för jaktlag och markägare i det egna älgförvaltningsarbetet.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Hur inventerar man älg med drönare?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'En värmekamera på drönaren flygs över fastigheten dagtid under vinterhalvåret. Älgens kroppstemperatur skiljer sig tydligt från den kalla marken, vilket gör den lätt att upptäcka även dold i granskog. Varje observation zoomas in optiskt och artbestäms för hand innan den GPS-loggas.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Vad kostar en älginventering?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Priset är 8 000 kr per flygdag. Vi flyger ca 2 000 hektar per dag och täcker då 4 000–5 000 hektar totalyta (40–60 % täckningsgrad) — en fastighet på 15 000 hektar tar därför normalt tre dagar. Resekostnader och eventuella tillägg kan tillkomma.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Kan resultatet användas i älgskötselplanen eller ÄBIN-rapporteringen?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Rapporten fungerar som ett eget planeringsunderlag för jaktlaget eller markägaren. Metoden är i dagsläget inte godkänd av Naturvårdsverket eller Länsstyrelsen, och kan därför inte användas som formellt underlag vid revidering av älgskötselplanen eller i den officiella ÄBIN-rapporteringen.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Hur stor areal krävs för en inventering?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Vi flyger allt från mindre fastigheter till hela älgskötselområden. Vid ca 2 000 hektar per flygdag tar de flesta uppdrag mellan en och tre dagar — hör av er så räknar vi på er areal.',
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    q: 'Hur inventerar man älg med drönare?',
+    a: 'En värmekamera på drönaren flygs över fastigheten dagtid under vinterhalvåret. Älgens kroppstemperatur skiljer sig tydligt från den kalla marken, vilket gör den lätt att upptäcka även dold i granskog. Varje observation zoomas in optiskt och artbestäms för hand innan den GPS-loggas.',
+  },
+  {
+    q: 'Vad kostar en älginventering?',
+    a: 'Priset är 8 000 kr per flygdag. Vi flyger ca 2 000 hektar per dag och täcker då 4 000–5 000 hektar totalyta (40–60 % täckningsgrad) — en fastighet på 15 000 hektar tar därför normalt tre dagar. Resekostnader och eventuella tillägg kan tillkomma.',
+  },
+  {
+    q: 'Kan resultatet användas i älgskötselplanen eller ÄBIN-rapporteringen?',
+    a: 'Rapporten fungerar som ett eget planeringsunderlag för jaktlaget eller markägaren. Metoden är i dagsläget inte godkänd av Naturvårdsverket eller Länsstyrelsen, och kan därför inte användas som formellt underlag vid revidering av älgskötselplanen eller i den officiella ÄBIN-rapporteringen.',
+  },
+  {
+    q: 'Hur stor areal krävs för en inventering?',
+    a: 'Vi flyger allt från mindre fastigheter till hela älgskötselområden. Vid ca 2 000 hektar per flygdag tar de flesta uppdrag mellan en och tre dagar — hör av er så räknar vi på er areal.',
+  },
+];
+
+const steps = [
+  { mark: '§1', title: 'Boka & planera', body: 'Ni skickar fastighetens gränser, vi föreslår flygfönster utifrån väder och älgens rörelsemönster.' },
+  { mark: '§2', title: 'Flygning', body: 'Värmekameradrönaren flyger dagtid under vinterhalvåret, då den kalla marken ger älgen tydlig kontrast i kameran.' },
+  { mark: '§3', title: 'Analys', body: 'Varje värmesignatur zoomas in optiskt och bedöms för hand — ingen automatisk artklassificering. GPS-position och tid loggas per observation.' },
+  { mark: '§4', title: 'Rapport', body: 'Ni får en rapport med karta, observationslogg och ett populationsintervall — ett eget planeringsunderlag för älgförvaltningen.' },
+];
+---
+
+<Layout
+  title="Älginventering med drönare — Inventera älg med värmekamera | Älginventering.se"
+  description="Älginventering med drönare och värmekamera. Vi flyger åt jaktlag och markägare i hela Sverige och ger ett tydligare beslutsunderlag om population, könsfördelning och kalvproduktion."
+  path="/alginventering"
+  jsonLd={jsonLd}
+>
+  <div style="background:#faf6ea">
+    <Header active="alg" />
+
+    <main>
+      <!-- HEADER -->
+      <div
+        data-screen-label="Header"
+        style="position:relative;padding:48px clamp(20px, 6vw, 64px) 72px;background-image:radial-gradient(circle at 20px 20px, rgba(43,51,36,0.10) 1.4px, transparent 1.4px);background-size:26px 26px;background-color:#faf6ea"
+      >
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:56px;align-items:center;max-width:1280px;margin:0 auto">
+          <div>
+            <span style="font:600 12px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+              >Plate I · Alces alces · Huvudtjänst</span
+            >
+            <h1 style="font:600 clamp(30px, 8vw, 44px)/1.16 'Spectral',serif;color:#242b1e;margin:18px 0 20px">
+              Älginventering med <span style="font-style:italic;color:#7a5230">drönare och värmekamera</span>
+            </h1>
+            <p style="font:400 16.5px/1.65 'Karla',sans-serif;color:#3f4636;max-width:480px;margin:0 0 28px">
+              Älgens stora kroppsvärme gör den lätt att upptäcka även dold i tät granskog. Vi flyger fastigheten
+              dagtid under vinterhalvåret och levererar ett populationsintervall ni kan använda i er egen
+              älgförvaltning.
+            </p>
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+              <a
+                href="#kontakt"
+                style="text-decoration:none;background:#2b3324;color:#efe8d8;padding:15px 28px;font:600 14px 'Karla',sans-serif"
+                >Boka älginventering</a
+              >
+              <a href="#process" style="text-decoration:none;font:400 14px italic 'Spectral',serif;color:#6b6142"
+                >så går flygningen till →</a
+              >
+            </div>
+          </div>
+          <div>
+            <div style="position:relative;border:1px solid #2b3324;background:#e4dcc6;aspect-ratio:4/5;padding:16px;transform:rotate(1deg)">
+              <div style="height:100%;overflow:hidden;border:1px solid rgba(43,51,36,0.35)">
+                <img
+                  src="/media/hero-zoom.jpg"
+                  alt="Flygfoto från vinterinventering över snöfläckad terräng"
+                  style="width:100%;height:100%;object-fit:cover;display:block"
+                />
+              </div>
+            </div>
+            <p style="font:400 12px italic 'Spectral',serif;color:#6b6142;margin:10px 4px 0">Eget flygfoto, mars 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <TrustStrip />
+
+      <!-- VAD -->
+      <div
+        data-screen-label="Vad"
+        style="padding:100px clamp(20px, 6vw, 64px);background:#faf6ea;display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:clamp(20px, 6vw, 64px);max-width:1360px;margin:0 auto;align-items:center"
+      >
+        <div>
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+            >Vad är älginventering?</span
+          >
+          <h2 style="font:600 34px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">
+            Ett tydligare underlag för älgförvaltningen
+          </h2>
+          <p style="font:400 16px/1.7 'Karla',sans-serif;color:#3f4636;margin:0 0 16px">
+            Älginventering handlar om att räkna och beskriva älgstammen på en fastighet eller inom ett
+            älgskötselområde — hur många djur som finns, könsfördelning och hur många kalvar som föds per vuxen ko.
+          </p>
+          <p style="font:400 16px/1.7 'Karla',sans-serif;color:#3f4636;margin:0">
+            Spillningsinventering och åtelkamera ger ett stickprov som beror på var räkningen sker och vem som
+            räknar. En värmekameraflygning täcker istället hela det avgränsade området under en och samma morgon,
+            vilket gör resultatet mer jämförbart år från år. Metoden bygger på samma internationella forskning
+            kring drönarbaserad viltinventering som ligger till grund för branschens flygprotokoll (bl.a. Franke et
+            al. 2012, Witczuk et al. 2018, Beaver et al. 2020).
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1px;background:rgba(43,51,36,0.25);border:1px solid rgba(43,51,36,0.25)">
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Population</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Totalt antal älgar på fastigheten</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Könsfördelning</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Andel tjur respektive ko</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Kalvproduktion</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Antal kalvar per ko</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr;background:#faf6ea;padding:20px 26px">
+            <span style="font:600 14px 'Karla',sans-serif;color:#6b6142">Underlag</span>
+            <span style="font:400 14px 'Spectral',serif;color:#242b1e">Eget planeringsunderlag för älgförvaltningen</span>
+          </div>
+        </div>
+      </div>
+
+      <ProcessSteps id="process" eyebrow="Så inventerar vi älg med drönare" heading="Fyra steg till en komplett älgrapport" steps={steps} />
+
+      <div style="padding:28px clamp(20px, 6vw, 64px);background:#faf6ea;text-align:center">
+        <a href="/metod-och-vetenskap" style="text-decoration:none;font:600 13.5px 'Karla',sans-serif;color:#7a5230"
+          >Läs om vårt nära samarbete med SLU och den vetenskapliga grunden →</a
+        >
+      </div>
+
+      <!-- NÄR PÅ ÅRET -->
+      <div data-screen-label="Timing" style="padding:100px clamp(20px, 6vw, 64px);background:#faf6ea;max-width:1360px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:clamp(20px, 6vw, 64px);align-items:center">
+          <div style="position:relative;border:1px solid #2b3324;background:#e4dcc6;aspect-ratio:16/10;padding:20px">
+            <div style="position:relative;border:1px solid rgba(43,51,36,0.35);height:100%;overflow:hidden">
+              <img
+                src="/media/hero-daylight.jpg"
+                alt="Flygfoto från vinterinventering över snöfläckad foderyta med synliga viltstråk"
+                style="width:100%;height:100%;object-fit:cover;display:block"
+              />
+            </div>
+          </div>
+          <div>
+            <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase"
+              >När bör man inventera älg?</span
+            >
+            <h2 style="font:600 32px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">
+              Vinter och tidig vår ger bäst resultat
+            </h2>
+            <p style="font:400 16px/1.7 'Karla',sans-serif;color:#3f4636;margin:0">
+              Älgen syns som tydligast i värmekameran under och efter lövfällning, när det inte längre finns
+              lövverk som dämpar värmesignaturen mot markens sensor. Vi flyger dagtid mellan november och mars, och
+              undviker dagar med stark vind eller mark som fortfarande håller kvar värmen efter en ovanligt varm
+              period.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Faq eyebrow="Vanliga frågor" heading="Om att inventera älg med drönare" items={faqItems} />
+
+      <!-- CROSS-LINK -->
+      <div style="padding:clamp(20px, 6vw, 64px);background:#faf6ea;text-align:center;max-width:900px;margin:0 auto">
+        <p style="font:400 16px/1.6 'Karla',sans-serif;color:#3f4636;margin:0">
+          Jagar ni även annat vilt? Läs om vår <a href="/viltinventering" style="font-weight:600"
+            >inventering av övrigt vilt</a
+          > för vildsvin, rådjur, kronvilt och dovvilt.
+        </p>
+      </div>
+
+      <ContactCta
+        heading="Redo att inventera er älgstam?"
+        body="Skicka in fastighetens uppgifter så återkommer vi med en offert och förslag på flygfönster."
+        dark
+      />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

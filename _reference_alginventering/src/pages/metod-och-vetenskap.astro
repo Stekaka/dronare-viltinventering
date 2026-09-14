@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Faq from '../components/Faq.astro';
+import ContactCta from '../components/ContactCta.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://alginventering.se/' },
+      { '@type': 'ListItem', position: 2, name: 'Metod & vetenskaplig grund', item: 'https://alginventering.se/metod-och-vetenskap' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: 'Metoden är utvecklad i nära samarbete med SLU (Hofmeester et al., 2026)',
+    about: 'Drönarbaserad viltinventering i Sverige',
+    author: { '@type': 'Person', name: 'Oliver Carlsson', worksFor: { '@type': 'Organization', name: 'Drönarkompaniet Norden AB' } },
+    citation: [
+      'Hofmeester, T. et al. (2026). Drönarbaserad älginventering i Sverige. Sveriges lantbruksuniversitet (SLU).',
+      'Buckland, S.T., Anderson, D.R., Burnham, K.P., Laake, J.L., Borchers, D.L. & Thomas, L. (2001). Introduction to Distance Sampling. Oxford University Press.',
+      'Beaver, J.T., Baldwin, R.W., Messinger, M., Newbolt, C.H., Ditchkoff, S.S. & Silman, M.R. (2020). Evaluating the use of drones equipped with thermal sensors as an effective method for estimating wildlife. Wildlife Society Bulletin, 44(3), 434-443. https://doi.org/10.1002/wsb.1090',
+      'Franke, U., Goll, B., Hohmann, U. & Heurich, M. (2012). Aerial ungulate surveys with a combination of infrared and high-resolution natural colour images. Animal Biodiversity and Conservation, 35(2), 285-293. https://doi.org/10.32800/abc.2012.35.0285',
+      'Rüegg, S., Nigg, V., Sander, R. & Burkart, S. (2019). Drone-based infrared surveys for the detection of roe deer fawns. PLOS ONE, 14(2), e0211063. https://doi.org/10.1371/journal.pone.0211063',
+      'Witczuk, J., Pagacz, S., Zmarz, A. & Cypel, M. (2018). Exploring the feasibility of unmanned aerial vehicles for ungulate surveys in forests. International Journal of Remote Sensing, 39(15-16), 5504-5521. https://doi.org/10.1080/01431161.2017.1390621',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Är metoden godkänd av Naturvårdsverket eller Länsstyrelsen?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Nej, inte ännu. Metoden är under utveckling i nära dialog med SLU men är i dagsläget inte formellt godkänd av Naturvårdsverket eller Länsstyrelsen. Rapporterna kan därför inte användas som formellt underlag i officiell viltförvaltningsrapportering, till exempel ÄBIN eller älgskötselplaner — de fungerar som ett tydligt eget planeringsunderlag för jaktlag, viltvårdsområden och markägare.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Är Viltanalys metod vetenskapligt granskad?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Metoden är utvecklad i nära samarbete med SLU och avstämd mot Hofmeester et al. (2026), den första vetenskapliga studien av drönarbaserad älginventering i Sverige. Flygparametrar, täckningsgradsmodell och VMK-tröskelvärden är avstämda mot studiens resultat — utbytet har gått åt båda håll, där delar av vårt operativa fältarbete också bidragit till forskningen.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Vad är Viltanalys?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Viltanalys är Drönarkompaniets egenutvecklade rapportsystem för drönarbaserad viltinventering. Det genererar flygrutter, beräknar täckningsgrad från faktiskt genererade ytor och sammanställer rapporter med metodik, kartor och bildbevis. Systemet finns på viltanalys.se.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Är alla korrektionsfaktorer vetenskapligt kalibrerade?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Nej, och det redovisar vi öppet. Vissa faktorer, som täckningsgradsmodellen och VMK-tröskelvärdena, är kalibrerade mot faktiska svenska älgskötselområden. Artspecifika korrektionsfaktorer för andra arter är däremot kvalificerade uppskattningar baserade på analogiresonemang och internationell litteratur, i väntan på svenska kontrollerade studier.',
+        },
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Metod & vetenskaplig grund — SLU-samarbete och drönarbaserad viltinventering | Älginventering.se"
+  description="Vår metod för drönarbaserad vilt- och älginventering är utvecklad i nära samarbete med SLU (Hofmeester et al., 2026). Se vad vi delar med studien, vad vi bidrar med, vad vi är transparenta med att inte ha löst — och varför metoden ännu inte är formellt godkänd av Naturvårdsverket eller Länsstyrelsen."
+  path="/metod-och-vetenskap"
+  jsonLd={jsonLd}
+>
+  <div style="background:#faf6ea">
+    <Header active="metod" />
+
+    <main>
+      <!-- INTRO -->
+      <div style="padding:56px clamp(20px, 6vw, 64px) 40px;max-width:900px;margin:0 auto">
+        <span style="font:600 12px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase">Vetenskaplig grund</span>
+        <h1 style="font:600 clamp(28px, 8vw, 42px)/1.2 'Spectral',serif;color:#242b1e;margin:20px 0 24px">
+          En metod utvecklad tillsammans med SLU — inte bara baserad på deras forskning.
+        </h1>
+        <p style="font:400 17px/1.75 'Karla',sans-serif;color:#3f4636;margin:0 0 20px">
+          Vår metodbeskrivning är avstämd mot <strong style="color:#242b1e">Hofmeester et al. (2026)</strong> —
+          den första vetenskapliga studien av drönarbaserad älginventering i Sverige. Kunskapsutbytet har gått åt
+          båda håll: vissa metodval som ursprungligen togs fram i vårt operativa fältarbete har delats med och
+          bidragit till forskningen, och studiens publicerade resultat har i sin tur format hur vi kalibrerar och
+          driftsätter metoden. Nedan är vad vi delar med studien, vad vi bidrar med utöver den, och vad vi är öppna
+          med att vi ännu inte har löst.
+        </p>
+        <blockquote
+          style="font:italic 400 20px/1.6 'Spectral',serif;color:#242b1e;border-left:3px solid #c9973f;padding-left:24px;margin:36px 0 0;max-width:60ch"
+        >
+          "Det här är inte en metod vi har hämtat från SLU eller som SLU har hämtat från oss — den har vuxit fram i
+          dialog, där båda parter bidragit med delar."
+        </blockquote>
+      </div>
+
+      <!-- DIREKT FRÅN SLU -->
+      <div data-screen-label="Direkt från SLU" style="padding:80px clamp(20px, 6vw, 64px);background:#efe8d8;border-top:2px solid #2b3324;border-bottom:2px solid #2b3324">
+        <div style="max-width:900px;margin:0 auto">
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase">§1 · Gemensamma metodval</span>
+          <h2 style="font:600 30px 'Spectral',serif;color:#242b1e;margin:14px 0 28px">Så stämmer metoden överens med SLU 2026</h2>
+
+          <div style="display:flex;flex-direction:column;gap:1px;background:rgba(43,51,36,0.22);border:1px solid rgba(43,51,36,0.22)">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));background:#faf6ea;padding:22px 26px;gap:24px">
+              <span style="font:600 14px 'Karla',sans-serif;color:#7a5230">Flygparametrar</span>
+              <span style="font:400 15px/1.65 'Karla',sans-serif;color:#242b1e"
+                >100 m höjd, 9 m/s, 25 % sidoöverlapp och 50 % frontöverlapp är inbyggda i systemets WPML-export och
+                kräver ingen manuell konfiguration av piloten.</span
+              >
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));background:#faf6ea;padding:22px 26px;gap:24px">
+              <span style="font:600 14px 'Karla',sans-serif;color:#7a5230">Täckningsgrad som styrparameter</span>
+              <span style="font:400 15px/1.65 'Karla',sans-serif;color:#242b1e"
+                >Istället för ett fast antal provytor är täckningsgraden — andelen av totalytan som faktiskt
+                inventeras — SLUs centrala metodbidrag, och det som styr hela flygplaneringen i Viltanalys.</span
+              >
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));background:#faf6ea;padding:22px 26px;gap:24px">
+              <span style="font:600 14px 'Karla',sans-serif;color:#7a5230">VMK-tröskelvärden</span>
+              <span style="font:400 15px/1.65 'Karla',sans-serif;color:#242b1e"
+                >40 % täckning vid låg aggregation, 50 % vid måttlig och 60 % vid hög — kalibrerade direkt mot Alsters
+                ÄSO (VMK 3,0) och Fredrika (VMK 4,7) från studien.</span
+              >
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));background:#faf6ea;padding:22px 26px;gap:24px">
+              <span style="font:600 14px 'Karla',sans-serif;color:#7a5230">Provytestorlek</span>
+              <span style="font:400 15px/1.65 'Karla',sans-serif;color:#242b1e"
+                >50 ha är standardvalet i systemet, med en explicit hänvisning till SLUs motivering kring VLOS-krav
+                inbyggd i användargränssnittet.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VAD VI BIDRAR MED -->
+      <div data-screen-label="Bidrag" style="padding:80px clamp(20px, 6vw, 64px)">
+        <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:56px;align-items:start">
+          <div>
+            <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase">§2 · Utöver studien</span>
+            <h2 style="font:600 30px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">Vad vi bidrar med</h2>
+            <p style="font:400 16px/1.75 'Karla',sans-serif;color:#3f4636;margin:0 0 16px">
+              SLU identifierar i rapporten ett centralt fortsatt behov: en empirisk svensk databas över
+              älgpopulationens aggregationsmönster i olika habitattyper. Viltanalys bygger den databasen
+              automatiskt, uppdrag för uppdrag.
+            </p>
+            <p style="font:400 16px/1.75 'Karla',sans-serif;color:#3f4636;margin:0">
+              <strong style="color:#242b1e">Sotenäs ÄSO</strong> (VMK 3,73, 41 provytor, kustskog, vinter 2025) är det
+              första bidraget utanför SLUs egna data. Varje genomförd inventering i systemet bidrar därefter anonymt
+              med ett nytt värde kopplat till habitattyp och region — utan att känslig kunddata exponeras.
+            </p>
+          </div>
+          <div style="border:1px solid #2b3324;background:#e4dcc6;padding:16px">
+            <img
+              src="/media/sotenas-flygunderlag.jpg"
+              alt="Flygplaneringsunderlag för inventeringen av Sotenäs älgskötselområde, vinter 2025-2026"
+              style="width:100%;display:block;border:1px solid rgba(43,51,36,0.35)"
+            />
+            <p style="font:400 12.5px 'Karla',sans-serif;color:#6b6142;margin:10px 2px 0">Faktiskt flygunderlag, Sotenäs ÄSO</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSPARENS -->
+      <div data-screen-label="Transparens" style="padding:80px clamp(20px, 6vw, 64px);background:#efe8d8;border-top:2px solid #2b3324;border-bottom:2px solid #2b3324">
+        <div style="max-width:900px;margin:0 auto">
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase">§3 · Vad vi inte har löst</span>
+          <h2 style="font:600 30px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">Transparens om korrektionsfaktorerna</h2>
+          <p style="font:400 16px/1.75 'Karla',sans-serif;color:#3f4636;margin:0 0 28px;max-width:66ch">
+            Korrektionsfaktorerna för enskilda arter är kvalificerade uppskattningar baserade på analogiresonemang
+            och publicerad internationell litteratur — inte kalibrerade mot kontrollerade svenska studier. Vi
+            redovisar öppet vad varje faktor grundar sig på istället för att presentera dem som mer exakta än de är.
+          </p>
+
+          <div style="overflow-x:auto">
+            <table style="width:100%; border-collapse:collapse; min-width:640px">
+              <thead>
+                <tr style="border-bottom:1px solid rgba(43,51,36,0.3)">
+                  <th style="text-align:left;padding:0 16px 12px 0;font:600 11px 'Karla',sans-serif;letter-spacing:0.06em;text-transform:uppercase;color:#6b6142">Art</th>
+                  <th style="text-align:left;padding:0 16px 12px 0;font:600 11px 'Karla',sans-serif;letter-spacing:0.06em;text-transform:uppercase;color:#6b6142">Faktor</th>
+                  <th style="text-align:left;padding:0 0 12px;font:600 11px 'Karla',sans-serif;letter-spacing:0.06em;text-transform:uppercase;color:#6b6142">Underlag</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid rgba(43,51,36,0.15)">
+                  <td style="padding:12px 16px 12px 0;font:600 14px 'Spectral',serif;color:#242b1e">Älg</td>
+                  <td style="padding:12px 16px 12px 0;font:400 14px 'Karla',sans-serif;color:#3f4636">1,0</td>
+                  <td style="padding:12px 0;font:400 13.5px/1.5 'Karla',sans-serif;color:#5a5138">Stor kroppsmassa och hög termisk signatur ger god detekterbarhet — analogiresonemang mot Witczuk et al. 2018.</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(43,51,36,0.15)">
+                  <td style="padding:12px 16px 12px 0;font:600 14px 'Spectral',serif;color:#242b1e">Rådjur</td>
+                  <td style="padding:12px 16px 12px 0;font:400 14px 'Karla',sans-serif;color:#3f4636">1,6</td>
+                  <td style="padding:12px 0;font:400 13.5px/1.5 'Karla',sans-serif;color:#5a5138">Liten kropp, liggbeteende och vintertryck ger lägre detekterbarhet — Witczuk et al. 2018; Rüegg et al. 2019.</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(43,51,36,0.15)">
+                  <td style="padding:12px 16px 12px 0;font:600 14px 'Spectral',serif;color:#242b1e">Vildsvin</td>
+                  <td style="padding:12px 16px 12px 0;font:400 14px 'Karla',sans-serif;color:#3f4636">1,8</td>
+                  <td style="padding:12px 0;font:400 13.5px/1.5 'Karla',sans-serif;color:#5a5138">Nattaktivitet och grytbeteende minskar detekterbarheten — analogiresonemang, Beaver et al. 2020 (vitsvanshjort som jämförelse).</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(43,51,36,0.15)">
+                  <td style="padding:12px 16px 12px 0;font:600 14px 'Spectral',serif;color:#242b1e">Dovvilt</td>
+                  <td style="padding:12px 16px 12px 0;font:400 14px 'Karla',sans-serif;color:#3f4636">0,8</td>
+                  <td style="padding:12px 0;font:400 13.5px/1.5 'Karla',sans-serif;color:#5a5138">Flockbeteende — nedkorrigering motverkar kluster-bias. Franke et al. 2012 (dovhjort) och operativ erfarenhet.</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(43,51,36,0.15)">
+                  <td style="padding:12px 16px 12px 0;font:600 14px 'Spectral',serif;color:#242b1e">Kronhjort</td>
+                  <td style="padding:12px 16px 12px 0;font:400 14px 'Karla',sans-serif;color:#3f4636">1,0*</td>
+                  <td style="padding:12px 0;font:400 13.5px/1.5 'Karla',sans-serif;color:#5a5138">Standardfaktor — ingen artspecifik studie tillgänglig ännu.</td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px 12px 0;font:600 14px 'Spectral',serif;color:#242b1e">Räv</td>
+                  <td style="padding:12px 16px 12px 0;font:400 14px 'Karla',sans-serif;color:#3f4636">2,0</td>
+                  <td style="padding:12px 0;font:400 13.5px/1.5 'Karla',sans-serif;color:#5a5138">Mycket liten kropp och gömslebeteende ger mycket låg detekterbarhet — saknar direkt litteraturstöd.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font:400 13px/1.6 'Karla',sans-serif;color:#6b6142;margin:16px 0 0">
+            *Standardfaktor tills artspecifik studie finns. Samtliga faktorer uppdateras löpande i takt med
+            ackumulerade svenska inventeringsdata. En dubbelflyg-kalibrering för empirisk detektionssannolikhet är
+            planerad men ännu inte implementerad.
+          </p>
+        </div>
+      </div>
+
+      <!-- SAMARBETET -->
+      <div data-screen-label="Samarbetet" style="padding:80px clamp(20px, 6vw, 64px);max-width:900px;margin:0 auto">
+        <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase">§4 · Samarbetet med SLU</span>
+        <h2 style="font:600 30px 'Spectral',serif;color:#242b1e;margin:14px 0 20px">Utvecklat i dialog med forskningen, inte inspirerat i efterhand</h2>
+        <p style="font:400 16px/1.75 'Karla',sans-serif;color:#3f4636;margin:0 0 16px">
+          Oliver Carlsson, grundare av Drönarkompaniet, nämns i tackavsnittet i Hofmeester et al. (2026) och har haft
+          löpande dialog med Tim Hofmeester sedan studiens tidiga skede. Viltanalys är i det avseendet inte ett
+          system som inspirerats av SLUs arbete i efterhand — det har utvecklats i parallell med och i dialog med
+          forskningen.
+        </p>
+        <p style="font:400 16px/1.75 'Karla',sans-serif;color:#3f4636;margin:0 0 16px">
+          Flödet har gått åt båda håll. Delar av metodiken — bland annat operativa lärdomar om flygmönster och
+          artspecifikt beteende — togs ursprungligen fram i vårt fältarbete och har delats tillbaka till SLUs
+          forskning, samtidigt som studiens publicerade rekommendationer i sin tur har format hur vi kalibrerar och
+          driftsätter metoden i Viltanalys.
+        </p>
+        <p style="font:400 16px/1.75 'Karla',sans-serif;color:#3f4636;margin:0">
+          Målet är att varje kommersiell inventering som genomförs med Viltanalys stärker det vetenskapliga underlag
+          som SLU och Naturvårdsverket behöver för att formalisera metodkrav för drönarbaserad viltinventering i
+          Sverige.
+        </p>
+      </div>
+
+      <!-- SYSTEMET -->
+      <div data-screen-label="Systemet" style="padding:80px clamp(20px, 6vw, 64px);background:#2b3324">
+        <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:56px;align-items:center">
+          <div style="background:#efe8d8;border:1px solid rgba(239,232,216,0.2);padding:20px">
+            <img src="/media/drone-m30t.jpg" alt="DJI Matrice 30T — drönaren med termisk och optisk sensor som används vid inventeringarna" style="width:100%;display:block" />
+          </div>
+          <div>
+            <span style="font:600 12.5px 'Karla',sans-serif;color:#a39a7c;letter-spacing:0.1em;text-transform:uppercase">§5 · Systemet</span>
+            <h2 style="font:600 30px 'Spectral',serif;color:#efe8d8;margin:14px 0 20px">Viltanalys — vårt egenutvecklade rapportsystem</h2>
+            <p style="font:400 16px/1.75 'Karla',sans-serif;color:#d8d2bc;margin:0 0 16px">
+              Allt ovan är inbyggt i <strong style="color:#efe8d8">Viltanalys</strong>, rapportsystemet vi utvecklat
+              för drönarbaserad viltinventering. Systemet genererar flygrutter (WPML) med de gemensamma
+              flygparametrarna förinställda, beräknar täckningsgrad från faktiskt genererade ytor, och sammanställer
+              en rapport med metodik, kartor och bildbevis — ett tydligt eget planeringsunderlag för jaktlag,
+              viltvårdsområden och markägare. Metoden är i dagsläget inte formellt godkänd av Naturvårdsverket eller
+              Länsstyrelsen.
+            </p>
+            <p style="font:400 14px/1.6 'Karla',sans-serif;color:#c9c0a3;margin:0 0 20px">
+              Drönaren som används är utrustad med en kalibrerad termisk sensor (NETD ≤ 50 mK); samtliga
+              observationer verifieras manuellt med optisk zoom för 100 % artbestämning.
+            </p>
+            <a
+              href="https://viltanalys.se"
+              target="_blank"
+              rel="noopener"
+              style="text-decoration:none;background:#d9b877;color:#2b3324;padding:14px 26px;font:600 14px 'Karla',sans-serif;display:inline-block"
+              >Utforska Viltanalys ↗</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <Faq
+        eyebrow="Vanliga frågor"
+        heading="Om den vetenskapliga grunden"
+        items={[
+          {
+            q: 'Är metoden godkänd av Naturvårdsverket eller Länsstyrelsen?',
+            a: 'Nej, inte ännu. Metoden är under utveckling i nära dialog med SLU men är i dagsläget inte formellt godkänd av Naturvårdsverket eller Länsstyrelsen. Rapporterna kan därför inte användas som formellt underlag i officiell viltförvaltningsrapportering, till exempel ÄBIN eller älgskötselplaner — de fungerar som ett tydligt eget planeringsunderlag för jaktlag, viltvårdsområden och markägare.',
+          },
+          {
+            q: 'Är Viltanalys metod vetenskapligt granskad?',
+            a: 'Metoden är utvecklad i nära samarbete med SLU och avstämd mot Hofmeester et al. (2026), den första vetenskapliga studien av drönarbaserad älginventering i Sverige. Utbytet har gått åt båda håll — delar av vårt operativa fältarbete har bidragit till forskningen, och studiens publicerade resultat har i sin tur format hur vi kalibrerar metoden.',
+          },
+          {
+            q: 'Vad är Viltanalys?',
+            a: 'Viltanalys är Drönarkompaniets egenutvecklade rapportsystem för drönarbaserad viltinventering. Det genererar flygrutter, beräknar täckningsgrad från faktiskt genererade ytor och sammanställer rapporter med metodik, kartor och bildbevis. Systemet finns på viltanalys.se.',
+          },
+          {
+            q: 'Är alla korrektionsfaktorer vetenskapligt kalibrerade?',
+            a: 'Nej, och det redovisar vi öppet ovan. Täckningsgradsmodellen och VMK-tröskelvärdena är kalibrerade mot faktiska svenska älgskötselområden. Artspecifika korrektionsfaktorer för andra arter är kvalificerade uppskattningar baserade på analogiresonemang och internationell litteratur, i väntan på svenska kontrollerade studier.',
+          },
+        ]}
+      />
+
+      <!-- REFERENSER -->
+      <div data-screen-label="Referenser" style="padding:80px clamp(20px, 6vw, 64px);background:#efe8d8;border-top:2px solid #2b3324">
+        <div style="max-width:900px;margin:0 auto">
+          <span style="font:600 12.5px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.1em;text-transform:uppercase">§6 · Referenser</span>
+          <h2 style="font:600 30px 'Spectral',serif;color:#242b1e;margin:14px 0 28px">Källor</h2>
+          <ol style="font:400 14px/1.9 'Karla',sans-serif;color:#3f4636;padding-left:20px;margin:0">
+            <li>
+              Hofmeester, T. et al. (2026). Drönarbaserad älginventering i Sverige. Sveriges lantbruksuniversitet
+              (SLU). <em style="color:#6b6142">Fullständig publikationsreferens läggs till här när studien publiceras.</em>
+            </li>
+            <li>
+              Buckland, S.T., Anderson, D.R., Burnham, K.P., Laake, J.L., Borchers, D.L. &amp; Thomas, L. (2001).
+              Introduction to Distance Sampling. Oxford University Press.
+            </li>
+            <li>
+              Beaver, J.T., Baldwin, R.W., Messinger, M., Newbolt, C.H., Ditchkoff, S.S. &amp; Silman, M.R. (2020).
+              Evaluating the use of drones equipped with thermal sensors as an effective method for estimating
+              wildlife. <em>Wildlife Society Bulletin</em>, 44(3), 434-443.
+              <a href="https://doi.org/10.1002/wsb.1090" target="_blank" rel="noopener">doi.org/10.1002/wsb.1090</a>
+            </li>
+            <li>
+              Franke, U., Goll, B., Hohmann, U. &amp; Heurich, M. (2012). Aerial ungulate surveys with a combination
+              of infrared and high-resolution natural colour images. <em>Animal Biodiversity and Conservation</em>,
+              35(2), 285-293.
+              <a href="https://doi.org/10.32800/abc.2012.35.0285" target="_blank" rel="noopener">doi.org/10.32800/abc.2012.35.0285</a>
+            </li>
+            <li>
+              Rüegg, S., Nigg, V., Sander, R. &amp; Burkart, S. (2019). Drone-based infrared surveys for the
+              detection of roe deer fawns. <em>PLOS ONE</em>, 14(2), e0211063.
+              <a href="https://doi.org/10.1371/journal.pone.0211063" target="_blank" rel="noopener">doi.org/10.1371/journal.pone.0211063</a>
+            </li>
+            <li>
+              Witczuk, J., Pagacz, S., Zmarz, A. &amp; Cypel, M. (2018). Exploring the feasibility of unmanned aerial
+              vehicles for ungulate surveys in forests. <em>International Journal of Remote Sensing</em>, 39(15-16),
+              5504-5521.
+              <a href="https://doi.org/10.1080/01431161.2017.1390621" target="_blank" rel="noopener">doi.org/10.1080/01431161.2017.1390621</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <ContactCta
+        heading="Vill ni se hela metodbeskrivningen?"
+        body="Vi delar den fullständiga metodbeskrivningen — med samtliga formler, korrektionsfaktorer och valideringsunderlag — direkt till länsstyrelser, älgförvaltningsområden och markägare vid förfrågan."
+        dark
+      />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

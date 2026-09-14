@@ -1,0 +1,14 @@
+---
+const items = [
+  'Tillstånd hos Transportstyrelsen',
+  'Ansvarsförsäkrad verksamhet',
+  'Utförs av Drönarkompaniet',
+  'Verksamma i hela Sverige',
+];
+---
+
+<div style="display:flex;justify-content:center;gap:52px;padding:24px clamp(20px, 6vw, 64px);background:#2b3324;flex-wrap:wrap">
+  {items.map((item) => (
+    <span style="font:500 13.5px 'Karla',sans-serif;color:#d8d2bc">{item}</span>
+  ))}
+</div>
