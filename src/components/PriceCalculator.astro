@@ -1,0 +1,265 @@
+---
+// Calculator constants per requirements
+const SEK_PER_DAY = 8000;
+const HA_PER_DAY = 1500;
+const DEFAULT_COVERAGE = 30;
+const KON_KALV_COVERAGE = 40;
+const DEFAULT_TRAVEL = 12000;
+---
+
+<div id="pris" class="py-20 bg-bg-elevated border-y border-border scroll-mt-20">
+	<div class="container-site">
+		<div class="text-center mb-12">
+			<span class="eyebrow mb-4 block">PRISKALKYLATOR</span>
+			<h2 class="text-display font-semibold text-text-primary mb-4">
+				Räkna ut ett ungefärligt pris
+			</h2>
+			<p class="text-text-muted max-w-2xl mx-auto leading-relaxed">
+				8 000 kr per flygdag. En dag täcker ca 1 500 hektar med provytor (default 30% täckningsgrad, 40% vid kön/kalv).
+			</p>
+		</div>
+		
+		<div class="max-w-4xl mx-auto card">
+			<form id="calculator-form" class="space-y-8">
+				<!-- Total area -->
+				<div>
+					<div class="flex justify-between items-baseline mb-3">
+						<label for="total-area" class="font-mono text-xs uppercase tracking-wider text-text-muted">
+							Fastighetens areal (hektar)
+						</label>
+						<span id="area-display" class="text-2xl font-semibold text-text-primary">15 000 ha</span>
+					</div>
+					<input
+						id="total-area"
+						type="range"
+						min="500"
+						max="100000"
+						step="500"
+						value="15000"
+						class="w-full h-2 rounded-full appearance-none cursor-pointer"
+						style="background: linear-gradient(to right, #F0F0F0 0%, #F0F0F0 15%, #292929 15%, #292929 100%); accent-color: #F0F0F0;"
+					/>
+					<div class="flex justify-between mt-2 text-xs text-text-muted font-mono">
+						<span>500 ha</span>
+						<span>100 000 ha</span>
+					</div>
+				</div>
+
+				<!-- Coverage % -->
+				<div>
+					<label class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-3">
+						Täckningsgrad (%)
+					</label>
+					<div class="flex items-center gap-3">
+						<input type="number" id="coverage" min="20" max="50" value="30" class="w-24 px-3 py-2 bg-bg border border-border rounded-lg text-text-primary focus:outline-none focus:border-text-primary" />
+						<span class="text-sm text-text-muted">
+							Standard 30%, rekommenderas 40% vid kön/kalv-inventering
+						</span>
+					</div>
+				</div>
+
+				<!-- Kön/kalv toggle -->
+				<div>
+					<label class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-3">
+						Inventering av kön/kalv?
+					</label>
+					<div class="flex gap-3">
+						<button type="button" class="kon-kalv-btn px-4 py-2 text-sm font-medium rounded-cta border border-border bg-transparent text-text-primary hover:bg-bg transition-colors" data-value="false">
+							Nej (endast täthet)
+						</button>
+						<button type="button" class="kon-kalv-btn active px-4 py-2 text-sm font-medium rounded-cta bg-cta-bg text-cta-text" data-value="true">
+							Ja (inkl. kön/kalv)
+						</button>
+					</div>
+				</div>
+
+				<!-- Travel mode -->
+				<div>
+					<label class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-3">
+						Resor & boende
+					</label>
+					<div class="space-y-2">
+						<label class="flex items-center gap-3 text-sm text-text-muted cursor-pointer hover:text-text-primary transition-colors">
+							<input type="radio" name="travel-mode" value="none" checked class="w-4 h-4" style="accent-color: #F0F0F0;" />
+							<span>Exkl. resor (visas separat i offert)</span>
+						</label>
+						<label class="flex items-center gap-3 text-sm text-text-muted cursor-pointer hover:text-text-primary transition-colors">
+							<input type="radio" name="travel-mode" value="schablon" class="w-4 h-4" style="accent-color: #F0F0F0;" />
+							<span>Schablon resor/boende</span>
+						</label>
+						<div id="travel-amount-container" class="hidden ml-7 mt-2">
+							<input type="number" id="travel-amount" min="0" step="1000" value="12000" class="w-32 px-3 py-2 bg-bg border border-border rounded-lg text-text-primary focus:outline-none focus:border-text-primary" />
+							<span class="text-sm text-text-muted ml-2">SEK</span>
+						</div>
+						<label class="flex items-center gap-3 text-sm text-text-muted cursor-pointer hover:text-text-primary transition-colors">
+							<input type="radio" name="travel-mode" value="offert" class="w-4 h-4" style="accent-color: #F0F0F0;" />
+							<span>Tillkommer i offert</span>
+						</label>
+					</div>
+				</div>
+
+				<!-- Results -->
+				<div class="border-t border-border pt-8">
+					<div class="bg-bg border border-border rounded-lg p-6 mb-6">
+						<div class="grid grid-cols-3 gap-6 mb-6">
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Inventerad yta
+								</div>
+								<div id="inventerad-ha" class="text-2xl font-semibold text-text-primary">4 500 ha</div>
+							</div>
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Flygdagar
+								</div>
+								<div id="days" class="text-2xl font-semibold text-text-primary">3 dagar</div>
+							</div>
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Flygkostnad
+								</div>
+								<div id="flight-cost" class="text-2xl font-semibold text-text-primary">24 000 kr</div>
+							</div>
+						</div>
+						<div class="border-t border-border pt-6 flex justify-between items-end flex-wrap gap-4">
+							<div>
+								<div class="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
+									Totalt pris
+								</div>
+								<div id="total-price" class="text-4xl font-semibold text-text-primary">24 000 kr</div>
+								<div id="price-detail" class="text-sm text-text-muted mt-2">
+									Exkl. moms · Resor visas i offert
+								</div>
+							</div>
+							<div class="text-right">
+								<div class="text-sm text-text-muted mb-1">
+									Kostnad per hektar
+								</div>
+								<div id="kr-per-ha" class="text-lg text-text-primary">1,60 kr/ha</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex gap-4">
+						<a href="/kontakt" class="btn-primary">Begär offert</a>
+					</div>
+					<p class="text-sm text-text-muted mt-4 leading-relaxed">
+						Uppskattning baserad på schablon — exakt pris och tidsplan bekräftas alltid i offert. Minsta areal ~500 hektar.
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+	const SEK_PER_DAY = 8000;
+	const HA_PER_DAY = 1500;
+	const DEFAULT_COVERAGE = 30;
+	const KON_KALV_COVERAGE = 40;
+
+	const areaInput = document.getElementById('total-area') as HTMLInputElement;
+	const areaDisplay = document.getElementById('area-display') as HTMLElement;
+	const coverageInput = document.getElementById('coverage') as HTMLInputElement;
+	const konKalvBtns = document.querySelectorAll('.kon-kalv-btn');
+	const travelRadios = document.querySelectorAll('input[name="travel-mode"]') as NodeListOf<HTMLInputElement>;
+	const travelAmountContainer = document.getElementById('travel-amount-container') as HTMLElement;
+	const travelAmountInput = document.getElementById('travel-amount') as HTMLInputElement;
+
+	const inventeradHa = document.getElementById('inventerad-ha') as HTMLElement;
+	const daysEl = document.getElementById('days') as HTMLElement;
+	const flightCostEl = document.getElementById('flight-cost') as HTMLElement;
+	const totalPriceEl = document.getElementById('total-price') as HTMLElement;
+	const priceDetailEl = document.getElementById('price-detail') as HTMLElement;
+	const krPerHaEl = document.getElementById('kr-per-ha') as HTMLElement;
+
+	let konKalv = false;
+
+	function calculate() {
+		const totalHa = Number(areaInput.value);
+		const coverage = Number(coverageInput.value);
+		const invHa = Math.round(totalHa * (coverage / 100));
+		const days = Math.max(1, Math.ceil(invHa / HA_PER_DAY));
+		const flightCost = days * SEK_PER_DAY;
+
+		let travelCost = 0;
+		let travelMode = 'none';
+		travelRadios.forEach((radio) => {
+			if (radio.checked) travelMode = radio.value;
+		});
+
+		if (travelMode === 'schablon') {
+			travelCost = Number(travelAmountInput.value);
+		}
+
+		const totalCost = flightCost + travelCost;
+		const krPerHaExcl = totalHa > 0 ? flightCost / totalHa : 0;
+		const krPerHaIncl = totalHa > 0 ? totalCost / totalHa : 0;
+
+		// Update range slider gradient
+		const percent = ((totalHa - 500) / (100000 - 500)) * 100;
+		areaInput.style.background = `linear-gradient(to right, #F0F0F0 0%, #F0F0F0 ${percent}%, #292929 ${percent}%, #292929 100%)`;
+
+		areaDisplay.textContent = `${totalHa.toLocaleString('sv-SE')} ha`;
+		inventeradHa.textContent = `${invHa.toLocaleString('sv-SE')} ha`;
+		daysEl.textContent = `${days} ${days === 1 ? 'dag' : 'dagar'}`;
+		flightCostEl.textContent = `${flightCost.toLocaleString('sv-SE')} kr`;
+		totalPriceEl.textContent = `${totalCost.toLocaleString('sv-SE')} kr`;
+		
+		let detailText = 'Exkl. moms';
+		if (travelMode === 'schablon') {
+			detailText = `Inkl. resor ${travelCost.toLocaleString('sv-SE')} kr · Exkl. moms`;
+			krPerHaEl.textContent = `${krPerHaIncl.toFixed(2)} kr/ha (inkl. resor)`;
+		} else if (travelMode === 'offert') {
+			detailText = 'Exkl. moms · Resor tillkommer';
+			krPerHaEl.textContent = `${krPerHaExcl.toFixed(2)} kr/ha (exkl. resor)`;
+		} else {
+			detailText = 'Exkl. moms · Resor visas i offert';
+			krPerHaEl.textContent = `${krPerHaExcl.toFixed(2)} kr/ha (exkl. resor)`;
+		}
+		priceDetailEl.textContent = detailText;
+	}
+
+	areaInput.addEventListener('input', calculate);
+	coverageInput.addEventListener('input', calculate);
+
+	konKalvBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const value = (btn as HTMLElement).dataset.value === 'true';
+			konKalv = value;
+			konKalvBtns.forEach((b) => {
+				b.classList.remove('active');
+				b.classList.remove('bg-cta-bg', 'text-cta-text');
+				b.classList.add('bg-transparent', 'text-text-primary', 'border-border');
+			});
+			btn.classList.add('active');
+			btn.classList.remove('bg-transparent', 'text-text-primary');
+			btn.classList.add('bg-cta-bg', 'text-cta-text');
+
+			if (konKalv) {
+				const currentCoverage = Number(coverageInput.value);
+				if (currentCoverage < KON_KALV_COVERAGE) {
+					coverageInput.value = String(KON_KALV_COVERAGE);
+				}
+				coverageInput.min = String(KON_KALV_COVERAGE);
+			} else {
+				coverageInput.min = '20';
+			}
+			calculate();
+		});
+	});
+
+	travelRadios.forEach((radio) => {
+		radio.addEventListener('change', () => {
+			if (radio.value === 'schablon') {
+				travelAmountContainer.classList.remove('hidden');
+			} else {
+				travelAmountContainer.classList.add('hidden');
+			}
+			calculate();
+		});
+	});
+
+	travelAmountInput.addEventListener('input', calculate);
+
+	calculate();
+</script>

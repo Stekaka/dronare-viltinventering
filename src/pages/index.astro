@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Älginventering med Termisk Drönare | Täthetsskattning med Konfidensintervall';
+const description = 'Älginventering med termisk drönare — täthetsskattning med konfidensintervall, karta och bildbevis. Komplement till älgobs och spillning. I linje med SLU 2026.';
+---
+
+<Layout title={title} description={description}>
+	<!-- Full-bleed illustrated hero with video -->
+	<div class="hero-video-container">
+		<video
+			autoplay
+			muted
+			loop
+			playsinline
+			class="hero-video"
+			poster="/media/hero-thermal-poster.jpg"
+		>
+			<source src="/media/hero/serene-art-hero.mp4" type="video/mp4" />
+		</video>
+		<div class="hero-overlay"></div>
+		
+		<div class="hero-content">
+			<div class="container-site">
+				<div class="max-w-4xl">
+					<h1 class="hero-title">
+						Viltinventering med <em>termisk precision</em>
+					</h1>
+					<p class="hero-subtitle">
+						Kartlägg populationer med oöverträffad noggrannhet genom automatiserad drönarteknik och SLU-baserad metodik. Från datafångst till myndighetsfärdiga rapporter.
+					</p>
+					<div class="hero-actions">
+						<a href="/kontakt" class="btn-primary">Boka demonstration</a>
+						<a href="#metod" class="btn-secondary">Se tekniken</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer stats strip -->
+		<div class="hero-stats">
+			<div class="container-site">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+					<div>
+						<div class="text-3xl font-serif text-white mb-1">~100%</div>
+						<div class="text-sm text-white/70">detektion i optimal väder</div>
+					</div>
+					<div>
+						<div class="text-3xl font-serif text-white mb-1">Konfidensintervall</div>
+						<div class="text-sm text-white/70">inte en enskild siffra</div>
+					</div>
+					<div>
+						<div class="text-3xl font-serif text-white mb-1">GPS + Bild</div>
+						<div class="text-sm text-white/70">per observation</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Editorial intro -->
+	<div class="py-24 bg-navy">
+		<div class="container-site max-w-4xl">
+			<p class="text-xl text-white/90 leading-relaxed text-center font-serif">
+				Provyteinventering av älg med termisk drönarkamera — random plots för täthetsskattning 
+				med konfidensintervall. Varje värmesignatur zoomas in optiskt och artbestäms manuellt. 
+				Ett komplement till älgobs och spillning, byggt på samma kunskap som SLU:s utvärdering 2026.
+			</p>
+		</div>
+	</div>
+
+	<!-- Process with photographic breaks -->
+	<div id="metod" class="py-24 bg-navy-light scroll-mt-20">
+		<div class="container-site">
+			<div class="max-w-4xl mx-auto mb-20">
+				<span class="eyebrow block mb-4">PROVYTEINVENTERING</span>
+				<h2 class="text-5xl md:text-6xl font-serif text-white mb-6">
+					Från bokning till rapport
+				</h2>
+				<p class="text-lg text-slate-300 leading-relaxed">
+					Random plots över fastigheten, flögen när kylan ger bäst kontrast. Täthetsskattning 
+					med konfidensintervall — inte en exakt siffra.
+				</p>
+			</div>
+
+			<div class="space-y-24">
+				<!-- Step 1 with thermal image -->
+				<div class="grid md:grid-cols-2 gap-12 items-center">
+					<div>
+						<div class="text-6xl font-serif text-white/20 mb-4">01</div>
+						<h3 class="text-3xl font-serif text-white mb-4">Termisk detektion</h3>
+						<p class="text-lg text-slate-300 leading-relaxed">
+							Värmekameran fångar kroppsvärme genom vegetation. SLU:s GPS-validering visar nästan 100% detektion 
+							i kallt molnigt vinterväder.
+						</p>
+					</div>
+					<div class="rounded-lg overflow-hidden border border-white/10">
+						<img src="/media/thermal-alg-1.jpg" alt="Termisk bild av älg" class="w-full h-full object-cover" />
+					</div>
+				</div>
+
+				<!-- Step 2 with optical image -->
+				<div class="grid md:grid-cols-2 gap-12 items-center">
+					<div class="order-2 md:order-1 rounded-lg overflow-hidden border border-white/10">
+						<img src="/media/optisk-alg-zoom.jpg" alt="Optisk zoom på älg" class="w-full h-full object-cover" />
+					</div>
+					<div class="order-1 md:order-2">
+						<div class="text-6xl font-serif text-white/20 mb-4">02</div>
+						<h3 class="text-3xl font-serif text-white mb-4">Optisk verifiering</h3>
+						<p class="text-lg text-slate-300 leading-relaxed">
+							Varje värmesignatur zoomas in med optisk kamera. Piloten artbestämmer manuellt — ingen automatisk 
+							AI-klassificering.
+						</p>
+					</div>
+				</div>
+
+				<!-- Step 3 with report -->
+				<div class="grid md:grid-cols-2 gap-12 items-center">
+					<div>
+						<div class="text-6xl font-serif text-white/20 mb-4">03</div>
+						<h3 class="text-3xl font-serif text-white mb-4">Rapport & karta</h3>
+						<p class="text-lg text-slate-300 leading-relaxed">
+							Täthetsskattning med konfidensintervall, karta med GPS-koordinater och bildbevis per observation. 
+							Levereras digitalt.
+						</p>
+					</div>
+					<div class="rounded-lg overflow-hidden border border-white/10">
+						<img src="/media/rapport-karta.png" alt="Rapport med karta" class="w-full h-full object-cover" />
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center mt-20">
+				<a href="/metodik" class="text-white hover:underline inline-flex items-center gap-2">
+					<span>Läs mer om metoden och den vetenskapliga grunden</span>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Case study - photographic -->
+	<div class="py-24 bg-navy">
+		<div class="container-site">
+			<div class="max-w-4xl mx-auto mb-16 text-center">
+				<span class="eyebrow block mb-4">NYLIGEN GENOMFÖRT</span>
+				<h2 class="text-5xl md:text-6xl font-serif text-white">
+					Sotenäs älgskötselområde
+				</h2>
+			</div>
+			<div class="grid md:grid-cols-2 gap-0 max-w-6xl mx-auto overflow-hidden rounded-lg border border-white/10">
+				<div>
+					<img src="/media/sotenas-flygunderlag.jpg" alt="Flygplaneringsunderlag för Sotenäs" class="w-full h-full object-cover" />
+				</div>
+				<div class="bg-navy-light p-12">
+					<p class="text-lg text-slate-300 leading-relaxed mb-8">
+						Kustskog, vinter 2025 — 41 provytor över 10 132 hektar. Täckningsgrad 40,4% för täthetsskattning.
+					</p>
+					<div class="grid grid-cols-2 gap-8 mb-8">
+						<div>
+							<div class="text-4xl font-serif text-white mb-2">3,73</div>
+							<div class="text-sm text-slate-400">VMK (viltmarkskvot)</div>
+						</div>
+						<div>
+							<div class="text-4xl font-serif text-white mb-2">41</div>
+							<div class="text-sm text-slate-400">provytor</div>
+						</div>
+					</div>
+					<a href="/case" class="text-white hover:underline inline-flex items-center gap-2">
+						<span>Läs mer om uppdraget</span>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CTA -->
+	<div class="py-24 bg-navy-light">
+		<div class="container-site max-w-3xl text-center">
+			<span class="eyebrow block mb-4">REDO ATT INVENTERA ER MARK?</span>
+			<h2 class="text-5xl md:text-6xl font-serif text-white mb-8">
+				Skicka in fastighetens uppgifter så återkommer vi med offert
+			</h2>
+			<p class="text-lg text-slate-300 leading-relaxed mb-12">
+				Vi förklarar metoden, går igenom priset och föreslår flygfönster som passar ert område.
+			</p>
+			<div class="flex gap-4 justify-center flex-wrap">
+				<a href="/kontakt" class="btn-primary">Begär offert</a>
+				<a href="/kostnad" class="btn-secondary">Se priskalkylator</a>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.hero-video-container {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.hero-video {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: blur(2px);
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(15, 23, 42, 0.35);
+		backdrop-filter: blur(2px);
+	}
+
+	.hero-content {
+		position: relative;
+		flex: 1;
+		display: flex;
+		align-items: center;
+		padding: 120px 0 80px;
+		z-index: 10;
+	}
+
+	.hero-title {
+		font-size: clamp(40px, 8vw, 80px);
+		line-height: 1.1;
+		letter-spacing: -2.5px;
+		color: white;
+		font-weight: 400;
+		margin: 0 0 24px;
+	}
+
+	.hero-title em {
+		font-style: italic;
+		color: white;
+	}
+
+	.hero-subtitle {
+		font-size: clamp(16px, 2vw, 20px);
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.7);
+		max-width: 600px;
+		margin: 0 0 32px;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.hero-stats {
+		position: relative;
+		padding: 32px 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(8px);
+		background: rgba(15, 23, 42, 0.3);
+		z-index: 10;
+	}
+
+	@media (max-width: 768px) {
+		.hero-title {
+			letter-spacing: -1.5px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-video {
+			display: none;
+		}
+		.hero-video-container {
+			background: #0f172a;
+		}
+	}
+</style>

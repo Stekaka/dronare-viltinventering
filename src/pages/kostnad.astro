@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PriceCalculator from '../components/PriceCalculator.astro';
+
+const title = 'Kostnad för Älginventering med Drönare | Priskalkylator';
+const description = '8 000 kr per flygdag. Använd vår priskalkylator för att uppskatta kostnaden för älginventering på er fastighet.';
+---
+
+<Layout title={title} description={description}>
+	<div style="background: #faf6ea;">
+		<!-- Hero -->
+		<div style="position: relative; padding: 80px clamp(20px, 6vw, 64px) 60px; background: #2b3324;">
+			<div style="max-width: 900px; margin: 0 auto; text-align: center;">
+				<span style="font: 600 12px 'Karla', sans-serif; color: #e0d6b0; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 20px;">
+					PRISSÄTTNING
+				</span>
+				<h1 style="font: 600 clamp(32px, 8vw, 52px) / 1.14 'Spectral', serif; color: #faf6ea; max-width: 18ch; margin: 0 auto 22px;">
+					Kostnad för älginventering
+				</h1>
+				<p style="font: 400 17px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 640px; margin: 0 auto;">
+					Fast dagspris på 8 000 kr. En dag täcker ca 1 500 hektar inventerad yta med provytor.
+				</p>
+			</div>
+		</div>
+
+		<!-- Pricing explanation -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #faf6ea;">
+			<div style="max-width: 1200px; margin: 0 auto;">
+				<div style="text-align: center; margin-bottom: 48px;">
+					<span style="font: 600 12.5px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.1em; text-transform: uppercase;">
+						VAD INGÅR
+					</span>
+					<h2 style="font: 600 40px 'Spectral', serif; color: #242b1e; margin: 14px 0 0;">
+						Fast dagspris med tydlig modell
+					</h2>
+				</div>
+				
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+					<div style="border: 1px solid #2b3324; padding: 32px; background: #efe8d8;">
+						<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 12px;">8 000 kr per dag</h3>
+						<p style="font: 400 15px/1.65 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+							Fast dagspris oavsett terräng eller viltart. En flygdag täcker ca 1 500 hektar inventerad yta med provytor.
+						</p>
+						<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+							<span style="font: 500 11px 'Karla', sans-serif; border: 1px solid rgba(43, 51, 36, 0.3); color: #5a5138; padding: 6px 10px;">
+								FLYGNING
+							</span>
+							<span style="font: 500 11px 'Karla', sans-serif; border: 1px solid rgba(43, 51, 36, 0.3); color: #5a5138; padding: 6px 10px;">
+								ANALYS
+							</span>
+							<span style="font: 500 11px 'Karla', sans-serif; border: 1px solid rgba(43, 51, 36, 0.3); color: #5a5138; padding: 6px 10px;">
+								RAPPORT
+							</span>
+						</div>
+					</div>
+					
+					<div style="border: 1px solid #2b3324; padding: 32px; background: #efe8d8;">
+						<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 12px;">Vad ingår i priset</h3>
+						<ul style="font: 400 15px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0; padding-left: 20px;">
+							<li>Flygplanering och provytedesign</li>
+							<li>Termisk + optisk flygning</li>
+							<li>Manuell artbestämning</li>
+							<li>Täthetsskattning med konfidensintervall</li>
+							<li>Rapport med karta och bildbevis</li>
+						</ul>
+					</div>
+					
+					<div style="border: 1px solid #2b3324; padding: 32px; background: #efe8d8;">
+						<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 12px;">Tillägg & resor</h3>
+						<p style="font: 400 15px/1.65 'Karla', sans-serif; color: #3f4636; margin: 0;">
+							Resekostnader och eventuellt boende tillkommer. Kön/kalv-inventering rekommenderar 40% täckningsgrad 
+							istället för standard 30%. Minsta areal ~500 hektar.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Price Calculator -->
+		<PriceCalculator />
+
+		<!-- Example calculation -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #faf6ea;">
+			<div style="max-width: 800px; margin: 0 auto;">
+				<div style="text-align: center; margin-bottom: 48px;">
+					<span style="font: 600 12.5px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.1em; text-transform: uppercase;">
+						EXEMPEL
+					</span>
+					<h2 style="font: 600 40px 'Spectral', serif; color: #242b1e; margin: 14px 0 0;">
+						Beräkningsexempel
+					</h2>
+				</div>
+				
+				<div style="background: #e0d6b0; border: 1px solid #2b3324; padding: 40px;">
+					<h3 style="font: 600 24px 'Spectral', serif; color: #242b1e; margin: 0 0 20px;">
+						Fastighet 17 455 ha · 40% täckningsgrad
+					</h3>
+					<div style="display: grid; gap: 16px; font: 400 15px/1.6 'Karla', sans-serif; color: #3f4636; margin-bottom: 24px;">
+						<div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; border-bottom: 1px solid rgba(43, 51, 36, 0.2); padding-bottom: 12px;">
+							<span>Inventerad yta:</span>
+							<span style="font-weight: 600;">6 982 ha</span>
+						</div>
+						<div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; border-bottom: 1px solid rgba(43, 51, 36, 0.2); padding-bottom: 12px;">
+							<span>Flygdagar (6 982 / 1 500):</span>
+							<span style="font-weight: 600;">4,65 → 5 dagar</span>
+						</div>
+						<div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; border-bottom: 1px solid rgba(43, 51, 36, 0.2); padding-bottom: 12px;">
+							<span>Flygkostnad:</span>
+							<span style="font-weight: 600;">40 000 kr</span>
+						</div>
+						<div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; border-bottom: 1px solid rgba(43, 51, 36, 0.2); padding-bottom: 12px;">
+							<span>Resor/boende (schablon):</span>
+							<span style="font-weight: 600;">+12 000 kr</span>
+						</div>
+						<div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-top: 8px;">
+							<span style="font: 600 18px 'Spectral', serif; color: #242b1e;">Totalt inkl. resor:</span>
+							<span style="font: 600 26px 'Spectral', serif; color: #242b1e;">52 000 kr</span>
+						</div>
+					</div>
+					<div style="font: 400 14px 'Karla', sans-serif; color: #6b6142; display: grid; gap: 8px;">
+						<div>→ Ca 2,29 kr/ha (exkl. resor)</div>
+						<div>→ Ca 2,97 kr/ha (inkl. resor)</div>
+						<div style="margin-top: 8px; font-style: italic;">Exkl. moms · Indikativt</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- CTA -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #2b3324; text-align: center;">
+			<h2 style="font: 600 34px 'Spectral', serif; color: #efe8d8; margin: 0 0 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+				Vill ni ha en skräddarsydd offert?
+			</h2>
+			<p style="font: 400 16px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 580px; margin: 0 auto 32px;">
+				Skicka in fastighetens uppgifter så återkommer vi med exakt pris och förslag på flygfönster.
+			</p>
+			<a href="/kontakt" style="display: inline-block; text-decoration: none; background: #efe8d8; color: #2b3324; padding: 16px 30px; font: 600 14.5px 'Karla', sans-serif;">
+				Begär offert
+			</a>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,105 @@
+---
+interface Props {
+  eyebrow?: string;
+  posterSrc: string;
+  posterAlt: string;
+  videoMp4?: string;
+  videoWebm?: string;
+  ctaHref: string;
+  ctaLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+  trustLine?: string;
+  mediaCaption?: string;
+  breadcrumbCurrent?: string;
+}
+
+const {
+  eyebrow,
+  posterSrc,
+  posterAlt,
+  videoMp4,
+  videoWebm,
+  ctaHref,
+  ctaLabel,
+  secondaryHref,
+  secondaryLabel,
+  trustLine,
+  mediaCaption,
+  breadcrumbCurrent,
+} = Astro.props;
+---
+
+<div data-screen-label="Hero" style="position:relative;min-height:700px;display:flex;flex-direction:column;overflow:hidden;background:#12160f">
+  <div style="position:absolute;inset:0">
+    <img src={posterSrc} alt={posterAlt} style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.68) saturate(0.92)" />
+    {videoMp4 && (
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster={posterSrc}
+        aria-hidden="true"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.68) saturate(0.92)"
+      >
+        <source src={videoMp4} type="video/mp4" />
+        {videoWebm && <source src={videoWebm} type="video/webm" />}
+      </video>
+    )}
+    <div
+      style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,10,6,0.35) 0%, rgba(8,10,6,0.4) 30%, rgba(8,10,6,0.78) 52%, rgba(8,10,6,0.96) 72%, rgba(8,10,6,0.97) 100%)"
+    >
+    </div>
+  </div>
+
+  {breadcrumbCurrent && (
+    <nav aria-label="Brödsmulor" style="position:relative;padding:20px clamp(20px, 6vw, 64px) 0">
+      <span style="font:400 13px 'Karla',sans-serif;color:rgba(239,232,216,0.7)"
+        ><a href="/" style="text-decoration:none;color:rgba(239,232,216,0.85)">Start</a> / {breadcrumbCurrent}</span
+      >
+    </nav>
+  )}
+
+  <div style="position:relative;flex:1;display:flex;align-items:flex-end;padding:40px clamp(20px, 6vw, 64px) 40px">
+    <div style="width:100%;max-width:1360px;margin:0 auto">
+      {eyebrow && (
+        <span style="font:600 12px 'Karla',sans-serif;color:#e0d6b0;letter-spacing:0.1em;text-transform:uppercase">{eyebrow}</span>
+      )}
+      <h1 style={`font:600 clamp(32px, 9vw, 52px)/1.14 'Spectral',serif;color:#faf6ea;max-width:16ch;${eyebrow ? 'margin:20px 0 22px' : 'margin:0 0 22px'}`}>
+        <slot />
+      </h1>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <a
+          href={ctaHref}
+          style="text-decoration:none;background:#efe8d8;color:#2b3324;padding:16px 30px;font:600 14.5px 'Karla',sans-serif"
+          >{ctaLabel}</a
+        >
+        <a href={secondaryHref} style="text-decoration:none;font:400 14px italic 'Spectral',serif;color:#e0d6b0">{secondaryLabel}</a>
+      </div>
+      {trustLine && (
+        <div style="display:flex;align-items:center;gap:10px;padding-top:16px;margin-top:24px;border-top:1px solid rgba(239,232,216,0.22);max-width:640px">
+          <span style="width:6px;height:6px;background:#c9973f;border-radius:50%;flex:none"></span>
+          <p style="font:400 13.5px 'Karla',sans-serif;color:#c9c0a3;margin:0">{trustLine}</p>
+        </div>
+      )}
+    </div>
+    {mediaCaption && (
+      <p
+        style="position:absolute;right:clamp(20px, 6vw, 64px);bottom:16px;font:400 11px 'Karla',sans-serif;color:rgba(239,232,216,0.4);margin:0;white-space:nowrap"
+      >
+        {mediaCaption}
+      </p>
+    )}
+  </div>
+</div>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video {
+      display: none;
+    }
+  }
+</style>

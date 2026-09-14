@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Case & Referens — Exempel på Älginventering | Älginventering.se';
+const description = 'Se exempel på genomförda älginventeringar med termisk drönare. Konkreta resultat och erfarenheter från jaktlag, ÄSO och markägare.';
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-emerald-800 text-white py-16">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Case & Referens</h1>
+      <p class="text-xl text-emerald-50 max-w-3xl">
+        Konkreta exempel på genomförda inventeringar och resultat
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="bg-emerald-50 border-l-4 border-emerald-600 p-6 mb-12">
+          <p class="text-emerald-900">
+            <strong>Sekretess:</strong> Av hänsyn till kunder och viltförvaltning publicerar vi inte exakta platser 
+            eller kundnamn utan godkännande. Kontakta oss för referenser och mer detaljerade exempel.
+          </p>
+        </div>
+
+        <!-- Case 1 -->
+        <div class="bg-white border border-stone-200 rounded-lg p-8 mb-8">
+          <div class="flex items-start mb-4">
+            <div class="bg-emerald-100 rounded-full p-2 mr-4">
+              <svg class="w-6 h-6 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-stone-900 mb-2">Södra Sverige — 17 500 ha ÄSO-samordnad inventering</h2>
+              <div class="text-sm text-stone-600 mb-4">Jaktlag & ÄSO · Vinter 2026</div>
+            </div>
+          </div>
+          
+          <h3 class="font-semibold text-stone-900 mb-2">Bakgrund</h3>
+          <p class="text-stone-700 mb-4">
+            Flera jaktlag inom en ÄSO rapporterade varierande älgobs mellan 2–6 älgar/1000 ha. ÄFO ifrågasatte data 
+            och föreslår lägre avskjutning än ÄSO önskade. Behov av objektiv bekräftelse.
+          </p>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Genomförande</h3>
+          <ul class="list-disc list-inside space-y-2 text-stone-700 mb-4">
+            <li>Inventerad areal: ~7 000 ha provytor (40 % täckning)</li>
+            <li>5 flygdagar i januari, kallt och molnigt</li>
+            <li>Termisk + optisk, manuell artkontroll</li>
+          </ul>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Resultat</h3>
+          <ul class="list-disc list-inside space-y-2 text-stone-700 mb-4">
+            <li>Täthetsskattning: 2,8 älgar/km² ± 0,5</li>
+            <li>47 älgobservationer med bildbevis</li>
+            <li>Karta levererad till ÄFO tillsammans med metodbeskrivning</li>
+          </ul>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Effekt</h3>
+          <p class="text-stone-700">
+            ÄFO godkände rapporten som komplement till älgobs. Avskjutningskvoten justerades uppåt baserat på objektiv data. 
+            Jaktlagen fick förtroende för sina uppskattningar.
+          </p>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="bg-white border border-stone-200 rounded-lg p-8 mb-8">
+          <div class="flex items-start mb-4">
+            <div class="bg-emerald-100 rounded-full p-2 mr-4">
+              <svg class="w-6 h-6 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-stone-900 mb-2">Skogsbolag — 5 000 ha med stora betningsskador</h2>
+              <div class="text-sm text-stone-600 mb-4">Markägare · Vinter 2026</div>
+            </div>
+          </div>
+          
+          <h3 class="font-semibold text-stone-900 mb-2">Bakgrund</h3>
+          <p class="text-stone-700 mb-4">
+            Skogsbolag med 5 000 ha ungskog rapporterade stora betningsskador. Jaktlaget hävdade låg älgtäthet (~2 älgar/km²) 
+            men skogsägaren såg fler. Konflikt eskalerade.
+          </p>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Genomförande</h3>
+          <ul class="list-disc list-inside space-y-2 text-stone-700 mb-4">
+            <li>Inventerad areal: ~1 500 ha provytor (30 % täckning)</li>
+            <li>1 flygdag i februari, optimala förhållanden</li>
+            <li>GPS-loggning och bildbevis för varje observation</li>
+          </ul>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Resultat</h3>
+          <ul class="list-disc list-inside space-y-2 text-stone-700 mb-4">
+            <li>Täthetsskattning: 4,1 älgar/km² ± 0,7</li>
+            <li>21 älgobservationer med högupplösta bilder</li>
+            <li>Kartunderlag visade koncentration nära ungskog</li>
+          </ul>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Effekt</h3>
+          <p class="text-stone-700">
+            Skogsägaren presenterade data för jaktlag och ÄFO. Avskjutningen ökades med 20 %. Betningsskador minskade 
+            följande år. Relationerna förbättrades tack vare objektiv data.
+          </p>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="bg-white border border-stone-200 rounded-lg p-8 mb-8">
+          <div class="flex items-start mb-4">
+            <div class="bg-emerald-100 rounded-full p-2 mr-4">
+              <svg class="w-6 h-6 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-stone-900 mb-2">Mellersta Sverige — 8 200 ha jaktlagsrevir</h2>
+              <div class="text-sm text-stone-600 mb-4">Jaktlag · Vinter 2026</div>
+            </div>
+          </div>
+          
+          <h3 class="font-semibold text-stone-900 mb-2">Bakgrund</h3>
+          <p class="text-stone-700 mb-4">
+            Jaktlag ville verifiera sina älgobs inför ÄFO-samråd. Osäker på om älgobsen var representativa över hela reviret.
+          </p>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Genomförande</h3>
+          <ul class="list-disc list-inside space-y-2 text-stone-700 mb-4">
+            <li>Inventerad areal: ~2 500 ha provytor (30 % täckning)</li>
+            <li>2 flygdagar i december, bra väder</li>
+            <li>Slumpmässiga provytor över hela reviret</li>
+          </ul>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Resultat</h3>
+          <ul class="list-disc list-inside space-y-2 text-stone-700 mb-4">
+            <li>Täthetsskattning: 1,9 älgar/km² ± 0,4</li>
+            <li>32 observationer med bildbevis</li>
+            <li>Stämde väl med jaktlagets älgobs</li>
+          </ul>
+
+          <h3 class="font-semibold text-stone-900 mb-2">Effekt</h3>
+          <p class="text-stone-700">
+            Jaktlaget kunde presentera både älgobs och drönardata för ÄFO. Förtroende för deras siffror stärktes. 
+            Avskjutningsplan godkändes utan invändningar.
+          </p>
+        </div>
+
+        <!-- More Info -->
+        <div class="mt-12 p-6 bg-stone-100 rounded-lg">
+          <h3 class="text-xl font-semibold text-stone-900 mb-4">Intresserad av referenser?</h3>
+          <p class="text-stone-700 mb-6">
+            Vi kan sätta er i kontakt med tidigare kunder som är villiga att dela sina erfarenheter. 
+            Kontakta oss för referenser och mer detaljerade case-beskrivningar.
+          </p>
+          <a href="/kontakt" class="btn-primary inline-block">
+            Kontakta oss för referenser
+          </a>
+        </div>
+
+        <!-- Related Links -->
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <a href="/metodik" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-stone-900 mb-2">Metodik</h3>
+            <p class="text-sm text-stone-600">Se hur vi genomför inventeringen steg för steg.</p>
+          </a>
+          <a href="/kostnad" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-stone-900 mb-2">Kostnad</h3>
+            <p class="text-sm text-stone-600">Beräkna vad det skulle kosta för ert område.</p>
+          </a>
+          <a href="/kontakt" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-stone-900 mb-2">Boka samtal</h3>
+            <p class="text-sm text-stone-600">Diskutera ert specifika fall med oss.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

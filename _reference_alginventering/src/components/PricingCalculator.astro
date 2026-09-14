@@ -1,0 +1,285 @@
+---
+const species = [
+  { key: 'alg', label: 'Älg' },
+  { key: 'vildsvin', label: 'Vildsvin' },
+  { key: 'radjur', label: 'Rådjur' },
+  { key: 'kronvilt', label: 'Kronvilt' },
+  { key: 'dovvilt', label: 'Dovvilt' },
+  { key: 'samtligt', label: 'Samtligt vilt' },
+];
+---
+
+<div id="pris" data-screen-label="Priser" style="padding:110px clamp(20px, 6vw, 64px);background:#2b3324;scroll-margin-top:90px">
+  <div style="text-align:center;margin-bottom:52px">
+    <span style="font:600 12.5px 'Karla',sans-serif;color:#a39a7c;letter-spacing:0.1em;text-transform:uppercase"
+      >Pris</span
+    >
+    <h2 style="font:600 40px 'Spectral',serif;color:#efe8d8;margin:14px 0 14px">Räkna ut ett ungefärligt pris</h2>
+    <p style="font:400 15.5px/1.6 'Karla',sans-serif;color:#c9c0a3;max-width:620px;margin:0 auto">
+      8 000 kr per flygdag. Vi flyger ca 2 000 hektar per dag, vilket ger en täckningsgrad på 40–60 % och täcker då
+      ca 4 000–5 000 hektar totalyta per dag.
+    </p>
+  </div>
+  <div style="max-width:720px;margin:0 auto;background:rgba(239,232,216,0.05);border:1px solid rgba(239,232,216,0.2);padding:48px">
+    <div style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline">
+      <span style="font:600 13px 'Karla',sans-serif;color:#d8d2bc;letter-spacing:0.04em;text-transform:uppercase"
+        >Fastighetens areal</span
+      >
+      <span id="calc-area-label" style="font:600 22px 'Spectral',serif;color:#efe8d8">15 000 ha</span>
+    </div>
+    <input
+      id="calc-area"
+      type="range"
+      min="500"
+      max="100000"
+      step="500"
+      value="15000"
+      style="width:100%;accent-color:#d9b877;margin:10px 0 32px"
+    />
+
+    <div style="margin-bottom:14px">
+      <span style="font:600 13px 'Karla',sans-serif;color:#d8d2bc;letter-spacing:0.04em;text-transform:uppercase"
+        >Vad ska inventeras?</span
+      >
+    </div>
+    <div id="calc-species" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px">
+      {species.map((s, i) => (
+        <button
+          type="button"
+          data-species={s.key}
+          class={i === 0 ? 'calc-species-btn is-active' : 'calc-species-btn'}
+          style="font:600 13.5px 'Karla',sans-serif;padding:12px 20px;border:1.5px solid #d9b877;cursor:pointer;letter-spacing:0.02em"
+          >{s.label}</button
+        >
+      ))}
+    </div>
+
+    <div
+      style="border-top:1px solid rgba(239,232,216,0.2);padding-top:32px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px"
+    >
+      <div id="price-result" style="position:relative;min-width:220px;min-height:118px">
+        <div style="font:600 12px 'Karla',sans-serif;color:#a39a7c;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">
+          Uppskattat pris
+        </div>
+        <div id="calc-price" style="font:600 44px 'Spectral',serif;color:#efe8d8">120 000 kr</div>
+        <div id="calc-detail" style="font:400 14px 'Karla',sans-serif;color:#c9c0a3;margin-top:6px">
+          Ca 3 flygdagar för älginventering
+        </div>
+
+        <div
+          id="unlock-overlay"
+          style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;background:#faf6ea;border:1px solid #d9b877;padding:14px"
+        >
+          <p style="font:400 12.5px/1.4 'Karla',sans-serif;color:#5a5138;margin:0;max-width:210px">
+            Fyll i dina uppgifter för att se priset.
+          </p>
+          <button
+            type="button"
+            id="unlock-btn"
+            style="text-decoration:none;background:#d9b877;color:#2b3324;padding:10px 20px;font:600 13px 'Karla',sans-serif;border:none;cursor:pointer;white-space:nowrap"
+            >Visa pris</button
+          >
+        </div>
+      </div>
+      <a
+        href="#kontakt"
+        style="text-decoration:none;background:#d9b877;color:#2b3324;padding:16px 28px;font:600 14.5px 'Karla',sans-serif;white-space:nowrap"
+        >Begär offert</a
+      >
+    </div>
+    <p style="font:400 12.5px/1.5 'Karla',sans-serif;color:#8f8768;margin:24px 0 0">
+      Uppskattning baserad på schablon — exakt pris och tidsplan bekräftas alltid i offert. Resekostnader och
+      eventuella andra omkostnader kan tillkomma.
+    </p>
+  </div>
+</div>
+
+<!-- LEAD GATE MODAL -->
+<div
+  id="lead-modal-backdrop"
+  role="presentation"
+  style="display:none;position:fixed;inset:0;background:rgba(15,19,12,0.6);z-index:100;align-items:center;justify-content:center;padding:20px"
+>
+  <div
+    id="lead-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lead-modal-title"
+    style="background:#faf6ea;border:1px solid #2b3324;max-width:420px;width:100%;padding:40px;position:relative"
+  >
+    <button
+      type="button"
+      id="lead-modal-close"
+      aria-label="Stäng"
+      style="position:absolute;top:14px;right:14px;background:none;border:none;font:400 22px/1 'Karla',sans-serif;color:#6b6142;cursor:pointer;padding:6px"
+      >&times;</button
+    >
+    <span style="font:600 11px 'Karla',sans-serif;color:#6b6142;letter-spacing:0.08em;text-transform:uppercase">Ert pris är klart</span>
+    <h3 id="lead-modal-title" style="font:600 24px 'Spectral',serif;color:#242b1e;margin:10px 0 8px">Se priset direkt</h3>
+    <p style="font:400 14px/1.6 'Karla',sans-serif;color:#3f4636;margin:0 0 24px">
+      Lämna era uppgifter så visas det uppskattade priset direkt på skärmen. Vi hör bara av oss om ni vill ha en
+      riktig offert.
+    </p>
+    <form id="lead-form" novalidate>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <label for="lead-namn" style="font:600 12px 'Karla',sans-serif;color:#6b6142">Namn</label>
+        <input
+          id="lead-namn"
+          name="namn"
+          required
+          style="font:400 15px 'Karla',sans-serif;background:#efe8d8;border:1px solid #2b3324;padding:14px 16px;color:#242b1e"
+        />
+        <label for="lead-epost" style="font:600 12px 'Karla',sans-serif;color:#6b6142">E-post</label>
+        <input
+          id="lead-epost"
+          name="epost"
+          type="email"
+          required
+          style="font:400 15px 'Karla',sans-serif;background:#efe8d8;border:1px solid #2b3324;padding:14px 16px;color:#242b1e"
+        />
+        <label for="lead-telefon" style="font:600 12px 'Karla',sans-serif;color:#6b6142">Telefon (valfritt)</label>
+        <input
+          id="lead-telefon"
+          name="telefon"
+          type="tel"
+          style="font:400 15px 'Karla',sans-serif;background:#efe8d8;border:1px solid #2b3324;padding:14px 16px;color:#242b1e"
+        />
+        <button
+          type="submit"
+          style="margin-top:10px;background:#2b3324;color:#efe8d8;padding:15px;text-align:center;font:600 14.5px 'Karla',sans-serif;border:none;cursor:pointer"
+          >Visa mitt pris</button
+        >
+        <p id="lead-form-error" style="display:none;font:400 12.5px 'Karla',sans-serif;color:#8c2f22;margin:2px 0 0">
+          Fyll i namn och en giltig e-postadress.
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .calc-species-btn {
+    background: transparent;
+    color: #efe8d8;
+  }
+  .calc-species-btn.is-active {
+    background: #d9b877;
+    color: #2b3324;
+  }
+</style>
+
+<script>
+  const HA_PER_DAY = 5000;
+  const PRICE_PER_DAY = 8000;
+  const LEAD_STORAGE_KEY = 'alginventering_lead';
+  const SPECIES_LABELS: Record<string, string> = {
+    alg: 'älginventering',
+    vildsvin: 'vildsvinsinventering',
+    radjur: 'rådjursinventering',
+    kronvilt: 'kronviltsinventering',
+    dovvilt: 'dovviltsinventering',
+    samtligt: 'inventering av samtligt vilt',
+  };
+
+  const areaInput = document.getElementById('calc-area') as HTMLInputElement;
+  const areaLabel = document.getElementById('calc-area-label') as HTMLElement;
+  const priceEl = document.getElementById('calc-price') as HTMLElement;
+  const detailEl = document.getElementById('calc-detail') as HTMLElement;
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.calc-species-btn'));
+  const priceResult = document.getElementById('price-result') as HTMLElement;
+  const unlockBtn = document.getElementById('unlock-btn') as HTMLButtonElement;
+  const modalBackdrop = document.getElementById('lead-modal-backdrop') as HTMLElement;
+  const modalClose = document.getElementById('lead-modal-close') as HTMLButtonElement;
+  const leadForm = document.getElementById('lead-form') as HTMLFormElement;
+  const leadError = document.getElementById('lead-form-error') as HTMLElement;
+
+  let species = 'alg';
+  let currentPrice = 0;
+  let currentDays = 0;
+
+  function render() {
+    const area = Number(areaInput.value);
+    const days = Math.max(1, Math.ceil(area / HA_PER_DAY));
+    const price = days * PRICE_PER_DAY;
+    currentPrice = price;
+    currentDays = days;
+
+    areaLabel.textContent = `${area.toLocaleString('sv-SE')} ha`;
+    priceEl.textContent = `${price.toLocaleString('sv-SE')} kr`;
+    detailEl.textContent = `Ca ${days} ${days === 1 ? 'flygdag' : 'flygdagar'} för ${SPECIES_LABELS[species]}`;
+
+    buttons.forEach((btn) => {
+      btn.classList.toggle('is-active', btn.dataset.species === species);
+    });
+  }
+
+  areaInput.addEventListener('input', render);
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      species = btn.dataset.species ?? 'alg';
+      render();
+    });
+  });
+
+  render();
+
+  function unlockPrice() {
+    priceResult.classList.add('is-unlocked');
+    const overlay = document.getElementById('unlock-overlay');
+    if (overlay) overlay.style.display = 'none';
+  }
+
+  function openModal() {
+    modalBackdrop.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    (document.getElementById('lead-namn') as HTMLInputElement)?.focus();
+  }
+
+  function closeModal() {
+    modalBackdrop.style.display = 'none';
+    document.body.style.overflow = '';
+    unlockBtn.focus();
+  }
+
+  if (localStorage.getItem(LEAD_STORAGE_KEY)) {
+    unlockPrice();
+  }
+
+  unlockBtn.addEventListener('click', openModal);
+  modalClose.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', (e) => {
+    if (e.target === modalBackdrop) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalBackdrop.style.display === 'flex') closeModal();
+  });
+
+  leadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const namn = (document.getElementById('lead-namn') as HTMLInputElement).value.trim();
+    const epost = (document.getElementById('lead-epost') as HTMLInputElement).value.trim();
+    const telefon = (document.getElementById('lead-telefon') as HTMLInputElement).value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost);
+
+    if (!namn || !emailOk) {
+      leadError.style.display = 'block';
+      return;
+    }
+    leadError.style.display = 'none';
+
+    const lead = {
+      namn,
+      epost,
+      telefon,
+      areal: Number(areaInput.value),
+      art: species,
+      uppskattatPris: currentPrice,
+      flygdagar: currentDays,
+      tidpunkt: new Date().toISOString(),
+    };
+    localStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(lead));
+
+    unlockPrice();
+    closeModal();
+  });
+</script>

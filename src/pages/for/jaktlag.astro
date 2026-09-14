@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Älginventering för Jaktlag — Komplement till Älgobs | Älginventering.se';
+const description = 'Drönare kompletterar älgobs med objektiv täthetsskattning. Fatta beslut om avskjutning på säkrare grund med bildbevis och konfidensintervall.';
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-emerald-800 text-white py-16">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">För jaktlag</h1>
+      <p class="text-xl text-emerald-50 max-w-3xl">
+        Komplettera älgobs med objektiv data. Fatta beslut om avskjutning på säkrare grund.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Säkrare beslutsunderlag för avskjutningsplan</h2>
+        <p class="text-lg text-stone-700 mb-8">
+          Som jaktlag bygger ni er avskjutningsplan på älgobs — men när älgobsen är osäker eller ojämn 
+          blir det svårt att veta om ni skjuter rätt mängd. Drönare ger er en objektiv täthetsskattning 
+          med konfidensintervall som komplement.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-emerald-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-emerald-900 mb-3">Utmaningen</h3>
+            <ul class="space-y-2 text-stone-700">
+              <li>• Älgobs varierar mellan jägare och år</li>
+              <li>• Svårt att veta om data är representativ</li>
+              <li>• Osäkerhet vid ÄFO-samråd</li>
+              <li>• Risk för över- eller underavskjutning</li>
+            </ul>
+          </div>
+
+          <div class="bg-emerald-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-emerald-900 mb-3">Lösningen</h3>
+            <ul class="space-y-2 text-stone-700">
+              <li>• Objektiv täthetsskattning över hela reviret</li>
+              <li>• Konfidensintervall — inte bara en siffra</li>
+              <li>• Bildbevis för varje observation</li>
+              <li>• Kartunderlag som visar älgens utbredning</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-bold text-stone-900 mb-6">Vad ni får</h2>
+        <div class="space-y-6 mb-12">
+          <div class="border-l-4 border-emerald-600 pl-6">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Täthetsskattning med konfidensintervall</h3>
+            <p class="text-stone-700">
+              T.ex. 2,3 älgar/km² ± 0,4 — ett intervall som visar osäkerheten, inte bara en punkt skattning. 
+              Grund för diskussion med ÄFO om vilken avskjutning som är rimlig.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-emerald-600 pl-6">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Karta över inventerade provytor</h3>
+            <p class="text-stone-700">
+              Se exakt var vi har flugit, var älgen observerats, och hur den är fördelad över reviret. 
+              Användbart för att förstå älgens rörelsemönster och var jakten bör fokusera.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-emerald-600 pl-6">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Bildbevis med GPS och tidsstämpel</h3>
+            <p class="text-stone-700">
+              Varje älg som räknats har en bild, GPS-koordinat och tid. Transparent, verifierbart, 
+              övertygande vid samtal med ÄFO eller andra intressenter.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-emerald-600 pl-6">
+            <h3 class="text-xl font-semibold text-stone-900 mb-2">Komplement till älgobs och spillning</h3>
+            <p class="text-stone-700">
+              Drönare ersätter inte älgobs — det kompletterar. Fortsätt samla älgobs för kön/kalv, 
+              använd drönare för objektiv täthet och bildbevis.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-stone-100 p-8 rounded-lg mb-12">
+          <h2 class="text-2xl font-bold text-stone-900 mb-4">Praktiskt exempel</h2>
+          <p class="text-stone-700 mb-4">
+            <strong>Situation:</strong> Jaktlaget Gränsskog har 12 000 ha revirarealoch rapporterar varierande älgobs: 
+            3–7 per 1000 ha beroende på vem som räknar. ÄFO ifrågasätter data och föreslår lägre avskjutning än laget vill ha.
+          </p>
+          <p class="text-stone-700 mb-4">
+            <strong>Åtgärd:</strong> Drönarkompaniet flyger 30 % av arealen (3 600 ha provytor) med termisk sensor. 
+            Resultatet: 2,8 älgar/km² ± 0,5 med 47 observationer och bildbevis.
+          </p>
+          <p class="text-stone-700">
+            <strong>Resultat:</strong> ÄFO godkänner rapporten som komplement till älgobs. Avskjutningskvoten höjs 
+            baserat på objektiv data. Jaktlaget får förtroende för sina siffror.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <a href="/kostnad" class="btn-primary mb-4 inline-block mr-4">
+            Beräkna kostnad för ert revir
+          </a>
+          <a href="/kontakt" class="btn-secondary mb-4 inline-block">
+            Boka samtal
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

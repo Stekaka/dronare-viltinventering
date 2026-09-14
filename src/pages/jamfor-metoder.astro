@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Jämför Inventeringsmetoder | Drönare vs Spillning vs Älgobs';
+const description = 'Jämförelse av älginventeringsmetoder: drönarbaserad inventering, spillningsräkning och jägarobservationer. Fördelar, begränsningar och när varje metod passar bäst.';
+---
+
+<Layout title={title} description={description}>
+	<div style="background: #faf6ea;">
+		<!-- Hero -->
+		<div style="position: relative; padding: 80px clamp(20px, 6vw, 64px) 60px; background: #2b3324;">
+			<div style="max-width: 900px; margin: 0 auto; text-align: center;">
+				<span style="font: 600 12px 'Karla', sans-serif; color: #e0d6b0; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 20px;">
+					JÄMFÖRELSE
+				</span>
+				<h1 style="font: 600 clamp(32px, 8vw, 52px) / 1.14 'Spectral', serif; color: #faf6ea; max-width: 22ch; margin: 0 auto 22px;">
+					Drönare · Spillning · Älgobs
+				</h1>
+				<p style="font: 400 17px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 640px; margin: 0 auto;">
+					Varje inventeringsmetod har sina styrkor och begränsningar. Vi rekommenderar att använda 
+					flera metoder som komplement till varandra.
+				</p>
+			</div>
+		</div>
+
+		<!-- Key message -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #efe8d8; border-bottom: 1px solid rgba(43, 51, 36, 0.2);">
+			<div style="max-width: 900px; margin: 0 auto; text-align: center;">
+				<p style="font: 400 18px/1.7 'Karla', sans-serif; color: #242b1e; max-width: 800px; margin: 0 auto;">
+					<strong>Ingen metod ger en exakt siffra.</strong> Spillningsräkning och jägarobservationer bygger 
+					på stickprov som varierar med vem som räknar. Termisk drönare täcker större ytor men påverkas av 
+					väder och djurbeteende. <strong>Bästa underlaget får ni genom att kombinera flera metoder.</strong>
+				</p>
+			</div>
+		</div>
+
+		<!-- Method comparison cards -->
+		<div style="padding: 100px clamp(20px, 6vw, 64px); background: #faf6ea;">
+			<div style="max-width: 1200px; margin: 0 auto;">
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+					<!-- Drönare -->
+					<div style="border: 1px solid #2b3324; padding: 40px; background: #efe8d8;">
+						<span style="font: 600 11px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.06em; text-transform: uppercase;">
+							METOD 01
+						</span>
+						<h2 style="font: 600 32px 'Spectral', serif; color: #242b1e; margin: 12px 0 16px;">
+							Termisk drönare
+						</h2>
+						<p style="font: 400 15px/1.65 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px;">
+							Värmekamera fångar kroppsvärme genom vegetation. Slumpmässiga provytor täcker 30-40% av fastigheten. 
+							Täthetsskattning med konfidensintervall.
+						</p>
+						
+						<h3 style="font: 600 18px 'Karla', sans-serif; color: #242b1e; margin: 0 0 12px;">Styrkor</h3>
+						<ul style="font: 400 14px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px; padding-left: 20px;">
+							<li>~100% detektion i optimal väder (SLU GPS-validering)</li>
+							<li>Ser genom vegetation med värmekamera</li>
+							<li>Täcker stora ytor snabbt (1500 ha/dag inventerad yta)</li>
+							<li>GPS + bildbevis per observation</li>
+							<li>Oberoende av jägarerfarenhet</li>
+						</ul>
+						
+						<h3 style="font: 600 18px 'Karla', sans-serif; color: #242b1e; margin: 0 0 12px;">Begränsningar</h3>
+						<ul style="font: 400 14px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px; padding-left: 20px;">
+							<li>Kräver kallt molnigt vinterväder</li>
+							<li>Vind, regn och stark sol minskar kvalitet</li>
+							<li>Liggande älg kan missas</li>
+							<li>Provytebaserad (intervall, inte exakt siffra)</li>
+							<li>Initial kostnad 8 000 kr per flygdag</li>
+						</ul>
+						
+						<div style="background: rgba(43, 51, 36, 0.08); padding: 16px; margin-top: 24px;">
+							<p style="font: 600 13px 'Karla', sans-serif; color: #242b1e; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em;">
+								Passar bäst för
+							</p>
+							<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #3f4636; margin: 0;">
+								Stora fastigheter (>500 ha), täta granskogar, behov av snabb täckning, objektiv metod utan jägarbias
+							</p>
+						</div>
+					</div>
+
+					<!-- Spillning -->
+					<div style="border: 1px solid #2b3324; padding: 40px; background: #efe8d8;">
+						<span style="font: 600 11px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.06em; text-transform: uppercase;">
+							METOD 02
+						</span>
+						<h2 style="font: 600 32px 'Spectral', serif; color: #242b1e; margin: 12px 0 16px;">
+							Spillningsräkning
+						</h2>
+						<p style="font: 400 15px/1.65 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px;">
+							Etablerad metod där spillningshögar räknas längs transekter. Omräknas till älgtäthet via formler 
+							kalibrerade för svenska förhållanden.
+						</p>
+						
+						<h3 style="font: 600 18px 'Karla', sans-serif; color: #242b1e; margin: 0 0 12px;">Styrkor</h3>
+						<ul style="font: 400 14px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px; padding-left: 20px;">
+							<li>Väletablerad officiell metod</li>
+							<li>Fungerar oavsett väder och årstid</li>
+							<li>Kan utföras av jaktlag själva</li>
+							<li>Lägre direkta kostnader</li>
+							<li>Ingen teknisk utrustning krävs</li>
+						</ul>
+						
+						<h3 style="font: 600 18px 'Karla', sans-serif; color: #242b1e; margin: 0 0 12px;">Begränsningar</h3>
+						<ul style="font: 400 14px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px; padding-left: 20px;">
+							<li>Tidskrävande för stora områden</li>
+							<li>Varierar med vem som räknar</li>
+							<li>Omräkningsformler har osäkerhet</li>
+							<li>Kräver god kunskap om metoden</li>
+							<li>Endast täthet, inte kön/kalv</li>
+						</ul>
+						
+						<div style="background: rgba(43, 51, 36, 0.08); padding: 16px; margin-top: 24px;">
+							<p style="font: 600 13px 'Karla', sans-serif; color: #242b1e; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em;">
+								Passar bäst för
+							</p>
+							<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #3f4636; margin: 0;">
+								Mindre fastigheter, jaktlag med erfarenhet, komplement till andra metoder, begränsad budget
+							</p>
+						</div>
+					</div>
+
+					<!-- Älgobs -->
+					<div style="border: 1px solid #2b3324; padding: 40px; background: #efe8d8;">
+						<span style="font: 600 11px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.06em; text-transform: uppercase;">
+							METOD 03
+						</span>
+						<h2 style="font: 600 32px 'Spectral', serif; color: #242b1e; margin: 12px 0 16px;">
+							Jägarobservationer
+						</h2>
+						<p style="font: 400 15px/1.65 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px;">
+							Älgobservationer (älgobs) samlas in av jägare under hela året. Registreras i databas och analyseras 
+							för att ge underlag för älgförvaltning.
+						</p>
+						
+						<h3 style="font: 600 18px 'Karla', sans-serif; color: #242b1e; margin: 0 0 12px;">Styrkor</h3>
+						<ul style="font: 400 14px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px; padding-left: 20px;">
+							<li>Kontinuerlig datainsamling året runt</li>
+							<li>Kan registrera kön och kalv</li>
+							<li>Ingen extra kostnad (integrerat i jakt)</li>
+							<li>Bygger lokal kunskap</li>
+							<li>Kan ge trender över tid</li>
+						</ul>
+						
+						<h3 style="font: 600 18px 'Karla', sans-serif; color: #242b1e; margin: 0 0 12px;">Begränsningar</h3>
+						<ul style="font: 400 14px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 24px; padding-left: 20px;">
+							<li>Starkt beroende av jägaraktivitet</li>
+							<li>Risk för dubbelräkning</li>
+							<li>Varierar med synbarhet och säsong</li>
+							<li>Kräver disciplinerad rapportering</li>
+							<li>Svårt att omvandla till täthet</li>
+						</ul>
+						
+						<div style="background: rgba(43, 51, 36, 0.08); padding: 16px; margin-top: 24px;">
+							<p style="font: 600 13px 'Karla', sans-serif; color: #242b1e; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em;">
+								Passar bäst för
+							</p>
+							<p style="font: 400 14px/1.6 'Karla', sans-serif; color: #3f4636; margin: 0;">
+								Aktiva jaktlag, komplement till inventeringsmetoder, långsiktig trendövervakning, kön/kalv-data
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Recommendation -->
+		<div style="padding: 100px clamp(20px, 6vw, 64px); background: #2b3324;">
+			<div style="max-width: 900px; margin: 0 auto; text-align: center;">
+				<span style="font: 600 12.5px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 16px;">
+					VÅR REKOMMENDATION
+				</span>
+				<h2 style="font: 600 40px 'Spectral', serif; color: #efe8d8; margin: 0 0 24px;">
+					Kombinera flera metoder
+				</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #c9c0a3; max-width: 800px; margin: 0 auto 32px;">
+					Termisk drönare ger snabb täckning och objektiv detektion — men <strong>ingen metod är perfekt</strong>. 
+					Använd drönarinventering som <strong>komplement till spillning och älgobs</strong>, inte som ensam källa. 
+					Tre oberoende metoder ger bättre beslutsunderlag än en enskild metod.
+				</p>
+				<div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(239, 232, 216, 0.1); border: 1px solid rgba(239, 232, 216, 0.2); padding: 20px 32px;">
+					<span style="width: 6px; height: 6px; background: #c9973f; border-radius: 50%; flex: none;"></span>
+					<p style="font: 400 15px 'Karla', sans-serif; color: #d8d2bc; margin: 0;">
+						Drönare + Spillning + Älgobs = Starkare underlag
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- CTA -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #faf6ea; text-align: center;">
+			<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 0 0 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+				Vill ni komplettera era metoder?
+			</h2>
+			<p style="font: 400 16px/1.6 'Karla', sans-serif; color: #3f4636; max-width: 580px; margin: 0 auto 32px;">
+				Vi hjälper er att designa en inventeringsstrategi som passar era behov och er budget.
+			</p>
+			<a href="/kontakt" style="display: inline-block; text-decoration: none; background: #2b3324; color: #efe8d8; padding: 16px 30px; font: 600 14.5px 'Karla', sans-serif; border: 1.5px solid #2b3324;">
+				Kontakta oss
+			</a>
+		</div>
+	</div>
+</Layout>

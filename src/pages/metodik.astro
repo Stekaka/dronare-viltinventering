@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Metodik — Provyteinventering av Älg med Termisk Drönare | Älginventering.se';
+const description = 'Detaljerad beskrivning av vår metodik för älginventering med termisk drönare. Slumpmässiga provytor, termisk detektion, optisk verifiering och manuell artkontroll enligt vetenskaplig standard.';
+---
+
+<Layout title={title} description={description}>
+	<div style="background: #faf6ea;">
+		<!-- Hero -->
+		<div style="position: relative; padding: 80px clamp(20px, 6vw, 64px) 60px; background: #2b3324;">
+			<div style="max-width: 900px; margin: 0 auto; text-align: center;">
+				<span style="font: 600 12px 'Karla', sans-serif; color: #e0d6b0; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 20px;">
+					METODIK & VETENSKAP
+				</span>
+				<h1 style="font: 600 clamp(32px, 8vw, 52px) / 1.14 'Spectral', serif; color: #faf6ea; max-width: 22ch; margin: 0 auto 22px;">
+					Provyteinventering med termisk drönare
+				</h1>
+				<p style="font: 400 17px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 640px; margin: 0 auto;">
+					Vetenskaplig metodik i linje med SLU:s utvärdering 2026. Random plots för täthetsskattning 
+					med konfidensintervall.
+				</p>
+			</div>
+		</div>
+
+		<!-- SLU callout -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #efe8d8; border-bottom: 1px solid rgba(43, 51, 36, 0.2);">
+			<div style="max-width: 900px; margin: 0 auto; text-align: center;">
+				<div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+					<span style="width: 6px; height: 6px; background: #c9973f; border-radius: 50%;"></span>
+					<span style="font: 600 13px 'Karla', sans-serif; color: #6b6142; letter-spacing: 0.1em; text-transform: uppercase;">
+						I LINJE MED SLU 2026
+					</span>
+				</div>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #242b1e; max-width: 800px; margin: 0 auto;">
+					Vår metodik bygger på samma kunskap som SLU:s utvärdering av drönarbaserad älginventering 
+					(Hofmeester m.fl., 2026). Vi levererar provyteinventering som <strong>komplement till älgobs 
+					och spillningsinventering</strong> — inte som ersättning för officiella metoder.
+				</p>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<div style="padding: 100px clamp(20px, 6vw, 64px); background: #faf6ea;">
+			<div style="max-width: 900px; margin: 0 auto;">
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 0 0 20px;">Översikt</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px;">
+					Älginventering med termisk drönare bygger på provyteinventering — samma grundprincip som SLU:s 
+					vetenskapliga metoder. Vi inventerar slumpmässigt utvalda provytor (random plots) och beräknar 
+					täthetsskattning med konfidensintervall för hela området.
+				</p>
+
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 48px 0 20px;">01 Brief och planering</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+					Innan första flygpass går vi igenom ert område tillsammans:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>Total areal</strong> som ska inventeras</li>
+					<li><strong>Geografisk plats</strong> och terrängens karaktär</li>
+					<li><strong>Målarter</strong> — älg, annat klövvilt, eller båda</li>
+					<li><strong>Täckningsgrad</strong> — vanligen 30–40 % av total areal, beroende på er målsättning</li>
+					<li><strong>Tidpunkt</strong> — idealförhållanden är kallt, molnigt, vinterväder med minimal sol och löv</li>
+				</ul>
+
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 48px 0 20px;">02 Provytor och flyglinjer</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+					Vi lägger ut slumpmässiga provytor (random plots) över fastigheten — typiskt 30-40% täckningsgrad:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>Random plots:</strong> Provytor placeras slumpmässigt för att undvika bias</li>
+					<li><strong>Täckningsgrad:</strong> Standard 30%, rekommenderat 40% vid kön/kalv-inventering</li>
+					<li><strong>Flyglinjer:</strong> Planeras för att täcka provytorna systematiskt</li>
+					<li><strong>Höjd & hastighet:</strong> Optimeras för termisk resolution och täckning</li>
+				</ul>
+
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 48px 0 20px;">03 Termisk detektion</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+					Termisk kamera (värmekamera) fångar kroppsvärme genom vegetation:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>~100% detektion:</strong> SLU:s GPS-validering visar nästan 100% detektion i kallt molnigt vinterväder</li>
+					<li><strong>Ser genom vegetation:</strong> Termisk sensor upptäcker kroppsvärme även bakom buskage</li>
+					<li><strong>Dagtid:</strong> Flygning sker dagtid när älg är aktiv och marktemperaturen är låg</li>
+					<li><strong>Väderoptimering:</strong> Kallt, molnigt, vindfritt ger bäst kontrast</li>
+				</ul>
+
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 48px 0 20px;">04 Optisk verifiering</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+					Varje värmesignatur zoomas in optiskt för artbestämning:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>Manuell artkontroll:</strong> Piloten artbestämmer varje observation för hand</li>
+					<li><strong>Ingen AI-klassificering:</strong> Vi använder inte automatisk AI-artbestämning</li>
+					<li><strong>Kön/kalv:</strong> Vid tillräcklig optisk kvalitet registreras kön och kalv</li>
+					<li><strong>GPS + bild:</strong> Varje observation sparas med GPS-koordinat och foto</li>
+				</ul>
+
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 48px 0 20px;">05 Täthetsskattning</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+					Efter flygning beräknas täthetsskattning med konfidensintervall:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>Konfidensintervall:</strong> Resultat redovisas som intervall, inte exakt siffra</li>
+					<li><strong>Osäkerhet:</strong> Metoden redovisar alltid osäkerhet öppet</li>
+					<li><strong>Provytebaserad:</strong> Tätheten beräknas från observationer i provytor</li>
+					<li><strong>Total population:</strong> Intervall för antal individer över hela fastigheten</li>
+				</ul>
+
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 48px 0 20px;">06 Rapport</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0 0 20px;">
+					Leverans sker digitalt med fullständig dokumentation:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #3f4636; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>Täthetsskattning:</strong> Intervall för antal älg per hektar och totalt</li>
+					<li><strong>Karta:</strong> GPS-koordinater för varje observation</li>
+					<li><strong>Bildbevis:</strong> Optisk zoom-bild per verifierad observation</li>
+					<li><strong>Metadata:</strong> Datum, väder, flyglinjer, täckningsgrad</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Limitations section -->
+		<div style="padding: 100px clamp(20px, 6vw, 64px); background: #2b3324;">
+			<div style="max-width: 900px; margin: 0 auto;">
+				<h2 style="font: 600 34px 'Spectral', serif; color: #efe8d8; margin: 0 0 20px;">Begränsningar</h2>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #c9c0a3; margin: 0 0 20px;">
+					Ingen inventeringsmetod ger en exakt siffra. Vår metodik har följande begränsningar:
+				</p>
+				<ul style="font: 400 17px/1.8 'Karla', sans-serif; color: #c9c0a3; margin: 0 0 40px; padding-left: 24px;">
+					<li><strong>Väder:</strong> Vind, nederbörd och stark sol minskar detektionsgrad</li>
+					<li><strong>Tätt lövverk:</strong> Sommar med fullt lövtäcke ger sämre detektion</li>
+					<li><strong>Djurbeteende:</strong> Liggande älg kan missas, rörliga djur kan dubbelräknas</li>
+					<li><strong>Provytebaserad:</strong> Resultatet är ett intervall baserat på stickprov, inte en fullständig räkning</li>
+				</ul>
+				<p style="font: 400 17px/1.7 'Karla', sans-serif; color: #c9c0a3; margin: 0;">
+					Vi redovisar alltid dessa begränsningar öppet och rekommenderar att använda vår metod som 
+					<strong>komplement till älgobs och spillning</strong> — inte som ensam källa.
+				</p>
+			</div>
+		</div>
+
+		<!-- Reference section -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #efe8d8; border-top: 1px solid rgba(43, 51, 36, 0.2);">
+			<div style="max-width: 900px; margin: 0 auto;">
+				<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 0 0 20px;">Referens</h2>
+				<p style="font: 400 15px/1.7 'Karla', sans-serif; color: #3f4636; margin: 0;">
+					<strong>Hofmeester, T.R., Cromsigt, J.P.G.M., Kjellander, P. m.fl. (2026).</strong><br />
+					<em>Utvärdering av drönarbaserad inventering av älg.</em><br />
+					Sveriges lantbruksuniversitet (SLU), Vilt & Fisk rapportserie.
+				</p>
+				<p style="font: 400 14px 'Karla', sans-serif; color: #6b6142; margin: 16px 0 0; font-style: italic;">
+					* Rapporten har ännu inte publicerats. Vi kommer uppdatera denna sida med korrekt referens 
+					när den blir tillgänglig.
+				</p>
+			</div>
+		</div>
+
+		<!-- CTA -->
+		<div style="padding: 80px clamp(20px, 6vw, 64px); background: #faf6ea; text-align: center;">
+			<h2 style="font: 600 34px 'Spectral', serif; color: #242b1e; margin: 0 0 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+				Har ni frågor om metoden?
+			</h2>
+			<p style="font: 400 16px/1.6 'Karla', sans-serif; color: #3f4636; max-width: 580px; margin: 0 auto 32px;">
+				Vi förklarar gärna metodiken i detalj och hur den passar ert behov.
+			</p>
+			<a href="/kontakt" style="display: inline-block; text-decoration: none; background: #2b3324; color: #efe8d8; padding: 16px 30px; font: 600 14.5px 'Karla', sans-serif; border: 1.5px solid #2b3324;">
+				Kontakta oss
+			</a>
+		</div>
+	</div>
+</Layout>
