@@ -1,52 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroMedia from '../components/HeroMedia.astro';
 
 const title = 'Älginventering med Termisk Drönare | Täthetsskattning med Konfidensintervall';
 const description = 'Älginventering med termisk drönare — täthetsskattning med konfidensintervall, karta och bildbevis. Komplement till älgobs och spillning. I linje med SLU 2026.';
 ---
 
 <Layout title={title} description={description}>
-	<!-- Hero with thermal video -->
-	<HeroMedia
-		eyebrow="DRÖNARBASERAD VILTINVENTERING"
-		posterSrc="/media/hero-thermal-poster.jpg"
-		posterAlt="Termisk flygfoto från älginventering"
-		videoMp4="/media/hero-thermal.mp4"
-		videoWebm="/media/hero-thermal.webm"
-		ctaHref="/kontakt"
-		ctaLabel="Boka älginventering"
-		secondaryHref="#metod"
-		secondaryLabel="Läs om metoden"
-		trustLine="Termisk detektion · Optisk verifiering · Manuell artkontroll — i linje med SLU 2026"
-	>
-		Älginventering med <span style="font-style: italic;">termisk drönare</span>
-	</HeroMedia>
+	<!-- Full-bleed illustrated hero with video -->
+	<div class="hero-video-container">
+		<video
+			autoplay
+			muted
+			loop
+			playsinline
+			class="hero-video"
+			poster="/media/hero-thermal-poster.jpg"
+		>
+			<source src="/media/hero/serene-art-hero.mp4" type="video/mp4" />
+		</video>
+		<div class="hero-overlay"></div>
+		
+		<div class="hero-content">
+			<div class="container-site">
+				<div class="max-w-4xl">
+					<h1 class="hero-title">
+						Viltinventering med <em>termisk precision</em>
+					</h1>
+					<p class="hero-subtitle">
+						Kartlägg populationer med oöverträffad noggrannhet genom automatiserad drönarteknik och SLU-baserad metodik. Från datafångst till myndighetsfärdiga rapporter.
+					</p>
+					<div class="hero-actions">
+						<a href="/kontakt" class="btn-primary">Boka demonstration</a>
+						<a href="#metod" class="btn-secondary">Se tekniken</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<!-- Proof strip -->
-	<div class="bg-bg-elevated border-y border-border py-12">
-		<div class="container-site">
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-				<div>
-					<div class="text-3xl font-semibold text-text-primary mb-2">~100%</div>
-					<div class="text-sm text-text-muted">detektion i optimal väder (SLU)</div>
-				</div>
-				<div>
-					<div class="text-3xl font-semibold text-text-primary mb-2">Konfidensintervall</div>
-					<div class="text-sm text-text-muted">inte en enskild siffra</div>
-				</div>
-				<div>
-					<div class="text-3xl font-semibold text-text-primary mb-2">GPS + Bild</div>
-					<div class="text-sm text-text-muted">per observation</div>
+		<!-- Footer stats strip -->
+		<div class="hero-stats">
+			<div class="container-site">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+					<div>
+						<div class="text-3xl font-serif text-white mb-1">~100%</div>
+						<div class="text-sm text-white/70">detektion i optimal väder</div>
+					</div>
+					<div>
+						<div class="text-3xl font-serif text-white mb-1">Konfidensintervall</div>
+						<div class="text-sm text-white/70">inte en enskild siffra</div>
+					</div>
+					<div>
+						<div class="text-3xl font-serif text-white mb-1">GPS + Bild</div>
+						<div class="text-sm text-white/70">per observation</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Introduction -->
-	<div class="py-20">
-		<div class="container-site max-w-3xl text-center">
-			<p class="text-lg text-text-primary leading-relaxed">
+	<!-- Editorial intro -->
+	<div class="py-24 bg-navy">
+		<div class="container-site max-w-4xl">
+			<p class="text-xl text-white/90 leading-relaxed text-center font-serif">
 				Provyteinventering av älg med termisk drönarkamera — random plots för täthetsskattning 
 				med konfidensintervall. Varje värmesignatur zoomas in optiskt och artbestäms manuellt. 
 				Ett komplement till älgobs och spillning, byggt på samma kunskap som SLU:s utvärdering 2026.
@@ -54,148 +69,124 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
 		</div>
 	</div>
 
-	<!-- 3 Value Cards -->
-	<div class="py-20 border-t border-border">
+	<!-- Process with photographic breaks -->
+	<div id="metod" class="py-24 bg-navy-light scroll-mt-20">
 		<div class="container-site">
-			<div class="text-center mb-16">
-				<span class="eyebrow mb-4 block">TRE STEG I PROCESSEN</span>
-				<h2 class="text-display font-semibold text-text-primary mb-4">
-					Från termisk signal till verifierad observation
-				</h2>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-				<!-- Card 1: Thermal -->
-				<div class="card">
-					<div class="aspect-video mb-6 overflow-hidden rounded-lg border border-border">
-						<img src="/media/thermal-alg-1.jpg" alt="Termisk bild av älg" class="w-full h-full object-cover" />
-					</div>
-					<h3 class="text-xl font-semibold text-text-primary mb-3">01 — Termisk detektion</h3>
-					<p class="text-text-muted leading-relaxed">
-						Värmekameran fångar kroppsvärme genom vegetation. SLU:s GPS-validering visar nästan 100% detektion 
-						i kallt molnigt vinterväder.
-					</p>
-				</div>
-				<!-- Card 2: Optical -->
-				<div class="card">
-					<div class="aspect-video mb-6 overflow-hidden rounded-lg border border-border">
-						<img src="/media/optisk-alg-zoom.jpg" alt="Optisk zoom på älg" class="w-full h-full object-cover" />
-					</div>
-					<h3 class="text-xl font-semibold text-text-primary mb-3">02 — Optisk verifiering</h3>
-					<p class="text-text-muted leading-relaxed">
-						Varje värmesignatur zoomas in med optisk kamera. Piloten artbestämmer manuellt — ingen automatisk 
-						AI-klassificering.
-					</p>
-				</div>
-				<!-- Card 3: Report -->
-				<div class="card">
-					<div class="aspect-video mb-6 overflow-hidden rounded-lg border border-border">
-						<img src="/media/rapport-karta.png" alt="Rapport med karta" class="w-full h-full object-cover" />
-					</div>
-					<h3 class="text-xl font-semibold text-text-primary mb-3">03 — Rapport & karta</h3>
-					<p class="text-text-muted leading-relaxed">
-						Täthetsskattning med konfidensintervall, karta med GPS-koordinater och bildbevis per observation. 
-						Levereras digitalt.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- 01/02/03 Workflow -->
-	<div id="metod" class="py-20 bg-bg-elevated border-y border-border scroll-mt-20">
-		<div class="container-site">
-			<div class="text-center mb-16 max-w-3xl mx-auto">
-				<span class="eyebrow mb-4 block">PROVYTEINVENTERING</span>
-				<h2 class="text-display font-semibold text-text-primary mb-4">
+			<div class="max-w-4xl mx-auto mb-20">
+				<span class="eyebrow block mb-4">PROVYTEINVENTERING</span>
+				<h2 class="text-5xl md:text-6xl font-serif text-white mb-6">
 					Från bokning till rapport
 				</h2>
-				<p class="text-text-muted leading-relaxed">
+				<p class="text-lg text-slate-300 leading-relaxed">
 					Random plots över fastigheten, flögen när kylan ger bäst kontrast. Täthetsskattning 
 					med konfidensintervall — inte en exakt siffra.
 				</p>
 			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				<div class="card">
-					<div class="font-mono text-sm text-text-muted mb-3">01</div>
-					<h3 class="text-lg font-semibold text-text-primary mb-3">Boka & planera</h3>
-					<p class="text-sm text-text-muted leading-relaxed">
-						Ni skickar fastighetens gränser. Vi planerar provytor och flyglinjer utifrån terräng och väderprognos.
-					</p>
+
+			<div class="space-y-24">
+				<!-- Step 1 with thermal image -->
+				<div class="grid md:grid-cols-2 gap-12 items-center">
+					<div>
+						<div class="text-6xl font-serif text-white/20 mb-4">01</div>
+						<h3 class="text-3xl font-serif text-white mb-4">Termisk detektion</h3>
+						<p class="text-lg text-slate-300 leading-relaxed">
+							Värmekameran fångar kroppsvärme genom vegetation. SLU:s GPS-validering visar nästan 100% detektion 
+							i kallt molnigt vinterväder.
+						</p>
+					</div>
+					<div class="rounded-lg overflow-hidden border border-white/10">
+						<img src="/media/thermal-alg-1.jpg" alt="Termisk bild av älg" class="w-full h-full object-cover" />
+					</div>
 				</div>
-				<div class="card">
-					<div class="font-mono text-sm text-text-muted mb-3">02</div>
-					<h3 class="text-lg font-semibold text-text-primary mb-3">Flygning</h3>
-					<p class="text-sm text-text-muted leading-relaxed">
-						Termisk kamera flyger provytorna dagtid under vinterhalvåret, när kylan ger tillräcklig kontrast.
-					</p>
+
+				<!-- Step 2 with optical image -->
+				<div class="grid md:grid-cols-2 gap-12 items-center">
+					<div class="order-2 md:order-1 rounded-lg overflow-hidden border border-white/10">
+						<img src="/media/optisk-alg-zoom.jpg" alt="Optisk zoom på älg" class="w-full h-full object-cover" />
+					</div>
+					<div class="order-1 md:order-2">
+						<div class="text-6xl font-serif text-white/20 mb-4">02</div>
+						<h3 class="text-3xl font-serif text-white mb-4">Optisk verifiering</h3>
+						<p class="text-lg text-slate-300 leading-relaxed">
+							Varje värmesignatur zoomas in med optisk kamera. Piloten artbestämmer manuellt — ingen automatisk 
+							AI-klassificering.
+						</p>
+					</div>
 				</div>
-				<div class="card">
-					<div class="font-mono text-sm text-text-muted mb-3">03</div>
-					<h3 class="text-lg font-semibold text-text-primary mb-3">Analys</h3>
-					<p class="text-sm text-text-muted leading-relaxed">
-						Varje värmesignatur zoomas in optiskt och artbestäms manuellt — ingen automatisk klassificering.
-					</p>
-				</div>
-				<div class="card">
-					<div class="font-mono text-sm text-text-muted mb-3">04</div>
-					<h3 class="text-lg font-semibold text-text-primary mb-3">Rapport</h3>
-					<p class="text-sm text-text-muted leading-relaxed">
-						Täthetsskattning med konfidensintervall, kartor, GPS-koordinater och bildbevis — levererat digitalt.
-					</p>
+
+				<!-- Step 3 with report -->
+				<div class="grid md:grid-cols-2 gap-12 items-center">
+					<div>
+						<div class="text-6xl font-serif text-white/20 mb-4">03</div>
+						<h3 class="text-3xl font-serif text-white mb-4">Rapport & karta</h3>
+						<p class="text-lg text-slate-300 leading-relaxed">
+							Täthetsskattning med konfidensintervall, karta med GPS-koordinater och bildbevis per observation. 
+							Levereras digitalt.
+						</p>
+					</div>
+					<div class="rounded-lg overflow-hidden border border-white/10">
+						<img src="/media/rapport-karta.png" alt="Rapport med karta" class="w-full h-full object-cover" />
+					</div>
 				</div>
 			</div>
-			<div class="text-center mt-12">
-				<a href="/metodik" class="text-sm text-text-primary hover:underline">
-					Läs mer om metoden och den vetenskapliga grunden →
+
+			<div class="text-center mt-20">
+				<a href="/metodik" class="text-white hover:underline inline-flex items-center gap-2">
+					<span>Läs mer om metoden och den vetenskapliga grunden</span>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+					</svg>
 				</a>
 			</div>
 		</div>
 	</div>
 
-	<!-- Coverage / Case panel -->
-	<div class="py-20">
+	<!-- Case study - photographic -->
+	<div class="py-24 bg-navy">
 		<div class="container-site">
-			<div class="text-center mb-16">
-				<span class="eyebrow mb-4 block">NYLIGEN GENOMFÖRT</span>
-				<h2 class="text-display font-semibold text-text-primary">
-					Ett av våra senaste uppdrag
+			<div class="max-w-4xl mx-auto mb-16 text-center">
+				<span class="eyebrow block mb-4">NYLIGEN GENOMFÖRT</span>
+				<h2 class="text-5xl md:text-6xl font-serif text-white">
+					Sotenäs älgskötselområde
 				</h2>
 			</div>
-			<div class="grid md:grid-cols-2 gap-0 max-w-5xl mx-auto card overflow-hidden">
-				<div class="p-2">
-					<img src="/media/sotenas-flygunderlag.jpg" alt="Flygplaneringsunderlag för Sotenäs" class="w-full h-full object-cover rounded-lg border border-border" />
+			<div class="grid md:grid-cols-2 gap-0 max-w-6xl mx-auto overflow-hidden rounded-lg border border-white/10">
+				<div>
+					<img src="/media/sotenas-flygunderlag.jpg" alt="Flygplaneringsunderlag för Sotenäs" class="w-full h-full object-cover" />
 				</div>
-				<div class="p-8">
-					<span class="font-mono text-xs text-text-muted uppercase tracking-wider">SOTENÄS ÄLGSKÖTSELOMRÅDE</span>
-					<p class="text-lg text-text-primary my-6 leading-relaxed">
+				<div class="bg-navy-light p-12">
+					<p class="text-lg text-slate-300 leading-relaxed mb-8">
 						Kustskog, vinter 2025 — 41 provytor över 10 132 hektar. Täckningsgrad 40,4% för täthetsskattning.
 					</p>
-					<div class="grid grid-cols-2 gap-6 mb-6">
+					<div class="grid grid-cols-2 gap-8 mb-8">
 						<div>
-							<div class="text-3xl font-semibold text-text-primary">3,73</div>
-							<div class="text-sm text-text-muted">VMK (viltmarkskvot)</div>
+							<div class="text-4xl font-serif text-white mb-2">3,73</div>
+							<div class="text-sm text-slate-400">VMK (viltmarkskvot)</div>
 						</div>
 						<div>
-							<div class="text-3xl font-semibold text-text-primary">41</div>
-							<div class="text-sm text-text-muted">provytor</div>
+							<div class="text-4xl font-serif text-white mb-2">41</div>
+							<div class="text-sm text-slate-400">provytor</div>
 						</div>
 					</div>
-					<a href="/case" class="text-sm text-text-primary hover:underline">
-						Läs mer om uppdraget →
+					<a href="/case" class="text-white hover:underline inline-flex items-center gap-2">
+						<span>Läs mer om uppdraget</span>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+						</svg>
 					</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Demo CTA -->
-	<div class="py-20 border-t border-border">
+	<!-- CTA -->
+	<div class="py-24 bg-navy-light">
 		<div class="container-site max-w-3xl text-center">
-			<span class="eyebrow mb-4 block">REDO ATT INVENTERA ER MARK?</span>
-			<h2 class="text-display font-semibold text-text-primary mb-6">
+			<span class="eyebrow block mb-4">REDO ATT INVENTERA ER MARK?</span>
+			<h2 class="text-5xl md:text-6xl font-serif text-white mb-8">
 				Skicka in fastighetens uppgifter så återkommer vi med offert
 			</h2>
-			<p class="text-text-muted leading-relaxed mb-8">
+			<p class="text-lg text-slate-300 leading-relaxed mb-12">
 				Vi förklarar metoden, går igenom priset och föreslår flygfönster som passar ert område.
 			</p>
 			<div class="flex gap-4 justify-center flex-wrap">
@@ -205,3 +196,91 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
 		</div>
 	</div>
 </Layout>
+
+<style>
+	.hero-video-container {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.hero-video {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: blur(2px);
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(15, 23, 42, 0.35);
+		backdrop-filter: blur(2px);
+	}
+
+	.hero-content {
+		position: relative;
+		flex: 1;
+		display: flex;
+		align-items: center;
+		padding: 120px 0 80px;
+		z-index: 10;
+	}
+
+	.hero-title {
+		font-size: clamp(40px, 8vw, 80px);
+		line-height: 1.1;
+		letter-spacing: -2.5px;
+		color: white;
+		font-weight: 400;
+		margin: 0 0 24px;
+	}
+
+	.hero-title em {
+		font-style: italic;
+		color: white;
+	}
+
+	.hero-subtitle {
+		font-size: clamp(16px, 2vw, 20px);
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.7);
+		max-width: 600px;
+		margin: 0 0 32px;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.hero-stats {
+		position: relative;
+		padding: 32px 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(8px);
+		background: rgba(15, 23, 42, 0.3);
+		z-index: 10;
+	}
+
+	@media (max-width: 768px) {
+		.hero-title {
+			letter-spacing: -1.5px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-video {
+			display: none;
+		}
+		.hero-video-container {
+			background: #0f172a;
+		}
+	}
+</style>

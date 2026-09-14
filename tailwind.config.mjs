@@ -4,36 +4,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Viltanalys dark system
-        bg: {
-          DEFAULT: '#141414',
-          elevated: '#212121',
+        // Superdesign editorial navy palette
+        navy: {
+          DEFAULT: '#0f172a',
+          light: '#1e293b',
+          dark: '#0a0f1a',
         },
-        text: {
-          primary: '#F0F0F0',
-          muted: '#666666',
-        },
-        border: '#292929',
-        cta: {
-          bg: '#F0F0F0',
-          text: '#141414',
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         },
       },
       fontFamily: {
-        sans: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
-        mono: ['IBM Plex Mono', 'monospace'],
-        display: ['Playfair Display', 'serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'display-sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-        'display': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'display-lg': ['64px', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        'hero': ['80px', { lineHeight: '1.1', letterSpacing: '-2.5px' }],
+        'hero-md': ['60px', { lineHeight: '1.1', letterSpacing: '-2px' }],
+        'hero-sm': ['40px', { lineHeight: '1.15', letterSpacing: '-1.5px' }],
       },
-      borderRadius: {
-        'cta': '8px',
+      letterSpacing: {
+        'tighter': '-2.5px',
+        'tight-md': '-2px',
       },
-      maxWidth: {
-        'site': '1280px',
+      backdropBlur: {
+        'xs': '2px',
       },
     },
   },
