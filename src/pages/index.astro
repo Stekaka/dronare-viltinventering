@@ -14,10 +14,10 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     <div class="container-custom py-24 md:py-40 relative z-10">
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <h1 class="text-[2.75rem] md:text-6xl lg:text-[4.5rem] font-display font-bold mb-6 leading-[1.05] tracking-tight text-balance">
+          <h1 class="text-[2.75rem] md:text-6xl lg:text-[4.5rem] font-display font-bold mb-6 leading-[1.05] tracking-tight text-balance text-paper-50">
             Älginventering med termisk drönare
           </h1>
-          <p class="text-lg md:text-xl text-paper-100 mb-8 leading-relaxed max-w-xl">
+          <p class="text-lg md:text-xl text-paper-200 mb-8 leading-relaxed max-w-xl">
             Täthetsskattning med konfidensintervall, karta och bildbevis — komplement till älgobs och spillning.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
@@ -33,45 +33,58 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
           </div>
         </div>
         
-        <!-- Strong Visual Mass on Right -->
-        <div class="relative aspect-square md:aspect-[4/5] max-w-lg ml-auto">
-          <!-- Thermal Grid Frame -->
-          <div class="absolute inset-0 border-2 border-charcoal-600 bg-gradient-to-br from-charcoal-800/40 to-ink-900/40 backdrop-blur-sm">
+        <!-- Strong Visual Mass on Right - FIXED VISIBILITY -->
+        <div class="relative aspect-square md:aspect-[4/5] max-w-lg ml-auto min-h-[400px]">
+          <!-- Thermal Grid Frame with VISIBLE border -->
+          <div class="absolute inset-0 border-4 border-moss-600 bg-gradient-to-br from-charcoal-800/90 to-ink-900/90 backdrop-blur-sm">
             <div class="thermal-grid absolute inset-0 opacity-40"></div>
             
-            <!-- Large Moose Silhouette -->
-            <svg class="absolute inset-0 w-full h-full opacity-8 p-16" viewBox="0 0 200 200" fill="none">
-              <path d="M60 40 L80 20 L70 50 M140 40 L120 20 L130 50 M40 60 Q40 100 60 150 L60 180 M160 60 Q160 100 140 150 L140 180 M60 70 Q100 60 140 70 Q150 100 140 130 L130 160 L70 160 L60 130 Q50 100 60 70" stroke="currentColor" stroke-width="3" class="text-moss-600/40"/>
-              <circle cx="75" cy="95" r="4" fill="currentColor" class="text-thermal-500/60"/>
-              <circle cx="125" cy="95" r="4" fill="currentColor" class="text-thermal-500/60"/>
+            <!-- Large Moose Silhouette - VISIBLE with proper fill -->
+            <svg class="absolute inset-0 w-full h-full p-12" viewBox="0 0 200 200" fill="none">
+              <!-- Body filled with visible color -->
+              <path d="M60 70 Q100 60 140 70 Q150 100 140 130 L130 160 L70 160 L60 130 Q50 100 60 70 Z" 
+                    fill="#3d5a4a" opacity="0.3" stroke="#5a7d68" stroke-width="2"/>
+              <!-- Antlers -->
+              <path d="M60 40 L80 20 L70 50 M140 40 L120 20 L130 50" 
+                    stroke="#5a7d68" stroke-width="3" stroke-linecap="square"/>
+              <!-- Legs -->
+              <path d="M40 60 Q40 100 60 150 L60 180 M160 60 Q160 100 140 150 L140 180" 
+                    stroke="#5a7d68" stroke-width="3"/>
+              <!-- Eyes as thermal points -->
+              <circle cx="75" cy="95" r="5" fill="#f59e0b" opacity="0.9"/>
+              <circle cx="125" cy="95" r="5" fill="#f59e0b" opacity="0.9"/>
+              <!-- Additional thermal spots -->
+              <circle cx="100" cy="110" r="3" fill="#ea580c" opacity="0.7"/>
+              <circle cx="85" cy="125" r="3" fill="#ea580c" opacity="0.6"/>
+              <circle cx="115" cy="125" r="3" fill="#ea580c" opacity="0.6"/>
             </svg>
             
-            <!-- Data Overlays -->
-            <div class="absolute top-8 left-8 right-8">
+            <!-- Data Overlays with HIGH CONTRAST -->
+            <div class="absolute top-8 left-8 right-8 bg-ink-950/80 border-2 border-thermal-500 p-4">
               <div class="text-xs uppercase tracking-widest text-thermal-400 font-semibold mb-2">DETEKTIONSGRAD</div>
-              <div class="text-6xl font-display font-bold text-paper-50">~100%</div>
-              <div class="text-sm text-paper-300 mt-2">i optimala förhållanden</div>
+              <div class="text-5xl font-display font-bold text-paper-50">~100%</div>
+              <div class="text-sm text-paper-200 mt-2">i optimala förhållanden</div>
             </div>
             
-            <div class="absolute bottom-8 left-8 right-8 border-t-2 border-charcoal-600 pt-4">
+            <div class="absolute bottom-8 left-8 right-8 bg-ink-950/80 border-t-2 border-moss-600 pt-4">
               <div class="grid grid-cols-2 gap-6">
                 <div>
-                  <div class="text-xs uppercase tracking-wider text-paper-400 mb-1">GPS-validering</div>
-                  <div class="text-2xl font-display font-bold text-moss-400">SLU 2026</div>
+                  <div class="text-xs uppercase tracking-wider text-paper-300 mb-1">GPS-validering</div>
+                  <div class="text-xl font-display font-bold text-moss-400">SLU 2026</div>
                 </div>
                 <div>
-                  <div class="text-xs uppercase tracking-wider text-paper-400 mb-1">Metodik</div>
-                  <div class="text-2xl font-display font-bold text-moss-400">Provytor</div>
+                  <div class="text-xs uppercase tracking-wider text-paper-300 mb-1">Metodik</div>
+                  <div class="text-xl font-display font-bold text-moss-400">Provytor</div>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Corner Brackets (field equipment aesthetic) -->
-          <div class="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-thermal-500/60"></div>
-          <div class="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-thermal-500/60"></div>
-          <div class="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-thermal-500/60"></div>
-          <div class="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-thermal-500/60"></div>
+          <!-- Corner Brackets - MORE VISIBLE -->
+          <div class="absolute -top-2 -left-2 w-12 h-12 border-t-4 border-l-4 border-thermal-500"></div>
+          <div class="absolute -top-2 -right-2 w-12 h-12 border-t-4 border-r-4 border-thermal-500"></div>
+          <div class="absolute -bottom-2 -left-2 w-12 h-12 border-b-4 border-l-4 border-thermal-500"></div>
+          <div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-4 border-r-4 border-thermal-500"></div>
         </div>
       </div>
     </div>
@@ -87,7 +100,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- Differentiators - Grid with Icons -->
+  <!-- Differentiators - HIGH CONTRAST on light bg -->
   <section class="py-24 md:py-32 bg-paper-50">
     <div class="container-custom">
       <h2 class="text-4xl md:text-5xl font-display font-bold text-ink-950 mb-4 text-balance max-w-3xl">
@@ -102,7 +115,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
           <div class="w-12 h-12 bg-ink-950 flex items-center justify-center mb-4">
             <div class="w-6 h-6 border-2 border-thermal-400"></div>
           </div>
-          <h3 class="text-2xl font-display font-bold text-ink-900">Termisk detektion</h3>
+          <h3 class="text-2xl font-display font-bold text-ink-950">Termisk detektion</h3>
           <p class="text-ink-900 leading-relaxed">
             Nästan 100 % detektion i kalla, molniga vinterförhållanden enligt SLU:s GPS-validering. 
             Fångar kroppsvärme genom vegetation.
@@ -113,7 +126,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
           <div class="w-12 h-12 bg-ink-950 flex items-center justify-center mb-4">
             <div class="w-4 h-4 rounded-full border-2 border-moss-500"></div>
           </div>
-          <h3 class="text-2xl font-display font-bold text-ink-900">Optisk verifiering</h3>
+          <h3 class="text-2xl font-display font-bold text-ink-950">Optisk verifiering</h3>
           <p class="text-ink-900 leading-relaxed">
             Varje termisk detektion verifieras med högupplöst optisk kamera. GPS-koordinat och tidsstämpel för varje observation.
           </p>
@@ -125,7 +138,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
               <path stroke-linecap="square" stroke-linejoin="miter" d="M9 12l2 2 4-4"/>
             </svg>
           </div>
-          <h3 class="text-2xl font-display font-bold text-ink-900">Manuell artkontroll</h3>
+          <h3 class="text-2xl font-display font-bold text-ink-950">Manuell artkontroll</h3>
           <p class="text-ink-900 leading-relaxed">
             Erfaren personal granskar varje bild och bestämmer art. AI stödjer detektering — människan bestämmer arten.
           </p>
@@ -134,73 +147,73 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- Method Steps - VERTICAL Process, NOT cards -->
+  <!-- Method Steps - DARK bg with LIGHT text - FIXED CONTRAST -->
   <section class="section-thermal py-24 md:py-32 relative overflow-hidden">
     <div class="thermal-grid absolute inset-0 opacity-20"></div>
     <div class="container-custom relative z-10">
       <h2 class="text-4xl md:text-5xl font-display font-bold text-paper-50 mb-6 text-balance">
         Så går inventeringen till
       </h2>
-      <p class="text-base text-paper-200 mb-16 max-w-prose leading-relaxed">
+      <p class="text-base text-paper-100 mb-16 max-w-prose leading-relaxed">
         Från brief till rapport — fem steg med tydlig metodik
       </p>
       
       <div class="max-w-4xl">
         <!-- Step 01 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-700">
+        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
           <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center">
+            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
               <span class="text-3xl font-display font-bold text-thermal-400">01</span>
             </div>
           </div>
           <div class="flex-1 pt-2">
             <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Brief</h3>
-            <p class="text-base text-paper-200 leading-relaxed">
+            <p class="text-base text-paper-100 leading-relaxed">
               Areal, plats, önskade arter. Vi föreslår täckningsgrad och antal flygdagar baserat på ert område och målsättning.
             </p>
           </div>
         </div>
 
         <!-- Step 02 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-700">
+        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
           <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center">
+            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
               <span class="text-3xl font-display font-bold text-thermal-400">02</span>
             </div>
           </div>
           <div class="flex-1 pt-2">
             <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Provytor</h3>
-            <p class="text-base text-paper-200 leading-relaxed">
+            <p class="text-base text-paper-100 leading-relaxed">
               Slumpmässigt urval över hela området — inte där ni "vet" att älgen finns. Detta är kritiskt för objektiv skattning.
             </p>
           </div>
         </div>
 
         <!-- Step 03 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-700">
+        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
           <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center">
+            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
               <span class="text-3xl font-display font-bold text-thermal-400">03</span>
             </div>
           </div>
           <div class="flex-1 pt-2">
             <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Flygning</h3>
-            <p class="text-base text-paper-200 leading-relaxed">
+            <p class="text-base text-paper-100 leading-relaxed">
               Termisk sensor följt av optisk verifiering. GPS-koordinat och tidsstämpel för varje observation. Bäst resultat i kallt, molnigt vinterväder.
             </p>
           </div>
         </div>
 
         <!-- Step 04 -->
-        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-700">
+        <div class="flex gap-8 mb-12 pb-12 border-b-2 border-charcoal-600">
           <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center">
+            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
               <span class="text-3xl font-display font-bold text-thermal-400">04</span>
             </div>
           </div>
           <div class="flex-1 pt-2">
             <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Analys</h3>
-            <p class="text-base text-paper-200 leading-relaxed">
+            <p class="text-base text-paper-100 leading-relaxed">
               Manuell artkontroll av erfaren personal. Täthetsskattning med konfidensintervall — inte bara en punkt skattning.
             </p>
           </div>
@@ -209,13 +222,13 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
         <!-- Step 05 -->
         <div class="flex gap-8">
           <div class="flex-shrink-0">
-            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center">
+            <div class="w-20 h-20 border-2 border-thermal-500 flex items-center justify-center bg-ink-950/50">
               <span class="text-3xl font-display font-bold text-thermal-400">05</span>
             </div>
           </div>
           <div class="flex-1 pt-2">
             <h3 class="text-2xl font-display font-bold text-paper-50 mb-3">Rapport</h3>
-            <p class="text-base text-paper-200 leading-relaxed">
+            <p class="text-base text-paper-100 leading-relaxed">
               Täthet med konfidensintervall, karta över provytor och observationer, bildbevis. Komplement till älgobs och spillning för ÄFO-rapportering.
             </p>
           </div>
@@ -230,7 +243,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- Calculator Section -->
+  <!-- Calculator Section - LIGHT bg -->
   <section class="py-24 md:py-32 bg-paper-100">
     <div class="container-custom">
       <div class="max-w-5xl mx-auto">
@@ -247,7 +260,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- For Whom - Asymmetric Cards -->
+  <!-- For Whom - DARK bg with LIGHT text -->
   <section class="section-dark py-24 md:py-32">
     <div class="container-custom">
       <h2 class="text-4xl md:text-5xl font-display font-bold text-paper-50 mb-16 text-balance">
@@ -262,7 +275,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
         ].map(item => (
           <a href={item.href} class="border-2 border-charcoal-700 bg-charcoal-800/90 p-6 hover:border-moss-600 hover:bg-charcoal-800 transition-all group">
             <h3 class="text-xl font-display font-semibold text-paper-50 mb-3 group-hover:text-moss-400 transition-colors">{item.title}</h3>
-            <p class="text-paper-300 text-sm leading-relaxed mb-4">{item.desc}</p>
+            <p class="text-paper-200 text-sm leading-relaxed mb-4">{item.desc}</p>
             <div class="text-moss-500 text-sm font-medium group-hover:translate-x-1 transition-transform inline-flex items-center">
               Läs mer 
               <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -275,7 +288,7 @@ const description = 'Älginventering med termisk drönare — täthetsskattning 
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA Section - LIGHT bg with DARK text -->
   <section class="py-24 md:py-32 bg-paper-50">
     <div class="container-custom text-center">
       <h2 class="text-4xl md:text-5xl font-display font-bold text-ink-950 mb-6 text-balance">
