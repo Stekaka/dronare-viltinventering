@@ -1,0 +1,29 @@
+---
+// Thermal grid background pattern SVG
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" class="absolute inset-0 w-full h-full opacity-5">
+  <defs>
+    <pattern id="thermal-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+    <pattern id="thermal-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.5" fill="currentColor" opacity="0.2"/>
+    </pattern>
+    <linearGradient id="thermal-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d97706;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#ea580c;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#thermal-grid)"/>
+  <rect width="800" height="600" fill="url(#thermal-dots)"/>
+  <rect width="800" height="300" fill="url(#thermal-glow)"/>
+  
+  <!-- Moose silhouettes -->
+  <g opacity="0.04" transform="translate(100, 100)">
+    <path fill="currentColor" d="M30,20 L40,5 L35,25 M70,20 L60,5 L65,25 M20,30 Q20,50 30,75 L30,95 M80,30 Q80,50 70,75 L70,95 M30,35 Q50,30 70,35 Q75,52 70,68 L65,85 L35,85 L30,68 Q25,52 30,35"/>
+  </g>
+  <g opacity="0.03" transform="translate(600, 350) scale(1.2)">
+    <path fill="currentColor" d="M30,20 L40,5 L35,25 M70,20 L60,5 L65,25 M20,30 Q20,50 30,75 L30,95 M80,30 Q80,50 70,75 L70,95 M30,35 Q50,30 70,35 Q75,52 70,68 L65,85 L35,85 L30,68 Q25,52 30,35"/>
+  </g>
+</svg>

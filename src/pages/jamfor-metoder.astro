@@ -6,294 +6,245 @@ const description = 'Jämför olika inventeringsmetoder för älg: drönarinvent
 ---
 
 <Layout title={title} description={description}>
-  <section class="bg-emerald-800 text-white py-16">
+  <section class="section-dark py-20 md:py-28">
     <div class="container-custom">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Jämför metoder</h1>
-      <p class="text-xl text-emerald-50 max-w-3xl">
+      <h1 class="text-5xl md:text-6xl font-display font-bold text-paper-50 mb-6">Jämför metoder</h1>
+      <p class="text-xl text-paper-200 max-w-3xl leading-relaxed">
         Olika metoder kompletterar varandra. Se styrkor och svagheter för att välja rätt kombination.
       </p>
     </div>
   </section>
 
-  <section class="py-16">
+  <section class="py-24 md:py-32 bg-paper-50">
     <div class="container-custom">
       <div class="max-w-6xl mx-auto">
         
-        <div class="mb-12 bg-emerald-50 border-l-4 border-emerald-600 p-6">
-          <h3 class="text-lg font-semibold text-emerald-900 mb-2">Komplement, inte konkurrenter</h3>
-          <p class="text-emerald-800">
+        <div class="card-elevated bg-moss-700 text-paper-50 p-8 mb-16">
+          <h3 class="text-2xl font-display font-bold mb-3">Komplement, inte konkurrenter</h3>
+          <p class="text-paper-100 text-lg leading-relaxed">
             Drönare, älgobs och spillningsinventering har olika styrkor. De kompletterar varandra — 
             kombinera metoder för bästa underlag till ÄFO och avskjutningsplanering.
           </p>
         </div>
 
-        <!-- Comparison Table -->
-        <div class="overflow-x-auto">
-          <table class="w-full bg-white shadow-lg rounded-lg overflow-hidden">
-            <thead class="bg-stone-800 text-white">
-              <tr>
-                <th class="px-6 py-4 text-left">Aspekt</th>
-                <th class="px-6 py-4 text-left">Drönarinventering</th>
-                <th class="px-6 py-4 text-left">Älgobs</th>
-                <th class="px-6 py-4 text-left">Spillningsinventering</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-stone-200">
-              <tr>
-                <td class="px-6 py-4 font-semibold text-stone-900">Grundprincip</td>
-                <td class="px-6 py-4 text-stone-700">Provyteinventering med termisk sensor + optisk verifiering</td>
-                <td class="px-6 py-4 text-stone-700">Jägares observationer under jakt och uppehåll i skogen</td>
-                <td class="px-6 py-4 text-stone-700">Räkning av spillningshopar i provytor, omräkning till täthet</td>
-              </tr>
-              
-              <tr class="bg-stone-50">
-                <td class="px-6 py-4 font-semibold text-stone-900">Tidpunkt</td>
-                <td class="px-6 py-4 text-stone-700">Vinter (kallt, molnigt optimal)</td>
-                <td class="px-6 py-4 text-stone-700">Året runt, främst under jaktperiod</td>
-                <td class="px-6 py-4 text-stone-700">Vår (april-maj)</td>
-              </tr>
-              
-              <tr>
-                <td class="px-6 py-4 font-semibold text-stone-900">Detektion</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700 font-semibold">~100% i optimal väder</span>
-                  <span class="text-stone-600 text-sm block">SLU GPS-validering</span>
-                </td>
-                <td class="px-6 py-4 text-stone-700">Varierar med jägarnas närvaro och älgens beteende</td>
-                <td class="px-6 py-4 text-stone-700">Indirekt via spillning (omräkning krävs)</td>
-              </tr>
-              
-              <tr class="bg-stone-50">
-                <td class="px-6 py-4 font-semibold text-stone-900">Konfidensintervall</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700">✓ Ja</span>
-                  <span class="text-stone-600 text-sm block">Statistiskt beräknat</span>
-                </td>
-                <td class="px-6 py-4 text-stone-700">Subjektivt osäkerhetsintervall möjligt</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700">✓ Ja</span>
-                  <span class="text-stone-600 text-sm block">Statistiskt beräknat</span>
-                </td>
-              </tr>
-              
-              <tr>
-                <td class="px-6 py-4 font-semibold text-stone-900">Kön/kalv</td>
-                <td class="px-6 py-4 text-stone-700">Ofta möjligt med högre täckning och bra bilder</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700 font-semibold">Mycket bra</span>
-                  <span class="text-stone-600 text-sm block">Jägare ser direkt</span>
-                </td>
-                <td class="px-6 py-4 text-stone-700">Ej möjligt</td>
-              </tr>
-              
-              <tr class="bg-stone-50">
-                <td class="px-6 py-4 font-semibold text-stone-900">Bildbevis</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700 font-semibold">✓ Ja</span>
-                  <span class="text-stone-600 text-sm block">GPS + tidsstämpel</span>
-                </td>
-                <td class="px-6 py-4 text-stone-700">Ofta inte (baserat på jägarnas minne)</td>
-                <td class="px-6 py-4 text-stone-700">Nej (spillningshopar)</td>
-              </tr>
-              
-              <tr>
-                <td class="px-6 py-4 font-semibold text-stone-900">Objektiv metodik</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700 font-semibold">✓ Hög</span>
-                  <span class="text-stone-600 text-sm block">Slumpmässiga provytor</span>
-                </td>
-                <td class="px-6 py-4 text-stone-700">Varierar (kan påverkas av jägarnas bias)</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700 font-semibold">✓ Hög</span>
-                  <span class="text-stone-600 text-sm block">Slumpmässiga provytor</span>
-                </td>
-              </tr>
-              
-              <tr class="bg-stone-50">
-                <td class="px-6 py-4 font-semibold text-stone-900">Kostnad</td>
-                <td class="px-6 py-4 text-stone-700">Ca 2–3 kr/ha (beror på areal och täckning)</td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700">Gratis/låg</span>
-                  <span class="text-stone-600 text-sm block">Jägarnas egen tid</span>
-                </td>
-                <td class="px-6 py-4 text-stone-700">Varierar, kräver fältarbete</td>
-              </tr>
-              
-              <tr>
-                <td class="px-6 py-4 font-semibold text-stone-900">Status officiell metod</td>
-                <td class="px-6 py-4">
-                  <span class="text-amber-700">Komplement</span>
-                  <span class="text-stone-600 text-sm block">I linje med SLU 2026</span>
-                </td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700">✓ Ja</span>
-                  <span class="text-stone-600 text-sm block">Sedan länge</span>
-                </td>
-                <td class="px-6 py-4">
-                  <span class="text-emerald-700">✓ Ja</span>
-                  <span class="text-stone-600 text-sm block">Officiell metod</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <!-- Method Cards - Visual Comparison -->
+        <div class="grid lg:grid-cols-3 gap-8 mb-24">
+          <!-- Drönarinventering -->
+          <div class="card-elevated p-8 border-2 border-moss-600 relative">
+            <div class="absolute -top-4 left-8 bg-moss-600 text-paper-50 px-4 py-1.5 text-sm font-semibold rounded-sm">
+              DRÖNARE
+            </div>
+            <div class="mt-4 mb-8">
+              <div class="w-16 h-16 bg-moss-600/10 border-2 border-moss-600 rounded-sm flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-moss-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path d="M12 5v14M5 12h14"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-display font-bold text-ink-900 mb-2">Termisk + Optisk</h3>
+              <p class="text-charcoal-600">Provyteinventering med sensor och verifiering</p>
+            </div>
 
-        <!-- When to use what -->
-        <div class="mt-16 grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-emerald-800 mb-4">Bäst för drönare</h3>
-            <ul class="space-y-2 text-stone-700 text-sm">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Objektiv täthetsskattning med konfidensintervall</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Komplement när älgobs är osäker eller saknas</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Bildbevis för ÄFO-rapportering</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Kartunderlag över älgförekomst</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Snabb inventering över stora arealer</span>
-              </li>
-            </ul>
+            <div class="space-y-4 mb-8">
+              <div>
+                <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Styrkor</div>
+                <ul class="space-y-2 text-sm text-charcoal-700">
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>~100% detektion i optimalt väder</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Objektiv, statistiskt beräknat konfidensintervall</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Bildbevis med GPS + tidsstämpel</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Snabb inventering stora arealer</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Begränsningar</div>
+                <ul class="space-y-2 text-sm text-charcoal-600">
+                  <li>• Kostnad (ca 2–3 kr/ha)</li>
+                  <li>• Komplement, ej officiell metod</li>
+                  <li>• Kön/kalv kräver högre täckning</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-paper-200">
+              <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Bäst för</div>
+              <p class="text-sm text-charcoal-700">Objektiv täthetsskattning, bildbevis för ÄFO, komplement när älgobs osäker</p>
+            </div>
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-emerald-800 mb-4">Bäst för älgobs</h3>
-            <ul class="space-y-2 text-stone-700 text-sm">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          <!-- Älgobs -->
+          <div class="card-elevated p-8">
+            <div class="absolute -top-4 left-8 bg-charcoal-700 text-paper-50 px-4 py-1.5 text-sm font-semibold rounded-sm">
+              ÄLGOBS
+            </div>
+            <div class="mt-4 mb-8">
+              <div class="w-16 h-16 bg-charcoal-700/10 border-2 border-charcoal-700 rounded-sm flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-charcoal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
-                <span>Könskvot och kalvar (direkt observation)</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Officiell rapportering till ÄFO</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Kontinuerlig uppföljning år för år</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Lokal kännedom om älgstammen</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Ingen kostnad (jägarnas egen tid)</span>
-              </li>
-            </ul>
+              </div>
+              <h3 class="text-2xl font-display font-bold text-ink-900 mb-2">Jägarobservationer</h3>
+              <p class="text-charcoal-600">Observationer under jakt och uppehåll</p>
+            </div>
+
+            <div class="space-y-4 mb-8">
+              <div>
+                <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Styrkor</div>
+                <ul class="space-y-2 text-sm text-charcoal-700">
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Mycket bra för kön/kalv (direkt observation)</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Officiell metod sedan länge</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Kontinuerlig uppföljning år för år</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Ingen kostnad (jägarnas tid)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Begränsningar</div>
+                <ul class="space-y-2 text-sm text-charcoal-600">
+                  <li>• Varierar med jägarnas närvaro</li>
+                  <li>• Subjektiv osäkerhet</li>
+                  <li>• Ofta inget bildbevis</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-paper-200">
+              <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Bäst för</div>
+              <p class="text-sm text-charcoal-700">Könskvot/kalvar, officiell rapportering, lokal kännedom, årlig uppföljning</p>
+            </div>
           </div>
 
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold text-emerald-800 mb-4">Bäst för spillning</h3>
-            <ul class="space-y-2 text-stone-700 text-sm">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          <!-- Spillningsinventering -->
+          <div class="card-elevated p-8">
+            <div class="absolute -top-4 left-8 bg-charcoal-700 text-paper-50 px-4 py-1.5 text-sm font-semibold rounded-sm">
+              SPILLNING
+            </div>
+            <div class="mt-4 mb-8">
+              <div class="w-16 h-16 bg-charcoal-700/10 border-2 border-charcoal-700 rounded-sm flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-charcoal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path d="M3 12h18M9 5l7 7-7 7"/>
                 </svg>
-                <span>Officiell täthetsskattning</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Objektiv metod med konfidensintervall</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Godkänd av Naturvårdsverket</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Indirekt mått (älgens vinterutbredning)</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Lämplig för stora områden</span>
-              </li>
-            </ul>
+              </div>
+              <h3 class="text-2xl font-display font-bold text-ink-900 mb-2">Spillningsräkning</h3>
+              <p class="text-charcoal-600">Räkning av hopar i provytor, vår</p>
+            </div>
+
+            <div class="space-y-4 mb-8">
+              <div>
+                <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Styrkor</div>
+                <ul class="space-y-2 text-sm text-charcoal-700">
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Officiell, godkänd metod</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Objektiv, statistiskt beräknat CI</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-moss-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Vinterutbredning, stora områden</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Begränsningar</div>
+                <ul class="space-y-2 text-sm text-charcoal-600">
+                  <li>• Indirekt mått (spillning, ej älg)</li>
+                  <li>• Ej möjligt för kön/kalv</li>
+                  <li>• Kräver fältarbete</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-paper-200">
+              <div class="text-xs uppercase tracking-wider text-charcoal-500 font-semibold mb-1">Bäst för</div>
+              <p class="text-sm text-charcoal-700">Officiell täthetsskattning, objektiv metod, stora landskap, vinterutbredning</p>
+            </div>
           </div>
         </div>
 
         <!-- Recommendation -->
-        <div class="mt-16 bg-emerald-50 border-2 border-emerald-200 rounded-lg p-8">
-          <h2 class="text-2xl font-bold text-emerald-900 mb-4">Vår rekommendation</h2>
-          <p class="text-stone-700 mb-4">
+        <div class="card-elevated bg-gradient-to-br from-moss-700 via-moss-600 to-moss-700 text-paper-50 p-10">
+          <h2 class="text-3xl font-display font-bold mb-4">Vår rekommendation</h2>
+          <p class="text-lg text-paper-100 mb-6 leading-relaxed">
             <strong>Kombinera metoder för bästa beslutsunderlag.</strong> Fortsätt med älgobs och spillning 
             som grund — komplettera med drönare när ni behöver:
           </p>
-          <ul class="space-y-2 text-stone-700">
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span>Objektiv bekräftelse av älgobs-data</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span>Bildbevis för ÄFO-samråd</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span>Täthetsskattning med konfidensintervall</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span>Kartunderlag över älgens utbredning</span>
-            </li>
+          <ul class="grid md:grid-cols-2 gap-4">
+            {[
+              'Objektiv bekräftelse av älgobs-data',
+              'Bildbevis för ÄFO-samråd',
+              'Täthetsskattning med konfidensintervall',
+              'Kartunderlag över älgens utbredning'
+            ].map(item => (
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-paper-50 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-stone-900 text-white py-16">
+  <section class="section-dark py-20 md:py-28">
     <div class="container-custom text-center">
-      <h2 class="text-3xl font-bold mb-4">Diskutera vilken metod som passar er</h2>
-      <p class="text-xl text-stone-300 mb-8 max-w-2xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-paper-50 mb-6">Diskutera vilken metod som passar er</h2>
+      <p class="text-xl text-paper-200 mb-10 max-w-2xl mx-auto leading-relaxed">
         Vi hjälper er att välja rätt kombination av metoder för ert område och era mål.
       </p>
-      <a href="/kontakt" class="btn-primary bg-emerald-600 hover:bg-emerald-700">
+      <a href="/kontakt" class="btn-primary text-lg bg-paper-50 text-ink-900 hover:bg-paper-100">
         Boka samtal
       </a>
     </div>

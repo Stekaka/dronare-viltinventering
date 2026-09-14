@@ -128,6 +128,17 @@ The site is a static Astro build. Deploy `dist/` to any static host:
   npm install -g vercel
   vercel --prod
   ```
+  
+  **Disable Deployment Protection for Public Preview:**
+  
+  By default, Vercel may enable Deployment Protection which requires login to view previews. To make preview URLs publicly accessible:
+  
+  1. Go to your project in Vercel Dashboard
+  2. Settings → Deployment Protection
+  3. Select "Only Previews from Git Branches" or "Disabled"
+  4. Save changes
+  
+  This allows stakeholders to preview the site without Vercel login.
 
 - **Netlify**:
   - Build command: `npm run build`
