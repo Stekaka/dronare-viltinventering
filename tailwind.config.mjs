@@ -4,46 +4,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark system inspired by Linear/Viltanalys
-        bg: {
-          primary: '#0A0A0A',
-          secondary: '#0D0D0D',
-          tertiary: '#141414',
-          elevated: '#1A1A1A',
+        // Editorial forest palette from reference älginventering site
+        paper: '#faf6ea',
+        ink: {
+          DEFAULT: '#242b1e',
+          light: '#3f4636',
+          muted: '#6b6142',
+          pale: '#8f8768',
         },
-        text: {
-          primary: '#E4E4E7',
-          secondary: '#A1A1AA',
-          tertiary: '#71717A',
-          inverse: '#18181B',
+        forest: {
+          DEFAULT: '#2b3324',
+          light: '#3d4635',
         },
-        border: {
-          primary: 'rgba(255, 255, 255, 0.08)',
-          secondary: 'rgba(255, 255, 255, 0.12)',
+        cream: {
+          DEFAULT: '#efe8d8',
+          dark: '#e0d6b0',
+          darker: '#d8d2bc',
         },
-        accent: {
-          primary: '#10B981',
-          hover: '#059669',
-          muted: 'rgba(16, 185, 129, 0.1)',
+        gold: {
+          DEFAULT: '#d9b877',
+          dark: '#c9973f',
+          darker: '#7a5230',
         },
+        moss: '#a39a7c',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Spectral', 'serif'],
+        body: ['Karla', 'sans-serif'],
       },
       fontSize: {
-        'display-sm': ['2.25rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'display': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'display-lg': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'display-xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
-      },
-      spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-        '112': '28rem',
+        'display-sm': ['28px', { lineHeight: '1.14' }],
+        'display': ['40px', { lineHeight: '1.14' }],
+        'display-lg': ['52px', { lineHeight: '1.14' }],
       },
       maxWidth: {
-        'prose': '65ch',
-        '8xl': '88rem',
+        'site': '1360px',
       },
     },
   },

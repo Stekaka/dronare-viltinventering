@@ -1,276 +1,265 @@
 ---
+// Calculator constants per requirements
+const SEK_PER_DAY = 8000;
+const HA_PER_DAY = 1500;
+const DEFAULT_COVERAGE = 30;
+const KON_KALV_COVERAGE = 40;
+const DEFAULT_TRAVEL = 12000;
 ---
 
-<div class="bg-bg-tertiary border border-border-primary rounded-lg p-8">
-  <form id="price-calculator" class="space-y-8">
-    <!-- Area + Gender/Calf -->
-    <div class="grid md:grid-cols-2 gap-6">
-      <div>
-        <label for="total-area" class="eyebrow block mb-3">
-          Total areal (hektar)
-        </label>
-        <input
-          type="number"
-          id="total-area"
-          name="totalArea"
-          min="500"
-          max="50000"
-          step="1"
-          value="17455"
-          class="w-full px-4 py-3 bg-bg-secondary border border-border-primary rounded-lg text-text-primary focus:outline-none focus:border-border-secondary transition-colors"
-          required
-        />
-        <p class="text-xs text-text-tertiary mt-2">Minst 500 ha rekommenderas</p>
-      </div>
+<div id="pris" style="padding: 110px clamp(20px, 6vw, 64px); background: #2b3324; scroll-margin-top: 90px;">
+	<div style="text-align: center; margin-bottom: 52px;">
+		<span style="font: 600 12.5px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.1em; text-transform: uppercase;">PRISKALKYLATOR</span>
+		<h2 style="font: 600 40px 'Spectral', serif; color: #efe8d8; margin: 14px 0 14px;">Räkna ut ett ungefärligt pris</h2>
+		<p style="font: 400 15.5px/1.6 'Karla', sans-serif; color: #c9c0a3; max-width: 620px; margin: 0 auto;">
+			8 000 kr per flygdag. En dag täcker ca 1 500 hektar med provytor (default 30% täckningsgrad, 40% vid kön/kalv).
+		</p>
+	</div>
+	
+	<div style="max-width: 800px; margin: 0 auto; background: rgba(239, 232, 216, 0.05); border: 1px solid rgba(239, 232, 216, 0.2); padding: 48px;">
+		<form id="calculator-form">
+			<!-- Total area -->
+			<div style="margin-bottom: 32px;">
+				<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+					<label for="total-area" style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase;">
+						Fastighetens areal (hektar)
+					</label>
+					<span id="area-display" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">15 000 ha</span>
+				</div>
+				<input
+					id="total-area"
+					type="range"
+					min="500"
+					max="100000"
+					step="500"
+					value="15000"
+					style="width: 100%; accent-color: #d9b877; margin: 10px 0;"
+				/>
+				<div style="display: flex; justify-content: space-between; font: 400 11px 'Karla', sans-serif; color: #a39a7c;">
+					<span>500 ha</span>
+					<span>100 000 ha</span>
+				</div>
+			</div>
 
-      <div class="flex items-start pt-8">
-        <input
-          type="checkbox"
-          id="gender-calf"
-          name="genderCalf"
-          class="mt-1 h-4 w-4 text-accent-primary focus:ring-accent-primary bg-bg-secondary border-border-primary rounded"
-        />
-        <label for="gender-calf" class="ml-3">
-          <span class="block text-sm font-medium text-text-primary">Även könskvot / kalv</span>
-          <span class="block text-xs text-text-secondary mt-1">Kräver högre täckning (SLU)</span>
-        </label>
-      </div>
-    </div>
+			<!-- Coverage % -->
+			<div style="margin-bottom: 32px;">
+				<label style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 12px;">
+					Täckningsgrad (%)
+				</label>
+				<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+					<input type="number" id="coverage" min="20" max="50" value="30" style="width: 80px; font: 400 15px 'Karla', sans-serif; background: #efe8d8; border: 1px solid #2b3324; padding: 10px 12px; color: #242b1e;" />
+					<span style="font: 400 14px 'Karla', sans-serif; color: #c9c0a3; align-self: center;">
+						Standard 30%, rekommenderas 40% vid kön/kalv-inventering
+					</span>
+				</div>
+			</div>
 
-    <!-- Coverage -->
-    <div>
-      <label class="eyebrow block mb-3">Täckningsgrad</label>
-      <div class="grid grid-cols-4 gap-3 mb-3">
-        {['20', '30', '40', '50'].map((coverage, idx) => (
-          <button
-            type="button"
-            class={`coverage-btn px-4 py-3 border rounded-lg text-sm font-medium transition-all focus:outline-none ${idx === 1 ? 'border-accent-primary bg-accent-muted text-accent-primary' : 'border-border-primary text-text-secondary hover:border-border-secondary'}`}
-            data-coverage={coverage}
-          >
-            {coverage}% {idx === 1 && <span class="text-xs">REK</span>}
-          </button>
-        ))}
-      </div>
-      <input type="hidden" id="coverage-value" name="coverage" value="30" />
-      <p id="coverage-helper" class="text-xs text-text-tertiary">30 % räcker ofta för täthet. Högre täckning vid stark aggregation eller för kön/kalv.</p>
-    </div>
+			<!-- Kön/kalv toggle -->
+			<div style="margin-bottom: 32px;">
+				<label style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 12px;">
+					Inventering av kön/kalv?
+				</label>
+				<div style="display: flex; gap: 12px;">
+					<button type="button" class="kon-kalv-btn" data-value="false" style="font: 600 13.5px 'Karla', sans-serif; padding: 12px 20px; border: 1.5px solid #d9b877; cursor: pointer; letter-spacing: 0.02em; background: transparent; color: #efe8d8;">
+						Nej (endast täthet)
+					</button>
+					<button type="button" class="kon-kalv-btn active" data-value="true" style="font: 600 13.5px 'Karla', sans-serif; padding: 12px 20px; border: 1.5px solid #d9b877; cursor: pointer; letter-spacing: 0.02em; background: #d9b877; color: #2b3324;">
+						Ja (inkl. kön/kalv)
+					</button>
+				</div>
+			</div>
 
-    <!-- Travel modes -->
-    <div>
-      <label class="eyebrow block mb-3">Resor och boende</label>
-      <div class="space-y-3">
-        {[
-          { value: 'excl', title: 'Exkl. resor', desc: 'Endast flygkostnad', checked: true },
-          { value: 'schablon', title: 'Schablon resor/boende', desc: null, checked: false },
-          { value: 'offert', title: 'Tillkommer i offert', desc: 'Resor och boende tillkommer efter plats', checked: false }
-        ].map(mode => (
-          <label class={`flex items-start p-4 border rounded-lg cursor-pointer transition-colors ${mode.checked ? 'border-accent-primary bg-accent-muted' : 'border-border-primary hover:border-border-secondary'}`}>
-            <input
-              type="radio"
-              name="travelMode"
-              value={mode.value}
-              checked={mode.checked}
-              class="mt-1 h-4 w-4 text-accent-primary focus:ring-accent-primary bg-bg-secondary border-border-primary"
-            />
-            <span class="ml-3 flex-1">
-              <span class="block text-sm font-medium text-text-primary">{mode.title}</span>
-              {mode.desc && <span class="block text-xs text-text-secondary mt-1">{mode.desc}</span>}
-              {mode.value === 'schablon' && (
-                <input
-                  type="number"
-                  id="travel-amount"
-                  name="travelAmount"
-                  min="0"
-                  step="1000"
-                  value="12000"
-                  disabled
-                  class="mt-2 w-full px-3 py-2 text-sm bg-bg-secondary border border-border-primary rounded-lg text-text-primary disabled:opacity-50 focus:outline-none focus:border-border-secondary"
-                />
-              )}
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
+			<!-- Travel mode -->
+			<div style="margin-bottom: 36px;">
+				<label style="font: 600 13px 'Karla', sans-serif; color: #d8d2bc; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 12px;">
+					Resor & boende
+				</label>
+				<div style="display: flex; flex-direction: column; gap: 8px;">
+					<label style="display: flex; align-items: center; gap: 10px; font: 400 14px 'Karla', sans-serif; color: #c9c0a3; cursor: pointer;">
+						<input type="radio" name="travel-mode" value="none" checked style="width: 18px; height: 18px; accent-color: #d9b877;" />
+						<span>Exkl. resor (visas separat i offert)</span>
+					</label>
+					<label style="display: flex; align-items: center; gap: 10px; font: 400 14px 'Karla', sans-serif; color: #c9c0a3; cursor: pointer;">
+						<input type="radio" name="travel-mode" value="schablon" style="width: 18px; height: 18px; accent-color: #d9b877;" />
+						<span>Schablon resor/boende</span>
+					</label>
+					<div id="travel-amount-container" style="display: none; margin-left: 28px; margin-top: 6px;">
+						<input type="number" id="travel-amount" min="0" step="1000" value="12000" style="width: 120px; font: 400 15px 'Karla', sans-serif; background: #efe8d8; border: 1px solid #2b3324; padding: 10px 12px; color: #242b1e;" />
+						<span style="font: 400 13px 'Karla', sans-serif; color: #a39a7c; margin-left: 8px;">SEK</span>
+					</div>
+					<label style="display: flex; align-items: center; gap: 10px; font: 400 14px 'Karla', sans-serif; color: #c9c0a3; cursor: pointer;">
+						<input type="radio" name="travel-mode" value="offert" style="width: 18px; height: 18px; accent-color: #d9b877;" />
+						<span>Tillkommer i offert</span>
+					</label>
+				</div>
+			</div>
 
-    <!-- Results -->
-    <div class="pt-8 border-t border-border-primary">
-      <div class="grid md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <div class="eyebrow mb-2">Inventerad areal</div>
-          <div id="result-inventerad" class="text-3xl font-semibold text-text-primary">6 982 ha</div>
-        </div>
-        <div>
-          <div class="eyebrow mb-2">Beräknade flygdagar</div>
-          <div id="result-days" class="text-3xl font-semibold text-text-primary">5 dagar</div>
-        </div>
-      </div>
-
-      <div class="bg-bg-elevated border border-border-primary rounded-lg p-6 space-y-3">
-        <div class="flex justify-between items-baseline">
-          <span class="text-sm text-text-secondary">Flygkostnad</span>
-          <span id="result-flight" class="text-xl font-semibold text-text-primary">40 000 kr</span>
-        </div>
-        <div id="result-travel-row" class="hidden flex justify-between items-baseline">
-          <span class="text-sm text-text-secondary">Resor/boende (schablon)</span>
-          <span id="result-travel" class="text-lg font-semibold text-text-primary">12 000 kr</span>
-        </div>
-        <div class="pt-3 border-t border-border-primary">
-          <div class="flex justify-between items-baseline">
-            <span class="text-sm text-text-secondary">Kr per hektar (exkl. resor)</span>
-            <span id="result-kr-ha-excl" class="text-lg font-semibold text-accent-primary">2,29 kr/ha</span>
-          </div>
-        </div>
-        <div id="result-total-row" class="hidden pt-3 border-t border-border-primary">
-          <div class="flex justify-between items-baseline mb-2">
-            <span class="font-medium text-text-primary">Total inkl. schablon</span>
-            <span id="result-total" class="text-2xl font-semibold text-text-primary">52 000 kr</span>
-          </div>
-          <div class="flex justify-between items-baseline">
-            <span class="text-xs text-text-tertiary">Kr per hektar (inkl. schablon)</span>
-            <span id="result-kr-ha-incl" class="text-sm font-semibold text-accent-primary">2,98 kr/ha</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Disclaimer -->
-    <div class="p-4 bg-accent-muted border border-accent-primary/20 rounded-lg">
-      <p class="text-xs text-text-secondary leading-relaxed">
-        <strong class="text-text-primary">OBS:</strong> Kalkylen är en orientering utifrån 8 000 kr/flygdag och ca 1 500 ha provytor per dag. 
-        Resor och boende tillkommer. Offert efter genomgång.
-      </p>
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center">
-      <a href="/kontakt" class="btn-primary inline-flex items-center px-8 py-3">
-        Boka 15 min — få skräddarsydd offert
-        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-      </a>
-    </div>
-  </form>
+			<!-- Results -->
+			<div style="border-top: 1px solid rgba(239, 232, 216, 0.2); padding-top: 32px;">
+				<div style="background: rgba(239, 232, 216, 0.08); border: 1px solid rgba(239, 232, 216, 0.25); padding: 28px; margin-bottom: 20px;">
+					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 24px;">
+						<div>
+							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px;">
+								Inventerad yta
+							</div>
+							<div id="inventerad-ha" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">4 500 ha</div>
+						</div>
+						<div>
+							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px;">
+								Flygdagar
+							</div>
+							<div id="days" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">3 dagar</div>
+						</div>
+						<div>
+							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px;">
+								Flygkostnad
+							</div>
+							<div id="flight-cost" style="font: 600 22px 'Spectral', serif; color: #efe8d8;">24 000 kr</div>
+						</div>
+					</div>
+					<div style="border-top: 1px solid rgba(239, 232, 216, 0.15); padding-top: 20px; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px;">
+						<div>
+							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px;">
+								Totalt pris
+							</div>
+							<div id="total-price" style="font: 600 44px 'Spectral', serif; color: #efe8d8;">24 000 kr</div>
+							<div id="price-detail" style="font: 400 13px 'Karla', sans-serif; color: #c9c0a3; margin-top: 6px;">
+								Exkl. moms · Resor visas i offert
+							</div>
+						</div>
+						<div style="text-align: right;">
+							<div style="font: 400 12px 'Karla', sans-serif; color: #a39a7c; margin-bottom: 6px;">
+								Kostnad per hektar
+							</div>
+							<div id="kr-per-ha" style="font: 400 18px 'Karla', sans-serif; color: #d8d2bc;">1,60 kr/ha</div>
+						</div>
+					</div>
+				</div>
+				<a href="/kontakt" style="display: inline-block; text-decoration: none; background: #d9b877; color: #2b3324; padding: 16px 28px; font: 600 14.5px 'Karla', sans-serif; white-space: nowrap; margin-bottom: 16px;">
+					Begär offert
+				</a>
+				<p style="font: 400 12.5px/1.5 'Karla', sans-serif; color: #8f8768; margin: 0;">
+					Uppskattning baserad på schablon — exakt pris och tidsplan bekräftas alltid i offert. Minsta areal ~500 hektar.
+				</p>
+			</div>
+		</form>
+	</div>
 </div>
 
 <script>
-  const SEK_PER_DAY = 8000;
-  const HA_PER_DAY = 1500;
-  const MIN_AREA = 500;
+	const SEK_PER_DAY = 8000;
+	const HA_PER_DAY = 1500;
+	const DEFAULT_COVERAGE = 30;
+	const KON_KALV_COVERAGE = 40;
 
-  let currentCoverage = 30;
-  let isGenderCalf = false;
+	const areaInput = document.getElementById('total-area') as HTMLInputElement;
+	const areaDisplay = document.getElementById('area-display') as HTMLElement;
+	const coverageInput = document.getElementById('coverage') as HTMLInputElement;
+	const konKalvBtns = document.querySelectorAll('.kon-kalv-btn');
+	const travelRadios = document.querySelectorAll('input[name="travel-mode"]') as NodeListOf<HTMLInputElement>;
+	const travelAmountContainer = document.getElementById('travel-amount-container') as HTMLElement;
+	const travelAmountInput = document.getElementById('travel-amount') as HTMLInputElement;
 
-  const totalAreaInput = document.getElementById('total-area') as HTMLInputElement;
-  const genderCalfCheckbox = document.getElementById('gender-calf') as HTMLInputElement;
-  const coverageButtons = document.querySelectorAll('.coverage-btn');
-  const coverageValue = document.getElementById('coverage-value') as HTMLInputElement;
-  const travelModeRadios = document.querySelectorAll('input[name="travelMode"]') as NodeListOf<HTMLInputElement>;
-  const travelAmountInput = document.getElementById('travel-amount') as HTMLInputElement;
-  
-  const resultInventerad = document.getElementById('result-inventerad') as HTMLSpanElement;
-  const resultDays = document.getElementById('result-days') as HTMLSpanElement;
-  const resultFlight = document.getElementById('result-flight') as HTMLSpanElement;
-  const resultTravelRow = document.getElementById('result-travel-row') as HTMLDivElement;
-  const resultTravel = document.getElementById('result-travel') as HTMLSpanElement;
-  const resultKrHaExcl = document.getElementById('result-kr-ha-excl') as HTMLSpanElement;
-  const resultTotalRow = document.getElementById('result-total-row') as HTMLDivElement;
-  const resultTotal = document.getElementById('result-total') as HTMLSpanElement;
-  const resultKrHaIncl = document.getElementById('result-kr-ha-incl') as HTMLSpanElement;
+	const inventeradHa = document.getElementById('inventerad-ha') as HTMLElement;
+	const daysEl = document.getElementById('days') as HTMLElement;
+	const flightCostEl = document.getElementById('flight-cost') as HTMLElement;
+	const totalPriceEl = document.getElementById('total-price') as HTMLElement;
+	const priceDetailEl = document.getElementById('price-detail') as HTMLElement;
+	const krPerHaEl = document.getElementById('kr-per-ha') as HTMLElement;
 
-  function calculate() {
-    const totalHa = parseFloat(totalAreaInput.value) || 0;
-    
-    if (totalHa < MIN_AREA) {
-      resultInventerad.textContent = 'Kontakta oss';
-      resultDays.textContent = '—';
-      resultFlight.textContent = '—';
-      resultKrHaExcl.textContent = '—';
-      return;
-    }
+	let konKalv = false;
 
-    const inventeradHa = totalHa * (currentCoverage / 100);
-    const daysRaw = inventeradHa / HA_PER_DAY;
-    const days = Math.ceil(daysRaw);
-    const flightCost = days * SEK_PER_DAY;
-    const krPerHaExcl = flightCost / totalHa;
-    
-    resultInventerad.textContent = `${Math.round(inventeradHa).toLocaleString('sv-SE')} ha`;
-    resultDays.textContent = `${days} ${days === 1 ? 'dag' : 'dagar'}`;
-    resultFlight.textContent = `${flightCost.toLocaleString('sv-SE')} kr`;
-    resultKrHaExcl.textContent = `${krPerHaExcl.toFixed(2)} kr/ha`;
-    
-    const travelMode = document.querySelector('input[name="travelMode"]:checked') as HTMLInputElement;
-    if (travelMode?.value === 'schablon') {
-      const travelAmount = parseFloat(travelAmountInput.value) || 0;
-      const totalIncl = flightCost + travelAmount;
-      const krPerHaIncl = totalIncl / totalHa;
-      
-      resultTravelRow.classList.remove('hidden');
-      resultTotalRow.classList.remove('hidden');
-      resultTravel.textContent = `${travelAmount.toLocaleString('sv-SE')} kr`;
-      resultTotal.textContent = `${totalIncl.toLocaleString('sv-SE')} kr`;
-      resultKrHaIncl.textContent = `${krPerHaIncl.toFixed(2)} kr/ha`;
-    } else {
-      resultTravelRow.classList.add('hidden');
-      resultTotalRow.classList.add('hidden');
-    }
-  }
+	function calculate() {
+		const totalHa = Number(areaInput.value);
+		const coverage = Number(coverageInput.value);
+		const invHa = Math.round(totalHa * (coverage / 100));
+		const days = Math.max(1, Math.ceil(invHa / HA_PER_DAY));
+		const flightCost = days * SEK_PER_DAY;
 
-  coverageButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const coverage = parseInt((button as HTMLElement).dataset.coverage || '30');
-      if (isGenderCalf && coverage < 40) return;
-      
-      currentCoverage = coverage;
-      coverageValue.value = coverage.toString();
-      
-      coverageButtons.forEach(btn => {
-        btn.classList.remove('border-accent-primary', 'bg-accent-muted', 'text-accent-primary');
-        btn.classList.add('border-border-primary', 'text-text-secondary');
-      });
-      button.classList.remove('border-border-primary', 'text-text-secondary');
-      button.classList.add('border-accent-primary', 'bg-accent-muted', 'text-accent-primary');
-      
-      calculate();
-    });
-  });
+		let travelCost = 0;
+		let travelMode = 'none';
+		travelRadios.forEach((radio) => {
+			if (radio.checked) travelMode = radio.value;
+		});
 
-  genderCalfCheckbox.addEventListener('change', () => {
-    isGenderCalf = genderCalfCheckbox.checked;
-    if (isGenderCalf && currentCoverage < 40) {
-      const button40 = Array.from(coverageButtons).find(btn => 
-        (btn as HTMLElement).dataset.coverage === '40'
-      ) as HTMLElement;
-      button40?.click();
-    }
-    coverageButtons.forEach(btn => {
-      const coverage = parseInt((btn as HTMLElement).dataset.coverage || '30');
-      if (coverage < 40) {
-        (btn as HTMLButtonElement).disabled = isGenderCalf;
-        btn.classList.toggle('opacity-30', isGenderCalf);
-        btn.classList.toggle('cursor-not-allowed', isGenderCalf);
-      }
-    });
-  });
+		if (travelMode === 'schablon') {
+			travelCost = Number(travelAmountInput.value);
+		}
 
-  travelModeRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      const label = radio.closest('label');
-      document.querySelectorAll('input[name="travelMode"]').forEach(r => {
-        r.closest('label')?.classList.remove('border-accent-primary', 'bg-accent-muted');
-        r.closest('label')?.classList.add('border-border-primary');
-      });
-      label?.classList.remove('border-border-primary');
-      label?.classList.add('border-accent-primary', 'bg-accent-muted');
-      
-      travelAmountInput.disabled = radio.value !== 'schablon';
-      calculate();
-    });
-  });
+		const totalCost = flightCost + travelCost;
+		const krPerHaExcl = totalHa > 0 ? flightCost / totalHa : 0;
+		const krPerHaIncl = totalHa > 0 ? totalCost / totalHa : 0;
 
-  totalAreaInput.addEventListener('input', calculate);
-  travelAmountInput.addEventListener('input', calculate);
-  calculate();
+		areaDisplay.textContent = `${totalHa.toLocaleString('sv-SE')} ha`;
+		inventeradHa.textContent = `${invHa.toLocaleString('sv-SE')} ha`;
+		daysEl.textContent = `${days} ${days === 1 ? 'dag' : 'dagar'}`;
+		flightCostEl.textContent = `${flightCost.toLocaleString('sv-SE')} kr`;
+		totalPriceEl.textContent = `${totalCost.toLocaleString('sv-SE')} kr`;
+		
+		let detailText = 'Exkl. moms';
+		if (travelMode === 'schablon') {
+			detailText = `Inkl. resor ${travelCost.toLocaleString('sv-SE')} kr · Exkl. moms`;
+			krPerHaEl.textContent = `${krPerHaIncl.toFixed(2)} kr/ha (inkl. resor)`;
+		} else if (travelMode === 'offert') {
+			detailText = 'Exkl. moms · Resor tillkommer';
+			krPerHaEl.textContent = `${krPerHaExcl.toFixed(2)} kr/ha (exkl. resor)`;
+		} else {
+			detailText = 'Exkl. moms · Resor visas i offert';
+			krPerHaEl.textContent = `${krPerHaExcl.toFixed(2)} kr/ha (exkl. resor)`;
+		}
+		priceDetailEl.textContent = detailText;
+	}
+
+	areaInput.addEventListener('input', calculate);
+	coverageInput.addEventListener('input', calculate);
+
+	konKalvBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const value = (btn as HTMLElement).dataset.value === 'true';
+			konKalv = value;
+			konKalvBtns.forEach((b) => {
+				b.classList.remove('active');
+				(b as HTMLElement).style.background = 'transparent';
+				(b as HTMLElement).style.color = '#efe8d8';
+			});
+			btn.classList.add('active');
+			(btn as HTMLElement).style.background = '#d9b877';
+			(btn as HTMLElement).style.color = '#2b3324';
+
+			if (konKalv) {
+				const currentCoverage = Number(coverageInput.value);
+				if (currentCoverage < KON_KALV_COVERAGE) {
+					coverageInput.value = String(KON_KALV_COVERAGE);
+				}
+				coverageInput.min = String(KON_KALV_COVERAGE);
+			} else {
+				coverageInput.min = '20';
+			}
+			calculate();
+		});
+	});
+
+	travelRadios.forEach((radio) => {
+		radio.addEventListener('change', () => {
+			if (radio.value === 'schablon') {
+				travelAmountContainer.style.display = 'block';
+			} else {
+				travelAmountContainer.style.display = 'none';
+			}
+			calculate();
+		});
+	});
+
+	travelAmountInput.addEventListener('input', calculate);
+
+	calculate();
 </script>
+
+<style>
+	.kon-kalv-btn {
+		transition: all 0.2s;
+	}
+	.kon-kalv-btn:hover {
+		border-color: #c9973f;
+	}
+</style>
